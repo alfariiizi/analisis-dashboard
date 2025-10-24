@@ -1,13 +1,16 @@
 import { Progress } from "@/components/ui/progress";
-import { data } from "./mock-data";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { Eye, Trash } from "lucide-react";
+import { Eye, Trash, Calendar, Package, Lightbulb } from "lucide-react";
 import ModuleTitle from "@/components/typography/module-title";
+import { getAllAnalyses } from "@/@data/analysis-data";
 
 const maximumAnalysis = 14;
 
 export default function AnalysisList() {
+  const data = getAllAnalyses();
+
   return (
     <div className="">
       <div className="container mx-auto flex flex-col gap-24">
@@ -31,13 +34,18 @@ export default function AnalysisList() {
             </div>
           </div>
         </div>
-        <div className="grid grid-cols-1 gap-16 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {data.map((item) => (
             <AnalisisCard
               key={item.id}
               id={item.id}
               title={item.title}
-              description={item.description}
+              category={item.category}
+              summary={item.summary}
+              createdAt={item.createdAt}
+              products={item.products}
+              insights={item.insights}
+              tags={item.tags}
             />
           ))}
         </div>
@@ -49,36 +57,88 @@ export default function AnalysisList() {
 function AnalisisCard({
   id,
   title,
-  description
+  category,
+  summary,
+  createdAt,
+  products,
+  insights,
+  tags
 }: {
   id: string;
   title: string;
-  description: string;
+  category: string;
+  summary: string;
+  createdAt: string;
+  products: number;
+  insights: number;
+  tags: string[];
 }) {
+  const formattedDate = new Date(createdAt).toLocaleDateString("id-ID", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
+  });
+
   return (
-    <div className="group relative flex flex-col gap-1">
-      <div className="-top-11 grid w-fit grid-cols-2 rounded-full border p-1 duration-150 md:absolute md:opacity-0 md:group-hover:opacity-100">
-        <Link href={`/analysis/${id}`} className="w-full">
-          <Button
-            size="sm"
-            variant="ghost"
-            className="w-full cursor-pointer rounded-l-full py-0 text-xs"
-          >
-            <Eye className="h-4 w-4" />
-            Lihat
-          </Button>
-        </Link>
-        <Button
-          size="sm"
-          variant="ghost"
-          className="hover:bg-destructive/30 w-full cursor-pointer rounded-r-full text-xs"
-        >
-          <Trash className="h-4 w-4" />
-          Hapus
-        </Button>
+    <div className="group relative flex flex-col gap-4 rounded-lg border p-6 transition-all hover:border-primary/50 hover:shadow-lg">
+      <div className="flex flex-col gap-3">
+        <div className="flex items-start justify-between gap-2">
+          <Badge variant="secondary" className="text-xs">
+            {category}
+          </Badge>
+          <div className="grid w-fit grid-cols-2 rounded-full border p-1 opacity-0 transition-opacity group-hover:opacity-100">
+            <Link href={`/analysis/${id}`} className="w-full">
+              <Button
+                size="sm"
+                variant="ghost"
+                className="h-7 w-full cursor-pointer rounded-l-full px-2 text-xs"
+              >
+                <Eye className="h-3 w-3" />
+              </Button>
+            </Link>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="hover:bg-destructive/30 h-7 w-full cursor-pointer rounded-r-full px-2 text-xs"
+            >
+              <Trash className="h-3 w-3" />
+            </Button>
+          </div>
+        </div>
+        <h3 className="line-clamp-2 text-lg font-semibold tracking-tight">{title}</h3>
+        <p className="text-muted-foreground line-clamp-3 text-sm">{summary}</p>
       </div>
-      <h3 className="text-base tracking-tight">{title}</h3>
-      <p className="text-muted-foreground text-sm">{description}</p>
+
+      <div className="flex flex-col gap-3 border-t pt-4">
+        <div className="flex items-center gap-4 text-xs text-muted-foreground">
+          <div className="flex items-center gap-1">
+            <Calendar className="h-3.5 w-3.5" />
+            <span>{formattedDate}</span>
+          </div>
+        </div>
+        <div className="flex items-center gap-4 text-xs text-muted-foreground">
+          <div className="flex items-center gap-1">
+            <Package className="h-3.5 w-3.5" />
+            <span>{products} produk</span>
+          </div>
+          <div className="flex items-center gap-1">
+            <Lightbulb className="h-3.5 w-3.5" />
+            <span>{insights} insight</span>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {tags.slice(0, 3).map((tag) => (
+            <Badge key={tag} variant="outline" className="text-xs">
+              {tag}
+            </Badge>
+          ))}
+          {tags.length > 3 && (
+            <Badge variant="outline" className="text-xs">
+              +{tags.length - 3}
+            </Badge>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

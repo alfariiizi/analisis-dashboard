@@ -149,59 +149,59 @@ export function NavMain({ items }: { items: NavMainProps }) {
 
 const dataChat = [
   {
-    title: "Lorem ipsum dolor sit amet consectetur",
+    title: "Analisis produk skincare lokal vs import",
     url: "/c/1"
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Tren penjualan sepatu sneakers Q4 2024",
     url: "/c/2"
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Perbandingan harga laptop gaming di Tokopedia",
     url: "/c/3"
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Riset keyword tas wanita paling laku",
     url: "/c/4"
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Analisis kompetitor kategori fashion pria",
     url: "/c/5"
   },
   {
-    title: "Lorem ipsum dolor sit amet consectetur",
+    title: "Produk elektronik trending bulan ini",
     url: "/c/6"
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Strategi pricing untuk produk makanan sehat",
     url: "/c/7"
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Review performa toko di Shopee Mall",
     url: "/c/8"
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Analisis rating produk kecantikan viral",
     url: "/c/9"
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Peluang bisnis aksesori smartphone 2025",
     url: "/c/10"
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Tren harga skincare Korea vs lokal",
     url: "/c/11"
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Analisis demand produk olahraga di marketplace",
     url: "/c/12"
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Riset produk home & living bestseller",
     url: "/c/13"
   },
   {
-    title: "Lorem ipsum dolor sit amet",
+    title: "Strategi bundling untuk produk fashion",
     url: "/c/14"
   }
 ];

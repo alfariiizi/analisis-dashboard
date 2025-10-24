@@ -18,12 +18,12 @@ export default async function DashboardLayout({
       defaultOpen={defaultOpen}
       style={
         {
-          "--sidebar-width": "calc(var(--spacing) * 60)",
+          "--sidebar-width": "calc(var(--spacing) * 62)",
           "--header-height": "calc(var(--spacing) * 12)"
         } as React.CSSProperties
       }
     >
-      <AppSidebar variant="inset" />
+      <AppSidebar variant="sidebar" />
       <SidebarInset className="relative">
         <SiteHeader />
         <div className="flex flex-1 flex-col">
