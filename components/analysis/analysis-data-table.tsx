@@ -43,6 +43,7 @@ interface AnalysisDataTableProps<TData extends AnalysisProduct> {
 }
 
 export function createSortableHeader(label: string) {
+  // eslint-disable-next-line react/display-name
   return ({ column }: any) => {
     return (
       <Button
@@ -103,17 +104,17 @@ export default function AnalysisDataTable<TData extends AnalysisProduct>({
   });
 
   return (
-    <div className="w-full space-y-4">
-      <div className="flex items-center justify-between">
+    <div className="w-full space-y-3 sm:space-y-4">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <Input
           placeholder={searchPlaceholder}
           value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ""}
           onChange={(event) => table.getColumn(searchKey)?.setFilterValue(event.target.value)}
-          className="max-w-sm"
+          className="w-full sm:max-w-sm"
         />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="ml-auto">
+            <Button variant="outline" size="sm" className="w-full sm:ml-auto sm:w-auto">
               Kolom <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
@@ -136,7 +137,7 @@ export default function AnalysisDataTable<TData extends AnalysisProduct>({
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
-      <div className="rounded-md border">
+      <div className="overflow-x-auto rounded-md border">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
@@ -174,21 +175,23 @@ export default function AnalysisDataTable<TData extends AnalysisProduct>({
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-between space-x-2 py-4">
-        <div className="text-muted-foreground flex-1 text-sm">
-          Menampilkan {table.getState().pagination.pageIndex * table.getState().pagination.pageSize + 1} -{" "}
+      <div className="flex flex-col gap-2 py-3 sm:flex-row sm:items-center sm:justify-between sm:py-4">
+        <div className="text-muted-foreground text-xs sm:flex-1 sm:text-sm">
+          <span className="hidden sm:inline">Menampilkan </span>
+          {table.getState().pagination.pageIndex * table.getState().pagination.pageSize + 1} -{" "}
           {Math.min(
             (table.getState().pagination.pageIndex + 1) * table.getState().pagination.pageSize,
             table.getFilteredRowModel().rows.length
           )}{" "}
           dari {table.getFilteredRowModel().rows.length} produk
         </div>
-        <div className="space-x-2">
+        <div className="flex gap-2">
           <Button
             variant="outline"
             size="sm"
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
+            className="flex-1 sm:flex-none"
           >
             Sebelumnya
           </Button>
@@ -197,6 +200,7 @@ export default function AnalysisDataTable<TData extends AnalysisProduct>({
             size="sm"
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
+            className="flex-1 sm:flex-none"
           >
             Berikutnya
           </Button>

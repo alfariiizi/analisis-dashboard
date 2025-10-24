@@ -207,13 +207,13 @@ function TooltipArrow({
   const { side, align, open } = useRenderedTooltip();
   const { context, arrowRef } = useFloatingContext();
   const { transition, globalId } = useGlobalTooltip();
-  React.useImperativeHandle(ref, () => arrowRef.current as SVGSVGElement);
+  React.useImperativeHandle(ref as any, () => arrowRef.current as SVGSVGElement);
 
   const deg = { top: 0, right: 90, bottom: 180, left: -90 }[side];
 
   return (
     <MotionTooltipArrow
-      ref={arrowRef}
+      ref={arrowRef as any}
       context={context}
       data-state={open ? 'open' : 'closed'}
       data-side={side}
@@ -277,7 +277,7 @@ function TooltipOverlay() {
   }, [referenceElRef, refs, update, rendered.data]);
 
   const ready = x != null && y != null;
-  const Component = rendered.data?.contentAsChild ? Slot : motion.div;
+  const Component = (rendered.data?.contentAsChild ? Slot : motion.div) as any;
   const resolvedSide = getResolvedSide(context.placement);
 
   return (
@@ -457,7 +457,7 @@ function TooltipTrigger({
   } = useGlobalTooltip();
 
   const triggerRef = React.useRef<HTMLDivElement>(null);
-  React.useImperativeHandle(ref, () => triggerRef.current as HTMLDivElement);
+  React.useImperativeHandle(ref as any, () => triggerRef.current as HTMLDivElement);
 
   const suppressNextFocusRef = React.useRef(false);
 

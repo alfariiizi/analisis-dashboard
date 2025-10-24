@@ -35,7 +35,7 @@ export default function Search() {
   }, []);
 
   const CommandItemComponent = ({ item }: { item: SidebarNavMainItem }) => {
-    const LucideIcon = item.icon;
+    const Icon = item.icon;
 
     return (
       <CommandItem
@@ -43,7 +43,7 @@ export default function Search() {
           setOpen(false);
           router.push(item.url);
         }}>
-        {LucideIcon && <LucideIcon className="me-2 h-4! w-4!" />}
+        {Icon && <div className="me-2">{Icon()}</div>}
         <span>{item.title}</span>
       </CommandItem>
     );

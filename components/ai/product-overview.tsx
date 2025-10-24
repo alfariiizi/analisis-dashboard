@@ -75,24 +75,26 @@ export default function ProductOverview({ products, statistics, timeframe = "30 
   );
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 sm:space-y-6">
       {/* Header with Legend */}
-      <Card className="p-6">
-        <div className="mb-6 flex flex-col gap-4">
+      <Card className="p-4 sm:p-6">
+        <div className="mb-4 flex flex-col gap-3 sm:mb-6 sm:gap-4">
           <div className="flex items-center gap-2">
-            <TrendingUp className="text-primary h-5 w-5" />
-            <h2 className="text-xl font-semibold">Rangkuman ({products.length} produk)</h2>
+            <TrendingUp className="text-primary h-4 w-4 sm:h-5 sm:w-5" />
+            <h2 className="text-lg font-semibold sm:text-xl">
+              Rangkuman ({products.length} produk)
+            </h2>
           </div>
 
           {/* Legend */}
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-2 sm:gap-4">
             {(Object.keys(categoryLabels) as ProductCategory[]).map((category) => (
-              <div key={category} className="flex items-center gap-2">
+              <div key={category} className="flex items-center gap-1.5 sm:gap-2">
                 <div
-                  className="h-4 w-4 rounded"
+                  className="h-3 w-3 rounded sm:h-4 sm:w-4"
                   style={{ backgroundColor: categoryColors[category] }}
                 />
-                <span className="text-sm">
+                <span className="text-xs sm:text-sm">
                   {categoryLabels[category]}
                   {categoryCounts[category] ? ` (${categoryCounts[category]})` : ""}
                 </span>
@@ -102,14 +104,14 @@ export default function ProductOverview({ products, statistics, timeframe = "30 
         </div>
 
         {/* Scatter Chart */}
-        <div className="h-[500px] w-full">
+        <div className="h-[300px] w-full sm:h-[400px] lg:h-[500px]">
           <ResponsiveContainer width="100%" height="100%">
             <ScatterChart
               margin={{
-                top: 20,
-                right: 20,
-                bottom: 60,
-                left: 60
+                top: 10,
+                right: 10,
+                bottom: 40,
+                left: 40
               }}
             >
               <CartesianGrid strokeDasharray="3 3" className="stroke-muted" />
@@ -153,12 +155,13 @@ export default function ProductOverview({ products, statistics, timeframe = "30 
                 strokeOpacity={0.5}
               />
 
-              {/* Quadrant labels */}
+              {/* Quadrant labels - hidden on mobile */}
               <text
                 x="15%"
                 y="15%"
                 textAnchor="middle"
-                className="fill-muted-foreground text-sm font-medium"
+                className="fill-muted-foreground hidden text-xs font-medium sm:block sm:text-sm"
+                opacity="0.7"
               >
                 Produk Potensial
               </text>
@@ -166,7 +169,8 @@ export default function ProductOverview({ products, statistics, timeframe = "30 
                 x="85%"
                 y="15%"
                 textAnchor="middle"
-                className="fill-muted-foreground text-sm font-medium"
+                className="fill-muted-foreground hidden text-xs font-medium sm:block sm:text-sm"
+                opacity="0.7"
               >
                 Produk Terbaik
               </text>
@@ -174,7 +178,8 @@ export default function ProductOverview({ products, statistics, timeframe = "30 
                 x="15%"
                 y="85%"
                 textAnchor="middle"
-                className="fill-muted-foreground text-sm font-medium"
+                className="fill-muted-foreground hidden text-xs font-medium sm:block sm:text-sm"
+                opacity="0.7"
               >
                 Produk Low Demand
               </text>
@@ -182,7 +187,8 @@ export default function ProductOverview({ products, statistics, timeframe = "30 
                 x="85%"
                 y="85%"
                 textAnchor="middle"
-                className="fill-muted-foreground text-sm font-medium"
+                className="fill-muted-foreground hidden text-xs font-medium sm:block sm:text-sm"
+                opacity="0.7"
               >
                 Produk Jenuh
               </text>
@@ -204,10 +210,10 @@ export default function ProductOverview({ products, statistics, timeframe = "30 
       </Card>
 
       {/* Statistics Cards */}
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="grid gap-3 sm:gap-4 md:grid-cols-2">
         {/* Left Column */}
-        <Card className="p-6">
-          <div className="space-y-4">
+        <Card className="p-4 sm:p-6">
+          <div className="space-y-3 sm:space-y-4">
             <StatRow
               label={`Total Omset Data ${timeframe} Terakhir`}
               value={statistics.totalOmset30Hari}
@@ -247,8 +253,8 @@ export default function ProductOverview({ products, statistics, timeframe = "30 
         </Card>
 
         {/* Right Column */}
-        <Card className="p-6">
-          <div className="space-y-4">
+        <Card className="p-4 sm:p-6">
+          <div className="space-y-3 sm:space-y-4">
             <StatRow label="Total" value={`${timeframe}`} className="font-semibold" />
             <div className="h-6" /> {/* Spacer */}
             <StatRow
@@ -281,10 +287,10 @@ function StatRow({
 }) {
   return (
     <div
-      className={`flex items-center justify-between border-b pb-3 last:border-b-0 ${className || ""}`}
+      className={`flex flex-col gap-1 border-b pb-2 last:border-b-0 sm:flex-row sm:items-center sm:justify-between sm:gap-0 sm:pb-3 ${className || ""}`}
     >
-      <span className="text-muted-foreground text-sm">{label}</span>
-      <span className={`text-sm font-medium ${valueClassName || ""}`}>{value}</span>
+      <span className="text-muted-foreground text-xs sm:text-sm">{label}</span>
+      <span className={`text-sm font-medium sm:text-sm ${valueClassName || ""}`}>{value}</span>
     </div>
   );
 }
@@ -293,9 +299,9 @@ function CustomTooltip({ active, payload }: any) {
   if (active && payload && payload.length) {
     const data = payload[0].payload as ProductPoint;
     return (
-      <div className="bg-background rounded-lg border p-3 shadow-lg">
-        <p className="mb-2 font-semibold">{data.name}</p>
-        <div className="space-y-1 text-sm">
+      <div className="bg-background max-w-[250px] rounded-lg border p-2.5 shadow-lg sm:max-w-xs sm:p-3">
+        <p className="mb-1.5 text-xs font-semibold sm:mb-2 sm:text-sm">{data.name}</p>
+        <div className="space-y-0.5 text-xs sm:space-y-1 sm:text-sm">
           <p>
             <span className="text-muted-foreground">Kategori:</span>{" "}
             <span className="font-medium" style={{ color: categoryColors[data.category] }}>

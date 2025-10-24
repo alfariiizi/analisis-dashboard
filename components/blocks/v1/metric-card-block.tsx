@@ -1,4 +1,4 @@
-import { MetricCardBlock } from "@/@types/analysis-blocks";
+import type { MetricCardBlock } from "@/@types/analysis-blocks";
 import { Card } from "@/components/ui/card";
 import { TrendingUp, TrendingDown, Minus } from "lucide-react";
 import { cn } from "@/lib/utils";

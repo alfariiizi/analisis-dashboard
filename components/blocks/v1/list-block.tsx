@@ -1,4 +1,4 @@
-import { ListBlock } from "@/@types/analysis-blocks";
+import type { ListBlock } from "@/@types/analysis-blocks";
 import { cn } from "@/lib/utils";
 
 type Props = ListBlock;

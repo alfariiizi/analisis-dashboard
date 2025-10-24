@@ -50,7 +50,7 @@ export default function ProductPreview({ totalFound, previewData, query }: Props
 
       <div className="bg-muted/50 mt-4 rounded-lg p-4">
         <p className="text-sm font-medium">
-          ✨ Ketik <span className="text-primary">"Ya, lanjutkan"</span> untuk memulai analisis lengkap
+          ✨ Ketik <span className="text-primary">&quot;Ya, lanjutkan&quot;</span> untuk memulai analisis lengkap
         </p>
       </div>
     </Card>

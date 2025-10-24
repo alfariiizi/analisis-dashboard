@@ -1,4 +1,4 @@
-import { ParagraphBlock } from "@/@types/analysis-blocks";
+import type { ParagraphBlock } from "@/@types/analysis-blocks";
 
 type Props = ParagraphBlock;
 

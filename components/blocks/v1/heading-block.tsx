@@ -1,4 +1,4 @@
-import { HeadingBlock } from "@/@types/analysis-blocks";
+import type { HeadingBlock } from "@/@types/analysis-blocks";
 import { cn } from "@/lib/utils";
 
 type Props = HeadingBlock;

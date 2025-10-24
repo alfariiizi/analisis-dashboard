@@ -62,7 +62,7 @@ export default function ChartBlockComponent({
                   <Bar key={key} dataKey={key} fill={colors[idx % colors.length]} />
                 ))
               ) : (
-                <Bar dataKey={config.yAxisKey} fill={colors[0]} />
+                <Bar dataKey={config.yAxisKey || "value"} fill={colors[0]} />
               )}
             </BarChart>
           </ResponsiveContainer>
@@ -134,7 +134,7 @@ export default function ChartBlockComponent({
               ) : (
                 <Area
                   type="monotone"
-                  dataKey={config.yAxisKey}
+                  dataKey={config.yAxisKey || "value"}
                   stroke={colors[0]}
                   fill={colors[0]}
                   fillOpacity={0.3}
