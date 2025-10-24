@@ -3,16 +3,28 @@
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { AnalysisData } from "@/@data/analysis-data";
-import { Calendar, Package, Lightbulb, ArrowLeft, Share2, Download } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Calendar, Package, Lightbulb, ArrowLeft, Share2, Download, FileText, ShoppingCart } from "lucide-react";
 import Link from "next/link";
-import { MessageContent } from "@/components/ui/message";
+import { getBlockBasedAnalysisById } from "@/@data/analysis-blocks-data";
+import BlockRenderer from "@/components/blocks/block-renderer";
+import TableBlock from "@/components/blocks/v1/table-block";
 
 type Props = {
-  analysis: AnalysisData;
+  analysisId: string;
 };
 
-export default function AnalysisDetail({ analysis }: Props) {
+export default function AnalysisDetail({ analysisId }: Props) {
+  const analysis = getBlockBasedAnalysisById(analysisId);
+
+  if (!analysis) {
+    return (
+      <div className="flex flex-col items-center justify-center py-20">
+        <p className="text-muted-foreground">Analisis tidak ditemukan</p>
+      </div>
+    );
+  }
+
   const formattedDate = new Date(analysis.createdAt).toLocaleDateString("id-ID", {
     day: "numeric",
     month: "long",
@@ -74,15 +86,52 @@ export default function AnalysisDetail({ analysis }: Props) {
         </div>
       </div>
 
-      {/* Content */}
-      <Card className="p-8">
-        <MessageContent
-          markdown
-          className="prose prose-h1:text-3xl prose-h2:text-2xl prose-h3:text-xl prose-h4:text-lg prose-h5:text-base prose-h6:text-sm prose-invert w-full max-w-full bg-transparent p-0"
-        >
-          {analysis.content}
-        </MessageContent>
-      </Card>
+      {/* Content with Tabs */}
+      <Tabs defaultValue="hasil" className="w-full">
+        <TabsList className="grid w-full max-w-md grid-cols-2">
+          <TabsTrigger value="hasil" className="flex items-center gap-2">
+            <FileText className="h-4 w-4" />
+            Hasil Analisis
+          </TabsTrigger>
+          <TabsTrigger value="produk" className="flex items-center gap-2">
+            <ShoppingCart className="h-4 w-4" />
+            Data Produk
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="hasil" className="mt-6">
+          <Card className="p-8">
+            <BlockRenderer blocks={analysis.blocks} version={analysis.componentVersion} />
+          </Card>
+        </TabsContent>
+
+        <TabsContent value="produk" className="mt-6">
+          <Card className="p-8">
+            {analysis.productData ? (
+              <div>
+                <h2 className="mb-6 text-2xl font-bold">Data Produk yang Dianalisis</h2>
+                <p className="text-muted-foreground mb-6">
+                  Berikut adalah {analysis.productData.data.length} produk yang menjadi dasar analisis ini. Data bersifat
+                  read-only dan menampilkan snapshot dari waktu analisis dilakukan.
+                </p>
+                <TableBlock
+                  type="table"
+                  title={`Total ${analysis.productData.data.length} Produk`}
+                  columns={analysis.productData.columns}
+                  data={analysis.productData.data}
+                  sortable
+                  searchable
+                />
+              </div>
+            ) : (
+              <div className="flex flex-col items-center justify-center py-20">
+                <Package className="text-muted-foreground mb-4 h-12 w-12" />
+                <p className="text-muted-foreground">Data produk tidak tersedia untuk analisis ini</p>
+              </div>
+            )}
+          </Card>
+        </TabsContent>
+      </Tabs>
     </div>
   );
 }

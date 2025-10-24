@@ -7,6 +7,14 @@ export type ChatMessage = {
   role: "user" | "assistant";
   content: string;
   analysisId?: string; // Reference to analysis artifact
+  productPreview?: {
+    totalFound: number;
+    query?: string;
+    previewData: {
+      columns: Array<{ key: string; label: string; align?: "left" | "center" | "right" }>;
+      data: Record<string, any>[];
+    };
+  };
 };
 
 export type ChatData = {
@@ -29,7 +37,96 @@ export const chatMessagesData: Record<string, ChatData> = {
         role: "assistant",
         content: `Baik, saya akan membantu menganalisis perbandingan produk skincare moisturizer lokal vs import di Tokopedia.
 
-## Data Yang Akan Saya Analisis:
+Saya menemukan **150 produk** yang sesuai dengan kriteria pencarian Anda. Berikut adalah preview 10 produk teratas:`,
+        productPreview: {
+          totalFound: 150,
+          query: "skincare moisturizer lokal vs import Tokopedia",
+          previewData: {
+            columns: [
+              { key: "name", label: "Nama Produk", align: "left" },
+              { key: "brand", label: "Brand", align: "left" },
+              { key: "price", label: "Harga", align: "right" },
+              { key: "sold", label: "Terjual", align: "right" },
+              { key: "rating", label: "Rating", align: "center" }
+            ],
+            data: [
+              {
+                name: "Kahf Face Wash Oil & Acne Care 100 ml",
+                brand: "Kahf (Lokal)",
+                price: 53000,
+                sold: 100000,
+                rating: "4.9 ⭐"
+              },
+              {
+                name: "Triple Pack Kahf Face Wash 3×100 ml",
+                brand: "Kahf (Lokal)",
+                price: 119800,
+                sold: 50000,
+                rating: "4.9 ⭐"
+              },
+              {
+                name: "TRUEVE Ultimate Drops Brightening Serum",
+                brand: "TRUEVE (Lokal)",
+                price: 108000,
+                sold: 9000,
+                rating: "4.9 ⭐"
+              },
+              {
+                name: "COSRX Snail Mucin Cream",
+                brand: "COSRX (Import-Korea)",
+                price: 185000,
+                sold: 8500,
+                rating: "4.8 ⭐"
+              },
+              {
+                name: "Cetaphil Moisturizing Cream",
+                brand: "Cetaphil (Import-US)",
+                price: 195000,
+                sold: 7200,
+                rating: "4.7 ⭐"
+              },
+              {
+                name: "NIVEA Paket 2× Body Serum 320 ml SPF15",
+                brand: "NIVEA (Import)",
+                price: 176055,
+                sold: 2000,
+                rating: "4.9 ⭐"
+              },
+              {
+                name: "Skintific Barrier Shield",
+                brand: "Skintific (Lokal)",
+                price: 125000,
+                sold: 10200,
+                rating: "4.8 ⭐"
+              },
+              {
+                name: "Innisfree Green Tea Seed Cream",
+                brand: "Innisfree (Import-Korea)",
+                price: 220000,
+                sold: 6800,
+                rating: "4.7 ⭐"
+              },
+              {
+                name: "Wardah Hydrating Aloe Gel",
+                brand: "Wardah (Lokal)",
+                price: 45000,
+                sold: 9800,
+                rating: "4.6 ⭐"
+              },
+              {
+                name: "Avoskin Perfect Hydrating Treatment Essence",
+                brand: "Avoskin (Lokal)",
+                price: 135000,
+                sold: 7500,
+                rating: "4.8 ⭐"
+              }
+            ]
+          }
+        }
+      },
+      {
+        role: "assistant",
+        content: `## Data Yang Akan Saya Analisis:
 
 1. **Top 50 produk moisturizer lokal** berdasarkan rating dan jumlah penjualan
 2. **Top 50 produk moisturizer import** (Korea, Jepang, Western brands)
@@ -44,7 +141,7 @@ export const chatMessagesData: Record<string, ChatData> = {
 - Review sentiment
 - Keyword yang sering muncul di review
 
-Apakah Anda ingin saya lanjutkan dengan analisis ini?`
+Apakah Anda ingin saya lanjutkan dengan analisis lengkap?`
       },
       {
         role: "user",

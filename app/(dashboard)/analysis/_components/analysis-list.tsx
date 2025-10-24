@@ -4,12 +4,12 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 import { Eye, Trash, Calendar, Package, Lightbulb } from "lucide-react";
 import ModuleTitle from "@/components/typography/module-title";
-import { getAllAnalyses } from "@/@data/analysis-data";
+import { getAllBlockBasedAnalyses } from "@/@data/analysis-blocks-data";
 
 const maximumAnalysis = 14;
 
 export default function AnalysisList() {
-  const data = getAllAnalyses();
+  const data = getAllBlockBasedAnalyses();
 
   return (
     <div className="">

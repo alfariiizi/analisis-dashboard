@@ -3,7 +3,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { getAnalysisById } from "@/@data/analysis-data";
+import { getBlockBasedAnalysisById } from "@/@data/analysis-blocks-data";
 import { ExternalLink, FileText, Package, Lightbulb } from "lucide-react";
 import Link from "next/link";
 
@@ -12,7 +12,7 @@ type Props = {
 };
 
 export default function AnalysisArtifact({ analysisId }: Props) {
-  const analysis = getAnalysisById(analysisId);
+  const analysis = getBlockBasedAnalysisById(analysisId);
 
   if (!analysis) {
     return null;

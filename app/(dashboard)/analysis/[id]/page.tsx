@@ -1,5 +1,5 @@
 import PageContainer from "@/components/page-container";
-import { getAnalysisById } from "@/@data/analysis-data";
+import { getBlockBasedAnalysisById } from "@/@data/analysis-blocks-data";
 import { notFound } from "next/navigation";
 import AnalysisDetail from "./_components/analysis-detail";
 
@@ -9,7 +9,7 @@ type Props = {
 
 export default async function AnalysisDetailPage({ params }: Props) {
   const id = (await params).id;
-  const analysis = getAnalysisById(id);
+  const analysis = getBlockBasedAnalysisById(id);
 
   if (!analysis) {
     notFound();
@@ -17,7 +17,7 @@ export default async function AnalysisDetailPage({ params }: Props) {
 
   return (
     <PageContainer className="mx-auto mb-0 flex max-w-5xl flex-col gap-2">
-      <AnalysisDetail analysis={analysis} />
+      <AnalysisDetail analysisId={id} />
     </PageContainer>
   );
 }
