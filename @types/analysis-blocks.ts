@@ -137,6 +137,31 @@ export type AnalysisBlock =
 
 // ============= Analysis Structure =============
 
+export type ProductCategory = "trending" | "hero" | "jenuh" | "tidak-laku";
+
+export interface ProductPoint {
+  name: string;
+  ulasan: number;
+  penjualan: number;
+  category: ProductCategory;
+  harga: number;
+  rating: number;
+  image?: string;
+}
+
+export interface ProductStatistics {
+  totalOmset30Hari: string;
+  rataOmset30Hari: string;
+  totalPenjualan30Hari: number;
+  rataPenjualan30Hari: number;
+  rentangHarga: { min: string; max: string };
+  rataHarga: string;
+  rentangRating: { min: number; max: number };
+  rataRating: number;
+  totalUlasan: number;
+  rataUlasan: number;
+}
+
 export interface BlockBasedAnalysis {
   id: string;
   title: string;
@@ -151,5 +176,10 @@ export interface BlockBasedAnalysis {
   productData?: {
     columns: TableColumn[];
     data: Record<string, any>[];
+  };
+  productOverview?: {
+    products: ProductPoint[];
+    statistics: ProductStatistics;
+    timeframe?: string;
   };
 }

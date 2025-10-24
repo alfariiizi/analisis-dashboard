@@ -407,8 +407,200 @@ export const blockBasedAnalyses: Record<string, BlockBasedAnalysis> = {
           sold: 9000,
           rating: "4.9 ⭐",
           stock: 0
+        },
+        {
+          name: "ELFORMULA Niacinamide + Zinc Serum 20ml",
+          brand: "ELFORMULA",
+          category: "Serum",
+          price: 89000,
+          sold: 8500,
+          rating: "4.8 ⭐",
+          stock: 150
+        },
+        {
+          name: "Azarine Hydrasoothe Sunscreen Gel SPF45",
+          brand: "Azarine",
+          category: "Sunscreen",
+          price: 45000,
+          sold: 7200,
+          rating: "4.8 ⭐",
+          stock: 320
+        },
+        {
+          name: "Somethinc Ceramide Moist Barrier Relief",
+          brand: "Somethinc",
+          category: "Moisturizer",
+          price: 92000,
+          sold: 6800,
+          rating: "4.7 ⭐",
+          stock: 200
+        },
+        {
+          name: "Skintific 5X Ceramide Barrier Repair",
+          brand: "Skintific",
+          category: "Moisturizer",
+          price: 110000,
+          sold: 6500,
+          rating: "4.8 ⭐",
+          stock: 180
+        },
+        {
+          name: "Whitelab Brightening Facial Wash",
+          brand: "Whitelab",
+          category: "Cleanser",
+          price: 48000,
+          sold: 5900,
+          rating: "4.6 ⭐",
+          stock: 420
+        },
+        {
+          name: "Avoskin Perfect Hydrating Treatment Essence",
+          brand: "Avoskin",
+          category: "Essence",
+          price: 139000,
+          sold: 5400,
+          rating: "4.9 ⭐",
+          stock: 95
+        },
+        {
+          name: "MS Glow Acne Spot Serum",
+          brand: "MS Glow",
+          category: "Serum",
+          price: 65000,
+          sold: 5100,
+          rating: "4.5 ⭐",
+          stock: 280
+        },
+        {
+          name: "Emina Sun Protection SPF 30",
+          brand: "Emina",
+          category: "Sunscreen",
+          price: 28000,
+          sold: 4800,
+          rating: "4.4 ⭐",
+          stock: 550
+        },
+        {
+          name: "Wardah Lightening Facial Serum",
+          brand: "Wardah",
+          category: "Serum",
+          price: 42000,
+          sold: 4500,
+          rating: "4.6 ⭐",
+          stock: 380
+        },
+        {
+          name: "Lacoco Watermelon Glow Serum",
+          brand: "Lacoco",
+          category: "Serum",
+          price: 95000,
+          sold: 4200,
+          rating: "4.7 ⭐",
+          stock: 160
+        },
+        {
+          name: "Scarlett Whitening Body Lotion",
+          brand: "Scarlett",
+          category: "Body Care",
+          price: 85000,
+          sold: 3900,
+          rating: "4.8 ⭐",
+          stock: 240
+        },
+        {
+          name: "Glad2Glow Facial Cleanser pH Balance",
+          brand: "Glad2Glow",
+          category: "Cleanser",
+          price: 55000,
+          sold: 3600,
+          rating: "4.5 ⭐",
+          stock: 190
         }
-        // ... more products can be added
+      ]
+    },
+    productOverview: {
+      timeframe: "30 Hari",
+      statistics: {
+        totalOmset30Hari: "IDR 28,252,125",
+        rataOmset30Hari: "IDR 4,036,018",
+        totalPenjualan30Hari: 488,
+        rataPenjualan30Hari: 70,
+        rentangHarga: { min: "IDR 33,210", max: "IDR 39,950" },
+        rataHarga: "IDR 41,287",
+        rentangRating: { min: 0.0, max: 5.0 },
+        rataRating: 4.84,
+        totalUlasan: 1042,
+        rataUlasan: 149
+      },
+      products: [
+        // Hero products (high sales, high reviews) - green
+        {
+          name: "Kahf Face Wash Oil & Acne Care",
+          ulasan: 744,
+          penjualan: 459,
+          category: "hero",
+          harga: 53000,
+          rating: 4.9
+        },
+        {
+          name: "TRUEVE Brightening Serum",
+          ulasan: 680,
+          penjualan: 425,
+          category: "hero",
+          harga: 108000,
+          rating: 4.9
+        },
+        // Trending products (high sales, moderate reviews) - blue
+        {
+          name: "ELFORMULA Niacinamide Serum",
+          ulasan: 420,
+          penjualan: 380,
+          category: "trending",
+          harga: 89000,
+          rating: 4.8
+        },
+        {
+          name: "Kahf Triple Pack Bundle",
+          ulasan: 372,
+          penjualan: 344,
+          category: "trending",
+          harga: 119800,
+          rating: 4.9
+        },
+        // Jenuh products (low sales, high reviews) - yellow
+        {
+          name: "Azarine Hydrasoothe Sunscreen",
+          ulasan: 720,
+          penjualan: 229,
+          category: "jenuh",
+          harga: 45000,
+          rating: 4.8
+        },
+        {
+          name: "Somethinc Ceramide Moisturizer",
+          ulasan: 650,
+          penjualan: 198,
+          category: "jenuh",
+          harga: 92000,
+          rating: 4.7
+        },
+        // Low demand products (low sales, low reviews) - red
+        {
+          name: "Local Brand Sunscreen SPF30",
+          ulasan: 280,
+          penjualan: 115,
+          category: "tidak-laku",
+          harga: 35000,
+          rating: 4.2
+        },
+        {
+          name: "Generic Face Wash 50ml",
+          ulasan: 185,
+          penjualan: 88,
+          category: "tidak-laku",
+          harga: 28000,
+          rating: 4.0
+        }
       ]
     }
   }

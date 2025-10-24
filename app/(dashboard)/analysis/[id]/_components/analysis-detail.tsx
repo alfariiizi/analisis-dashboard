@@ -8,11 +8,74 @@ import { Calendar, Package, Lightbulb, ArrowLeft, Share2, Download, FileText, Sh
 import Link from "next/link";
 import { getBlockBasedAnalysisById } from "@/@data/analysis-blocks-data";
 import BlockRenderer from "@/components/blocks/block-renderer";
-import TableBlock from "@/components/blocks/v1/table-block";
+import ProductOverview from "@/components/ai/product-overview";
+import AnalysisDataTable, {
+  AnalysisProduct,
+  createSortableHeader,
+  formatCurrency,
+  formatNumber
+} from "@/components/analysis/analysis-data-table";
+import { ColumnDef } from "@tanstack/react-table";
 
 type Props = {
   analysisId: string;
 };
+
+// Define columns for product data table
+const productColumns: ColumnDef<AnalysisProduct>[] = [
+  {
+    accessorKey: "name",
+    header: "Nama Produk",
+    cell: ({ row }) => <div className="font-medium">{row.getValue("name")}</div>
+  },
+  {
+    accessorKey: "brand",
+    header: "Brand",
+    cell: ({ row }) => row.getValue("brand")
+  },
+  {
+    accessorKey: "category",
+    header: "Kategori",
+    cell: ({ row }) => <Badge variant="outline">{row.getValue("category")}</Badge>
+  },
+  {
+    accessorKey: "price",
+    header: createSortableHeader("Harga"),
+    cell: ({ row }) => {
+      const price = row.getValue("price") as number;
+      return <div className="font-semibold">{formatCurrency(price)}</div>;
+    }
+  },
+  {
+    accessorKey: "sold",
+    header: createSortableHeader("Terjual"),
+    cell: ({ row }) => {
+      const sold = row.getValue("sold") as number;
+      return <div>{formatNumber(sold)}</div>;
+    }
+  },
+  {
+    accessorKey: "rating",
+    header: "Rating",
+    cell: ({ row }) => {
+      const rating = row.getValue("rating");
+      return <div className="text-center">{rating}</div>;
+    }
+  },
+  {
+    accessorKey: "stock",
+    header: createSortableHeader("Stok"),
+    cell: ({ row }) => {
+      const stock = row.getValue("stock") as number;
+      const variant = stock === 0 ? "destructive" : stock < 50 ? "secondary" : "default";
+      return (
+        <Badge variant={variant}>
+          {stock === 0 ? "Habis" : `${formatNumber(stock)} unit`}
+        </Badge>
+      );
+    }
+  }
+];
 
 export default function AnalysisDetail({ analysisId }: Props) {
   const analysis = getBlockBasedAnalysisById(analysisId);
@@ -106,30 +169,42 @@ export default function AnalysisDetail({ analysisId }: Props) {
         </TabsContent>
 
         <TabsContent value="produk" className="mt-6">
-          <Card className="p-8">
-            {analysis.productData ? (
-              <div>
-                <h2 className="mb-6 text-2xl font-bold">Data Produk yang Dianalisis</h2>
-                <p className="text-muted-foreground mb-6">
-                  Berikut adalah {analysis.productData.data.length} produk yang menjadi dasar analisis ini. Data bersifat
-                  read-only dan menampilkan snapshot dari waktu analisis dilakukan.
-                </p>
-                <TableBlock
-                  type="table"
-                  title={`Total ${analysis.productData.data.length} Produk`}
-                  columns={analysis.productData.columns}
-                  data={analysis.productData.data}
-                  sortable
-                  searchable
+          {analysis.productData ? (
+            <div className="space-y-6">
+              {/* Product Overview with Scatter Chart */}
+              {analysis.productOverview && (
+                <ProductOverview
+                  products={analysis.productOverview.products}
+                  statistics={analysis.productOverview.statistics}
+                  timeframe={analysis.productOverview.timeframe}
                 />
-              </div>
-            ) : (
+              )}
+
+              {/* Product Data Table */}
+              <Card className="p-8">
+                <div className="mb-6">
+                  <h2 className="mb-2 text-2xl font-bold">Data Produk yang Dianalisis</h2>
+                  <p className="text-muted-foreground">
+                    Berikut adalah {analysis.productData.data.length} produk yang menjadi dasar analisis ini. Data bersifat
+                    read-only dan menampilkan snapshot dari waktu analisis dilakukan.
+                  </p>
+                </div>
+                <AnalysisDataTable
+                  data={analysis.productData.data}
+                  columns={productColumns}
+                  searchKey="name"
+                  searchPlaceholder="Cari nama produk..."
+                />
+              </Card>
+            </div>
+          ) : (
+            <Card className="p-8">
               <div className="flex flex-col items-center justify-center py-20">
                 <Package className="text-muted-foreground mb-4 h-12 w-12" />
                 <p className="text-muted-foreground">Data produk tidak tersedia untuk analisis ini</p>
               </div>
-            )}
-          </Card>
+            </Card>
+          )}
         </TabsContent>
       </Tabs>
     </div>
