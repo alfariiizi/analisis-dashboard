@@ -13,7 +13,15 @@ import {
   getSortedRowModel,
   useReactTable
 } from "@tanstack/react-table";
-import { ArrowUpDown, ChevronDown, MoreHorizontal, PlusCircle } from "lucide-react";
+import {
+  ArrowUpDown,
+  ChevronDown,
+  MoreHorizontal,
+  PlusCircle,
+  Star,
+  MapPin,
+  TrendingUp
+} from "lucide-react";
 
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
@@ -47,24 +55,33 @@ import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
 import Link from "next/link";
+import { ShopeeImage, TokopediaImage, BlibliImage, TikTokShopImage } from "@/assets/image";
 
-export type Order = {
-  id: number;
+export type Product = {
+  id: string;
   product_name: string;
   image: string;
-  customer: Customer;
-  price?: string;
-  status: "active" | "transportation" | "pending" | "completed" | "cancel";
-  date?: string;
-  type?: string;
+  marketplace: "tokopedia" | "shopee" | "tiktok" | "blibli";
+  marketplace_url: string;
+  price: number;
+  original_price: number;
+  rating: number;
+  sold: number;
+  stock: number;
+  category: string;
+  condition: string;
+  shop: Shop;
+  discount: number;
+  shipping: string;
 };
 
-export type Customer = {
-  name?: string;
-  email?: string;
+export type Shop = {
+  name: string;
+  location: string;
+  rating: number;
 };
 
-export const columns: ColumnDef<Order>[] = [
+export const columns: ColumnDef<Product>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -87,30 +104,51 @@ export const columns: ColumnDef<Order>[] = [
     enableHiding: false
   },
   {
-    accessorKey: "id",
-    header: "#",
-    cell: ({ row }) => (
-      <Link href={`#`} className="text-muted-foreground hover:underline">
-        #{row.getValue("id")}
-      </Link>
-    )
-  },
-  {
     accessorKey: "product_name",
-    header: "Product Name",
-    cell: ({ row }) => (
-      <div className="flex items-center gap-4">
-        <Image
-          src={`${process.env.DASHBOARD_BASE_URL}${row.original.image}`}
-          className="rounded-lg border"
-          width={60}
-          height={60}
-          alt=""
-          unoptimized
-        />
-        {row.getValue("product_name")}
-      </div>
-    )
+    header: "Nama Produk",
+    cell: ({ row }) => {
+      const marketplaceLogos = {
+        tokopedia: TokopediaImage,
+        shopee: ShopeeImage,
+        tiktok: TikTokShopImage,
+        blibli: BlibliImage
+      };
+
+      return (
+        <div className="flex items-center gap-4">
+          <Image
+            src={row.original.image}
+            className="rounded-lg border"
+            width={60}
+            height={60}
+            alt=""
+            unoptimized
+          />
+          <div className="space-y-1">
+            <div className="font-medium">{row.getValue("product_name")}</div>
+            <div className="text-muted-foreground flex items-center gap-2 text-xs">
+              <div className="flex aspect-square items-center gap-2">
+                <Image
+                  src={marketplaceLogos[row.original.marketplace]}
+                  alt={row.original.marketplace}
+                  width={60}
+                  height={20}
+                  className="size-8 object-contain"
+                />
+              </div>
+              <span className="flex items-center gap-1">
+                <Star className="h-3 w-3 fill-yellow-500 text-yellow-500" />
+                {row.original.rating}
+              </span>
+              <span className="flex items-center gap-1">
+                <TrendingUp className="h-3 w-3" />
+                Terjual {row.original.sold.toLocaleString("id-ID")}
+              </span>
+            </div>
+          </div>
+        </div>
+      );
+    }
   },
   {
     accessorKey: "price",
@@ -121,50 +159,56 @@ export const columns: ColumnDef<Order>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Price
+          Harga
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
-    cell: ({ row }) => row.getValue("price")
-  },
-  {
-    accessorKey: "customer",
-    header: "Customer",
     cell: ({ row }) => {
-      const customer = row.original.customer;
+      const price = row.original.price;
+      const originalPrice = row.original.original_price;
+      const discount = row.original.discount;
 
       return (
         <div className="space-y-1">
-          <div className="font-semibold">{customer.name}</div>
-          <div className="text-muted-foreground">{customer.email}</div>
+          <div className="font-semibold">Rp{price.toLocaleString("id-ID")}</div>
+          {discount > 0 && (
+            <div className="flex items-center gap-2">
+              <span className="text-muted-foreground text-xs line-through">
+                Rp{originalPrice.toLocaleString("id-ID")}
+              </span>
+              <Badge variant="destructive" className="text-xs">
+                -{discount}%
+              </Badge>
+            </div>
+          )}
         </div>
       );
     }
   },
   {
-    accessorKey: "date",
-    header: ({ column }) => {
+    accessorKey: "shop",
+    header: "Toko",
+    cell: ({ row }) => {
+      const shop = row.original.shop;
+
       return (
-        <Button
-          className="-ml-3"
-          variant="ghost"
-          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-        >
-          Date
-          <ArrowUpDown className="ml-2 h-4 w-4" />
-        </Button>
+        <div className="space-y-1">
+          <div className="font-medium">{shop.name}</div>
+          <div className="text-muted-foreground flex items-center gap-1 text-xs">
+            <MapPin className="h-3 w-3" />
+            {shop.location}
+          </div>
+          <div className="text-muted-foreground flex items-center gap-1 text-xs">
+            <Star className="h-3 w-3 fill-yellow-500 text-yellow-500" />
+            {shop.rating}
+          </div>
+        </div>
       );
-    },
-    cell: ({ row }) => row.getValue("date")
+    }
   },
   {
-    accessorKey: "type",
-    header: "Type",
-    cell: ({ row }) => <div className="capitalize">{row.getValue("type")}</div>
-  },
-  {
-    accessorKey: "status",
+    accessorKey: "stock",
     header: ({ column }) => {
       return (
         <Button
@@ -172,47 +216,56 @@ export const columns: ColumnDef<Order>[] = [
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Status
+          Stok
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );
     },
     cell: ({ row }) => {
-      const statusMap = {
-        active: "success",
-        transportation: "secondary",
-        pending: "warning",
-        completed: "success",
-        cancel: "destructive"
-      } as const;
+      const stock = row.original.stock;
+      const variant = stock < 50 ? "warning" : stock < 100 ? "secondary" : "success";
 
-      const statusClass = statusMap[row.original.status] ?? "default";
-
-      return (
-        <Badge variant={statusClass} className="capitalize">
-          {row.original.status}
-        </Badge>
-      );
+      return <Badge variant={variant}>{stock.toLocaleString("id-ID")} unit</Badge>;
     }
+  },
+  {
+    accessorKey: "category",
+    header: "Kategori",
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue("category")?.toString().replace(/-/g, " ")}</div>
+    )
+  },
+  {
+    accessorKey: "shipping",
+    header: "Pengiriman",
+    cell: ({ row }) => (
+      <Badge variant="success" className="whitespace-nowrap">
+        {row.getValue("shipping")}
+      </Badge>
+    )
   },
   {
     id: "actions",
     enableHiding: false,
-    cell: () => {
+    cell: ({ row }) => {
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
+              <span className="sr-only">Buka menu</span>
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
+            <DropdownMenuLabel>Aksi</DropdownMenuLabel>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Order Details</DropdownMenuItem>
-            <DropdownMenuItem>Edit</DropdownMenuItem>
-            <DropdownMenuItem>Delete</DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link href={`/product/${row.original.id}`} className="w-full">
+                Lihat Detail
+              </Link>
+            </DropdownMenuItem>
+            <DropdownMenuItem>Analisis Produk</DropdownMenuItem>
+            <DropdownMenuItem>Tambah ke Watchlist</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -220,7 +273,7 @@ export const columns: ColumnDef<Order>[] = [
   }
 ];
 
-export default function ProductsDataTable({ data }: { data: Order[] }) {
+export default function ProductsDataTable({ data }: { data: Product[] }) {
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
@@ -245,45 +298,41 @@ export default function ProductsDataTable({ data }: { data: Order[] }) {
     }
   });
 
-  const statuses = [
+  const stockStatuses = [
     {
-      value: "pending",
-      label: "Pending"
+      value: "high",
+      label: "Stok Banyak (>100)"
     },
     {
-      value: "completed",
-      label: "Completed"
+      value: "medium",
+      label: "Stok Sedang (50-100)"
     },
     {
-      value: "shipped",
-      label: "Shipped"
-    },
-    {
-      value: "delivered",
-      label: "Delivered"
+      value: "low",
+      label: "Stok Sedikit (<50)"
     }
   ];
 
   const categories = [
     {
-      value: "beauty",
-      label: "Beauty"
+      value: "fashion",
+      label: "Fashion"
     },
     {
-      value: "technology",
-      label: "Technology"
+      value: "elektronik",
+      label: "Elektronik"
     },
     {
-      value: "toys",
-      label: "Toys"
+      value: "kecantikan",
+      label: "Kecantikan"
     },
     {
-      value: "food",
-      label: "Food"
+      value: "makanan-minuman",
+      label: "Makanan & Minuman"
     },
     {
-      value: "home-appliances",
-      label: "Home Appliances"
+      value: "alat-tulis",
+      label: "Alat Tulis"
     }
   ];
 
@@ -303,16 +352,16 @@ export default function ProductsDataTable({ data }: { data: Order[] }) {
             <PopoverTrigger asChild>
               <Button variant="outline">
                 <PlusCircle className="me-2 h-4 w-4" />
-                Status
+                Stok
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-52 p-0">
               <Command>
-                <CommandInput placeholder="Status" className="h-9" />
+                <CommandInput placeholder="Filter stok" className="h-9" />
                 <CommandList>
-                  <CommandEmpty>No status found.</CommandEmpty>
+                  <CommandEmpty>Tidak ada stok ditemukan.</CommandEmpty>
                   <CommandGroup>
-                    {statuses.map((status) => (
+                    {stockStatuses.map((status) => (
                       <CommandItem key={status.value} value={status.value}>
                         <div className="flex items-center space-x-3 py-1">
                           <Checkbox id={status.value} />
@@ -334,14 +383,14 @@ export default function ProductsDataTable({ data }: { data: Order[] }) {
             <PopoverTrigger asChild>
               <Button variant="outline">
                 <PlusCircle className="me-2 h-4 w-4" />
-                Category
+                Kategori
               </Button>
             </PopoverTrigger>
             <PopoverContent className="w-52 p-0">
               <Command>
-                <CommandInput placeholder="Category" className="h-9" />
+                <CommandInput placeholder="Cari kategori" className="h-9" />
                 <CommandList>
-                  <CommandEmpty>No category found.</CommandEmpty>
+                  <CommandEmpty>Tidak ada kategori ditemukan.</CommandEmpty>
                   <CommandGroup>
                     {categories.map((category) => (
                       <CommandItem key={category.value} value={category.value}>
@@ -366,7 +415,7 @@ export default function ProductsDataTable({ data }: { data: Order[] }) {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="ml-auto">
-                Columns <ChevronDown className="ml-2 h-4 w-4" />
+                Kolom <ChevronDown className="ml-2 h-4 w-4" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
@@ -420,7 +469,7 @@ export default function ProductsDataTable({ data }: { data: Order[] }) {
             ) : (
               <TableRow>
                 <TableCell colSpan={columns.length} className="h-24 text-center">
-                  No results.
+                  Tidak ada produk ditemukan.
                 </TableCell>
               </TableRow>
             )}
@@ -429,8 +478,8 @@ export default function ProductsDataTable({ data }: { data: Order[] }) {
       </div>
       <div className="flex items-center justify-end space-x-2 pt-4">
         <div className="text-muted-foreground flex-1 text-sm">
-          {table.getFilteredSelectedRowModel().rows.length} of{" "}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {table.getFilteredSelectedRowModel().rows.length} dari{" "}
+          {table.getFilteredRowModel().rows.length} produk dipilih.
         </div>
         <div className="space-x-2">
           <Button
@@ -439,7 +488,7 @@ export default function ProductsDataTable({ data }: { data: Order[] }) {
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            Previous
+            Sebelumnya
           </Button>
           <Button
             variant="outline"
@@ -447,7 +496,7 @@ export default function ProductsDataTable({ data }: { data: Order[] }) {
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            Next
+            Selanjutnya
           </Button>
         </div>
       </div>

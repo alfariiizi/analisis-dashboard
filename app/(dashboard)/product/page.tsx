@@ -17,14 +17,14 @@ export async function generateMetadata() {
   });
 }
 
-async function getOrders() {
-  const data = await fs.readFile(path.join(process.cwd(), "app/(dashboard)/orders/data.json"));
+async function getProducts() {
+  const data = await fs.readFile(path.join(process.cwd(), "app/(dashboard)/product/data.json"));
 
   return JSON.parse(data.toString());
 }
 
 export default async function Page() {
-  const orders = await getOrders();
+  const products = await getProducts();
 
   return (
     <PageContainer className="space-y-6">
@@ -61,7 +61,7 @@ export default async function Page() {
         {/*   </Link> */}
         {/* </Button> */}
       </div>
-      <ProductsDataTable data={orders} />
+      <ProductsDataTable data={products} />
     </PageContainer>
   );
 }

@@ -1,197 +1,317 @@
 [
   {
-    "id": 12342,
-    "customer": {
-      "name": "Liam Johnson",
-      "email": "liam@example.com"
+    "id": "PRD001",
+    "product_name": "Kaos Polos Cotton Combed 30s Premium - Hitam",
+    "image": "/product-image/kaos-polos.jpg",
+    "marketplace": "tokopedia",
+    "marketplace_url": "https://tokopedia.com/example",
+    "price": 45000,
+    "original_price": 75000,
+    "rating": 4.8,
+    "sold": 2341,
+    "stock": 150,
+    "category": "fashion",
+    "condition": "new",
+    "shop": {
+      "name": "Toko Fashion Jakarta",
+      "location": "Jakarta Barat",
+      "rating": 4.9
     },
-    "price": "$200",
-    "type": "Sale",
-    "status": "pending",
-    "date": "Jun 23, 2023",
-    "image": "/images/products/1.png",
-    "product_name": "Wireless Headphones"
+    "discount": 40,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 24342,
-    "customer": {
-      "name": "Emma Brown",
-      "email": "emma@example.com"
+    "id": "PRD002",
+    "product_name": "Tas Ransel Laptop 15.6 inch Anti Air - Hitam Abu",
+    "image": "/product-image/tas-ransel.jpg",
+    "marketplace": "shopee",
+    "marketplace_url": "https://shopee.co.id/example",
+    "price": 125000,
+    "original_price": 250000,
+    "rating": 4.7,
+    "sold": 1856,
+    "stock": 89,
+    "category": "fashion",
+    "condition": "new",
+    "shop": {
+      "name": "Bag Store Surabaya",
+      "location": "Surabaya",
+      "rating": 4.8
     },
-    "price": "$150",
-    "type": "Sale",
-    "status": "completed",
-    "date": "Jul 11, 2023",
-    "image": "/images/products/2.png",
-    "product_name": "Bluetooth Speaker"
+    "discount": 50,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 32183,
-    "customer": {
-      "name": "Noah Williams",
-      "email": "noah@example.com"
+    "id": "PRD003",
+    "product_name": "Serum Wajah Vitamin C + Niacinamide 30ml",
+    "image": "/product-image/serum-wajah.jpg",
+    "marketplace": "tokopedia",
+    "marketplace_url": "https://tokopedia.com/example",
+    "price": 89000,
+    "original_price": 150000,
+    "rating": 4.9,
+    "sold": 5432,
+    "stock": 234,
+    "category": "kecantikan",
+    "condition": "new",
+    "shop": {
+      "name": "Beauty Official Store",
+      "location": "Jakarta Pusat",
+      "rating": 5.0
     },
-    "price": "$250",
-    "type": "Return",
-    "status": "pending",
-    "date": "Aug 03, 2023",
-    "image": "/images/products/3.png",
-    "product_name": "Smartwatch"
+    "discount": 41,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 45542,
-    "customer": {
-      "name": "Olivia Garcia",
-      "email": "olivia@example.com"
+    "id": "PRD004",
+    "product_name": "Sepatu Sneakers Pria Running Sport Casual",
+    "image": "/product-image/sepatu-sneakers.jpg",
+    "marketplace": "blibli",
+    "marketplace_url": "https://blibli.com/example",
+    "price": 175000,
+    "original_price": 350000,
+    "rating": 4.6,
+    "sold": 987,
+    "stock": 45,
+    "category": "fashion",
+    "condition": "new",
+    "shop": {
+      "name": "Sepatu Indonesia",
+      "location": "Bandung",
+      "rating": 4.7
     },
-    "price": "$320",
-    "type": "Sale",
-    "status": "shipped",
-    "date": "Sep 15, 2023",
-    "image": "/images/products/4.png",
-    "product_name": "Laptop Stand"
+    "discount": 50,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 54345,
-    "customer": {
-      "name": "Elijah Jones",
-      "email": "elijah@example.com"
+    "id": "PRD005",
+    "product_name": "Mouse Wireless Gaming RGB LED 2.4GHz",
+    "image": "/product-image/mouse-gaming.jpg",
+    "marketplace": "tiktok",
+    "marketplace_url": "https://shop.tiktok.com/example",
+    "price": 65000,
+    "original_price": 120000,
+    "rating": 4.5,
+    "sold": 3421,
+    "stock": 567,
+    "category": "elektronik",
+    "condition": "new",
+    "shop": {
+      "name": "Gadget Store ID",
+      "location": "Jakarta Selatan",
+      "rating": 4.8
     },
-    "price": "$80",
-    "type": "Sale",
-    "status": "delivered",
-    "date": "Oct 09, 2023",
-    "image": "/images/products/5.png",
-    "product_name": "Portable Charger"
+    "discount": 46,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 64257,
-    "customer": {
-      "name": "Ava Miller",
-      "email": "ava@example.com"
+    "id": "PRD006",
+    "product_name": "Buku Tulis Campus B5 50 Lembar - Pack isi 10",
+    "image": "/product-image/buku-tulis.jpg",
+    "marketplace": "shopee",
+    "marketplace_url": "https://shopee.co.id/example",
+    "price": 35000,
+    "original_price": 50000,
+    "rating": 4.8,
+    "sold": 8765,
+    "stock": 1200,
+    "category": "alat-tulis",
+    "condition": "new",
+    "shop": {
+      "name": "Alat Tulis Lengkap",
+      "location": "Tangerang",
+      "rating": 4.9
     },
-    "price": "$60",
-    "type": "Return",
-    "status": "pending",
-    "date": "Nov 21, 2023",
-    "image": "/images/products/6.png",
-    "product_name": "USB Hub"
+    "discount": 30,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 74346,
-    "customer": {
-      "name": "James Martinez",
-      "email": "james@example.com"
+    "id": "PRD007",
+    "product_name": "Powerbank 20000mAh Fast Charging PD 20W",
+    "image": "/product-image/powerbank.jpg",
+    "marketplace": "tokopedia",
+    "marketplace_url": "https://tokopedia.com/example",
+    "price": 145000,
+    "original_price": 300000,
+    "rating": 4.7,
+    "sold": 2134,
+    "stock": 156,
+    "category": "elektronik",
+    "condition": "new",
+    "shop": {
+      "name": "Tech Paradise",
+      "location": "Jakarta Utara",
+      "rating": 4.8
     },
-    "price": "$500",
-    "type": "Sale",
-    "status": "completed",
-    "date": "Dec 02, 2023",
-    "image": "/images/products/7.png",
-    "product_name": "4K Monitor"
+    "discount": 52,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 84322,
-    "customer": {
-      "name": "Sophia Anderson",
-      "email": "sophia@example.com"
+    "id": "PRD008",
+    "product_name": "Hoodie Polos Premium Fleece Unisex - Navy",
+    "image": "/product-image/hoodie.jpg",
+    "marketplace": "shopee",
+    "marketplace_url": "https://shopee.co.id/example",
+    "price": 95000,
+    "original_price": 180000,
+    "rating": 4.9,
+    "sold": 4567,
+    "stock": 234,
+    "category": "fashion",
+    "condition": "new",
+    "shop": {
+      "name": "Clothing Store Premium",
+      "location": "Yogyakarta",
+      "rating": 4.9
     },
-    "price": "$100",
-    "type": "Sale",
-    "status": "shipped",
-    "date": "Jan 18, 2024",
-    "image": "/images/products/8.png",
-    "product_name": "Mechanical Keyboard"
+    "discount": 47,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 91452,
-    "customer": {
-      "name": "Lucas Thomas",
-      "email": "lucas@example.com"
+    "id": "PRD009",
+    "product_name": "Kopi Arabica Premium Gayo 200gr - Biji/Bubuk",
+    "image": "/product-image/kopi-arabica.jpg",
+    "marketplace": "blibli",
+    "marketplace_url": "https://blibli.com/example",
+    "price": 55000,
+    "original_price": 85000,
+    "rating": 4.8,
+    "sold": 6543,
+    "stock": 890,
+    "category": "makanan-minuman",
+    "condition": "new",
+    "shop": {
+      "name": "Kopi Nusantara",
+      "location": "Aceh",
+      "rating": 5.0
     },
-    "price": "$75",
-    "type": "Return",
-    "status": "completed",
-    "date": "Feb 27, 2024",
-    "image": "/images/products/9.png",
-    "product_name": "Wireless Mouse"
+    "discount": 35,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 10232,
-    "customer": {
-      "name": "Mia Jackson",
-      "email": "mia@example.com"
+    "id": "PRD010",
+    "product_name": "Minyak Goreng Curah 1 Liter - Kemasan Botol",
+    "image": "/product-image/minyak-goreng.jpg",
+    "marketplace": "tiktok",
+    "marketplace_url": "https://shop.tiktok.com/example",
+    "price": 18000,
+    "original_price": 22000,
+    "rating": 4.6,
+    "sold": 12345,
+    "stock": 2000,
+    "category": "makanan-minuman",
+    "condition": "new",
+    "shop": {
+      "name": "Toko Sembako Murah",
+      "location": "Bekasi",
+      "rating": 4.7
     },
-    "price": "$340",
-    "type": "Sale",
-    "status": "delivered",
-    "date": "Mar 10, 2024",
-    "image": "/images/products/10.png",
-    "product_name": "Tablet"
+    "discount": 18,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 11904,
-    "customer": {
-      "name": "Mason White",
-      "email": "mason@example.com"
+    "id": "PRD011",
+    "product_name": "Jam Tangan Pria Digital Sporty Waterproof",
+    "image": "/product-image/jam-tangan.jpg",
+    "marketplace": "tokopedia",
+    "marketplace_url": "https://tokopedia.com/example",
+    "price": 85000,
+    "original_price": 150000,
+    "rating": 4.5,
+    "sold": 1234,
+    "stock": 78,
+    "category": "fashion",
+    "condition": "new",
+    "shop": {
+      "name": "Watch Gallery",
+      "location": "Jakarta Barat",
+      "rating": 4.6
     },
-    "price": "$120",
-    "type": "Sale",
-    "status": "pending",
-    "date": "Apr 07, 2024",
-    "image": "/images/products/1.png",
-    "product_name": "Smart Lamp"
+    "discount": 43,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 14672,
-    "customer": {
-      "name": "Isabella Harris",
-      "email": "isabella@example.com"
+    "id": "PRD012",
+    "product_name": "Masker Wajah Korea Sheet Mask 10pcs Mix Variant",
+    "image": "/product-image/masker-wajah.jpg",
+    "marketplace": "shopee",
+    "marketplace_url": "https://shopee.co.id/example",
+    "price": 45000,
+    "original_price": 75000,
+    "rating": 4.9,
+    "sold": 7890,
+    "stock": 567,
+    "category": "kecantikan",
+    "condition": "new",
+    "shop": {
+      "name": "K-Beauty Store",
+      "location": "Jakarta Selatan",
+      "rating": 4.9
     },
-    "price": "$45",
-    "type": "Return",
-    "status": "pending",
-    "date": "May 05, 2024",
-    "image": "/images/products/2.png",
-    "product_name": "Earbuds"
+    "discount": 40,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 12123,
-    "customer": {
-      "name": "Ethan Lewis",
-      "email": "ethan@example.com"
+    "id": "PRD013",
+    "product_name": "Charger HP Fast Charging 3A Original Quality",
+    "image": "/product-image/charger-hp.jpg",
+    "marketplace": "tiktok",
+    "marketplace_url": "https://shop.tiktok.com/example",
+    "price": 35000,
+    "original_price": 60000,
+    "rating": 4.7,
+    "sold": 5678,
+    "stock": 890,
+    "category": "elektronik",
+    "condition": "new",
+    "shop": {
+      "name": "Aksesoris HP",
+      "location": "Surabaya",
+      "rating": 4.8
     },
-    "price": "$650",
-    "type": "Sale",
-    "status": "shipped",
-    "date": "Jun 22, 2024",
-    "image": "/images/products/3.png",
-    "product_name": "Gaming Laptop"
+    "discount": 42,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 15804,
-    "customer": {
-      "name": "Harper Walker",
-      "email": "harper@example.com"
+    "id": "PRD014",
+    "product_name": "Susu UHT Coklat 1 Liter - Pack isi 12",
+    "image": "/product-image/susu-uht.jpg",
+    "marketplace": "blibli",
+    "marketplace_url": "https://blibli.com/example",
+    "price": 120000,
+    "original_price": 156000,
+    "rating": 4.8,
+    "sold": 9876,
+    "stock": 456,
+    "category": "makanan-minuman",
+    "condition": "new",
+    "shop": {
+      "name": "Grosir Susu Murah",
+      "location": "Depok",
+      "rating": 4.9
     },
-    "price": "$95",
-    "type": "Sale",
-    "status": "delivered",
-    "date": "Jul 13, 2024",
-    "image": "/images/products/4.png",
-    "product_name": "Power Bank"
+    "discount": 23,
+    "shipping": "Gratis Ongkir"
   },
   {
-    "id": 15023,
-    "customer": {
-      "name": "Alexander King",
-      "email": "alexander@example.com"
+    "id": "PRD015",
+    "product_name": "Keyboard Mechanical RGB Gaming LED Backlight",
+    "image": "/product-image/keyboard-gaming.jpg",
+    "marketplace": "tokopedia",
+    "marketplace_url": "https://tokopedia.com/example",
+    "price": 285000,
+    "original_price": 450000,
+    "rating": 4.6,
+    "sold": 876,
+    "stock": 67,
+    "category": "elektronik",
+    "condition": "new",
+    "shop": {
+      "name": "Gaming Gear Indonesia",
+      "location": "Bandung",
+      "rating": 4.7
     },
-    "price": "$210",
-    "type": "Sale",
-    "status": "completed",
-    "date": "Aug 20, 2024",
-    "image": "/images/products/5.png",
-    "product_name": "VR Headset"
+    "discount": 37,
+    "shipping": "Gratis Ongkir"
   }
 ]

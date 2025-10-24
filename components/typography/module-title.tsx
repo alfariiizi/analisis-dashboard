@@ -25,7 +25,7 @@ export default function ModuleTitle({
       <RoughNotationGroup show>
         <h2
           className={cn(
-            "w-fit max-w-xl text-3xl font-semibold tracking-tighter md:text-4xl",
+            "relative w-fit max-w-xl text-3xl font-semibold tracking-tighter md:text-4xl",
             classNameTitle
           )}
         >
@@ -42,7 +42,7 @@ export default function ModuleTitle({
         {description && (
           <p
             className={cn(
-              "text-muted-foreground max-w-xl text-sm md:text-base",
+              "text-muted-foreground relative max-w-xl text-sm md:text-base",
               classNameDescription
             )}
           >
