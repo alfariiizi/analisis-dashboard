@@ -29,7 +29,6 @@ function mergeRefs<T>(
       if (typeof ref === 'function') {
         ref(node);
       } else {
-        // @ts-expect-error - RefObject current is readonly but we need to set it
         (ref as React.RefObject<T | null>).current = node;
       }
     });

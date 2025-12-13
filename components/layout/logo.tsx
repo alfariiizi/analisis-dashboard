@@ -1,6 +1,6 @@
-import Image from "next/image";
 import * as React from "react";
 import Link from "next/link";
+import { AppIcon } from "../svg/app-icon";
 
 interface Props extends Omit<React.ComponentProps<typeof Link>, "href"> {
   href?: string;
@@ -10,8 +10,8 @@ interface Props extends Omit<React.ComponentProps<typeof Link>, "href"> {
 export default function Logo(props: Props) {
   return (
     <Link href="/" {...props}>
-      <Image src="/logo.png" alt="logo" width={28} height={28} className="rounded-md" />
-      <span className="text-base font-semibold">Analisis</span>
+      <AppIcon className="!size-7" gradient="brand" />
+      <p className="text-base font-semibold">OmniTrend</p>
     </Link>
   );
 }

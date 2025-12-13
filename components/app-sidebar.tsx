@@ -16,6 +16,7 @@ import {
 
 import Logo from "@/components/layout/logo";
 import { sidebarData } from "@/@data/sidebar";
+import Link from "next/link";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   return (
@@ -23,7 +24,11 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       <SidebarHeader>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton asChild className="data-[slot=sidebar-menu-button]:!p-0.5">
+            <SidebarMenuButton
+              size="lg"
+              asChild
+              className="!h-auto data-[slot=sidebar-menu-button]:!p-0.5 [&>*>svg]:!size-auto"
+            >
               <Logo />
             </SidebarMenuButton>
           </SidebarMenuItem>

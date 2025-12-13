@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion } from "motion/react";
 import { cn } from "@/lib/utils";
 
-const DEFAULT_WATERMARK = "analisis.com";
+const DEFAULT_WATERMARK = "omnitrend.id";
 
 // Palette: array of [bgColor, fgColor] pairs (CSS values)
 const DEFAULT_PALETTE: [string, string][] = [
@@ -51,7 +51,7 @@ export function Watermark({
       animate={{ backgroundColor: bgColor, color: fgColor }}
       transition={prefersReduced ? { duration: 0 } : { duration: 1.2, ease: [0.4, 0, 0.2, 1] }}
       className={cn(
-        "pointer-events-none fixed right-0 bottom-1 hidden items-center justify-center px-2 py-0 font-semibold opacity-80 select-none md:flex md:px-3 md:py-1",
+        "noise-overlay pointer-events-none fixed right-0 bottom-1 hidden items-center justify-center px-2 py-0 font-semibold opacity-80 select-none md:flex md:px-3 md:py-1",
         className
       )}
       style={{

@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, RefObject } from "react";
 import { Button } from "@/components/ui/button";
 import { TextLoop } from "@/components/motion-primitives/text-loop";
 import {
@@ -100,7 +100,8 @@ export default function NewChat() {
             onInputChange={setInput}
             onModeChange={setMode}
             onSubmit={handleSubmit}
-            textareaRef={textareaRef}
+            // @ts-ignore
+            textareaRef={textareaRef as RefObject<HTMLTextAreaElement | null>}
           />
         </div>
       </div>

@@ -13,7 +13,7 @@ export function SiteHeader() {
       <div className="flex w-full items-center gap-1 px-4 lg:gap-2 lg:px-6">
         <SidebarTrigger className="-ml-1" />
         <Separator orientation="vertical" className="mx-2 data-[orientation=vertical]:h-4" />
-        <h1 className="block text-lg font-semibold md:hidden">Analisis</h1>
+        <h1 className="block text-lg font-semibold md:hidden">OmniTrend</h1>
         <Link href="/pricing" className="hidden md:block">
           <Button size="sm" className="cursor-pointer py-0.5" variant="outline">
             Tingkatkan Paket

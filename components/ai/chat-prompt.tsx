@@ -22,7 +22,7 @@ type Props = {
   onInputChange: (input: string) => void;
   onModeChange: (mode: string) => void;
   onSubmit: (e: React.FormEvent) => void;
-  textareaRef?: React.RefObject<HTMLTextAreaElement>;
+  textareaRef?: React.RefObject<HTMLTextAreaElement | null>;
 };
 
 export default function ChatPrompt({

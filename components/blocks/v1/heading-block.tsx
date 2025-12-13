@@ -1,10 +1,11 @@
 import type { HeadingBlock } from "@/@types/analysis-blocks";
 import { cn } from "@/lib/utils";
+import React from "react";
 
 type Props = HeadingBlock;
 
 export default function HeadingBlock({ level, content }: Props) {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  const Tag = `h${level}` as keyof React.JSX.IntrinsicElements;
 
   const styles = {
     2: "text-2xl font-bold tracking-tight mt-8 mb-4",

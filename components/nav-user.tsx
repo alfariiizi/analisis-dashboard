@@ -24,6 +24,8 @@ import { Gauge } from "./animate-ui/icons/gauge";
 import { LogOut } from "./animate-ui/icons/log-out";
 import { cn } from "@/lib/utils";
 import { ChevronUpDown } from "./animate-ui/icons/chevron-up-down";
+import Link from "next/link";
+import { SettingsIcon } from "./animate-ui/icons/settings";
 
 export function NavUser({
   user
@@ -45,17 +47,25 @@ export function NavUser({
               <AnimateIcon animateOnHover>
                 <SidebarMenuButton
                   size="lg"
-                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground p-0"
+                  className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground px-2"
                 >
-                  <Avatar
-                    className={cn("rounded-lg p-0", {
-                      "size-full": state === "collapsed",
-                      "size-8": state === "expanded"
-                    })}
-                  >
-                    <AvatarImage src={user.avatar} alt={user.name} />
-                    <AvatarFallback className="rounded-lg p-1">CN</AvatarFallback>
-                  </Avatar>
+                  {/* <Avatar */}
+                  {/*   className={cn("rounded-lg p-0", { */}
+                  {/*     "size-full": state === "collapsed", */}
+                  {/*     "size-8": state === "expanded" */}
+                  {/*   })} */}
+                  {/* > */}
+                  {/*   <AvatarImage src={user.avatar} alt={user.name} /> */}
+                  {/*   <AvatarFallback className="rounded-lg p-1">CN</AvatarFallback> */}
+                  {/* </Avatar> */}
+                  <div className="">
+                    <User
+                      className={cn({
+                        "size-4": state === "collapsed",
+                        "size-6": state === "expanded"
+                      })}
+                    />
+                  </div>
                   <div className="grid flex-1 text-left text-sm leading-tight">
                     <span className="truncate font-medium">{user.name}</span>
                     <span className="text-muted-foreground truncate text-xs">Paket Pro</span>
@@ -72,30 +82,37 @@ export function NavUser({
             >
               <DropdownMenuLabel className="flex flex-col gap-2 p-0 px-1 py-1.5 font-normal">
                 <p className="text-muted-foreground text-xs">{user.email}</p>
-                <div className="flex items-center gap-2 text-left text-sm">
-                  <Avatar className="h-8 w-8 rounded-lg">
-                    <AvatarImage src={user.avatar} alt={user.name} />
-                    <AvatarFallback className="rounded-lg">CN</AvatarFallback>
-                  </Avatar>
-                  <div className="grid flex-1 text-left text-sm leading-tight">
-                    <span className="truncate font-medium">{user.name}</span>
-                    <span className="text-muted-foreground truncate text-xs">Paket Pro</span>
+                <AnimateIcon animateOnHover>
+                  <div className="flex items-center gap-2 text-left text-sm">
+                    {/* <Avatar className="h-8 w-8 rounded-lg"> */}
+                    {/*   <AvatarImage src={user.avatar} alt={user.name} /> */}
+                    {/*   <AvatarFallback className="rounded-lg">CN</AvatarFallback> */}
+                    {/* </Avatar> */}
+                    <User className="size-6" />
+                    <div className="grid flex-1 text-left text-sm leading-tight">
+                      <span className="truncate font-medium">{user.name}</span>
+                      <span className="text-muted-foreground truncate text-xs">Paket Pro</span>
+                    </div>
                   </div>
-                </div>
+                </AnimateIcon>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <AnimateIcon animateOnHover asChild>
-                  <DropdownMenuItem>
-                    <User />
-                    Pengaturan Akun
-                  </DropdownMenuItem>
+                  <Link href="/settings">
+                    <DropdownMenuItem>
+                      <SettingsIcon />
+                      Pengaturan
+                    </DropdownMenuItem>
+                  </Link>
                 </AnimateIcon>
                 <AnimateIcon animateOnHover asChild>
-                  <DropdownMenuItem>
-                    <Gauge />
-                    Tingkatkan Paket
-                  </DropdownMenuItem>
+                  <Link href="/pricing">
+                    <DropdownMenuItem>
+                      <Gauge />
+                      Tingkatkan Paket
+                    </DropdownMenuItem>
+                  </Link>
                 </AnimateIcon>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
