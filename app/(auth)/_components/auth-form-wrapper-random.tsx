@@ -17,6 +17,9 @@ interface AuthFormWrapperRandomProps {
  *
  * ⚠️ PENTING: Random akan berbeda setiap kali page di-refresh/reload
  *
+ * Uses client-only rendering to prevent hydration mismatch.
+ * Compatible with React Strict Mode (no double execution).
+ *
  * Usage:
  * <AuthFormWrapperRandom
  *   title="Masuk ke Akun Anda"
@@ -34,20 +37,32 @@ export function AuthFormWrapperRandom({
   useRandomHero = true,
   useRandomGradient = true
 }: AuthFormWrapperRandomProps) {
-  // State untuk store random values
-  const [heroTitle, setHeroTitle] = useState<string | undefined>(undefined);
-  const [gradientClassName, setGradientClassName] = useState<string | undefined>(undefined);
+  const [isMounted, setIsMounted] = useState(false);
 
-  // Generate random values saat component mount (client-side only)
+  // Lazy initialization untuk random values
+  const [heroTitle] = useState<string | undefined>(() =>
+    useRandomHero ? getRandomHeroMessage() : undefined
+  );
+
+  const [gradientClassName] = useState<string | undefined>(() =>
+    useRandomGradient ? getRandomGradient() : undefined
+  );
+
+  // Wait for client-side mount to prevent hydration mismatch
   useEffect(() => {
-    if (useRandomHero) {
-      setHeroTitle(getRandomHeroMessage());
-    }
-    if (useRandomGradient) {
-      setGradientClassName(getRandomGradient());
-    }
-  }, [useRandomHero, useRandomGradient]);
+    setIsMounted(true);
+  }, []);
 
+  // Server-side: render dengan default values (no random)
+  if (!isMounted) {
+    return (
+      <AuthFormWrapper title={title} description={description}>
+        {children}
+      </AuthFormWrapper>
+    );
+  }
+
+  // Client-side: render dengan random values
   return (
     <AuthFormWrapper
       title={title}

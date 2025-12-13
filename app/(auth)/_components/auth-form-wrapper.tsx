@@ -29,8 +29,12 @@ export function AuthFormWrapper({
             "noise-overlay relative overflow-hidden p-8 md:w-1/2 md:p-12",
             gradientClassName
           )}
+          suppressHydrationWarning
         >
-          <h1 className="relative z-10 text-2xl leading-tight font-medium tracking-tight md:text-3xl">
+          <h1
+            className="relative z-10 text-2xl leading-tight font-medium tracking-tight md:text-3xl"
+            suppressHydrationWarning
+          >
             {heroTitle}
           </h1>
         </div>
