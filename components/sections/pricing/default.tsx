@@ -113,7 +113,11 @@ export function PricingCard({
   return (
     <div
       key={plan.name}
-      className={cn("relative flex w-full flex-col rounded-lg border", className)}
+      className={cn(
+        "relative flex w-full flex-col rounded-lg border",
+        plan.highlighted && "noise-overlay",
+        className
+      )}
       {...props}
     >
       {plan.highlighted && (

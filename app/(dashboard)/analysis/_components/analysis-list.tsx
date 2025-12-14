@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Eye, Trash, Calendar, Package, Lightbulb } from "lucide-react";
 import ModuleTitle from "@/components/typography/module-title";
 import { getAllBlockBasedAnalyses } from "@/@data/analysis-blocks-data";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 const maximumAnalysis = 14;
 
@@ -14,16 +15,19 @@ export default function AnalysisList() {
   return (
     <div className="">
       <div className="container mx-auto flex flex-col gap-24">
-        <div className="flex w-full flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex w-full flex-col gap-8">
           <ModuleTitle
             title="Analisis"
             description="Daftar analisis yang telah Anda buat. Lihat detail atau hapus analisis sesuai kebutuhan Anda."
+            className="bg-[linear-gradient(47deg,_#0d63a5_0%,_#ca3500_59%,_#0d63a5_95%,_#d08700_100%)]"
+            imageSrc={`/dashboard/data.jpg`}
+            imageBlendMode="hard-light"
           />
-          <div className="flex flex-col">
-            <div className="flex items-end justify-between gap-2">
-              <p className="text-sm">Maksimal Analisis</p>
-            </div>
-            <div className="flex items-center gap-2">
+          <Card className="flex flex-col">
+            <CardHeader className="flex items-end justify-between gap-2">
+              <CardTitle className="">Maksimal Analisis</CardTitle>
+            </CardHeader>
+            <CardContent className="flex items-center gap-2">
               <Progress
                 value={(data.length / maximumAnalysis) * 100}
                 className="h-2 w-full rounded-full md:w-56"
@@ -31,8 +35,8 @@ export default function AnalysisList() {
               <p>
                 {data.length}/{maximumAnalysis}
               </p>
-            </div>
-          </div>
+            </CardContent>
+          </Card>
         </div>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {data.map((item) => (
@@ -80,7 +84,7 @@ function AnalisisCard({
   });
 
   return (
-    <div className="group relative flex flex-col gap-4 rounded-lg border p-6 transition-all hover:border-primary/50 hover:shadow-lg">
+    <div className="group hover:border-primary/50 relative flex flex-col gap-4 rounded-lg border p-6 transition-all hover:shadow-lg">
       <div className="flex flex-col gap-3">
         <div className="flex items-start justify-between gap-2">
           <Badge variant="secondary" className="text-xs">
@@ -110,13 +114,13 @@ function AnalisisCard({
       </div>
 
       <div className="flex flex-col gap-3 border-t pt-4">
-        <div className="flex items-center gap-4 text-xs text-muted-foreground">
+        <div className="text-muted-foreground flex items-center gap-4 text-xs">
           <div className="flex items-center gap-1">
             <Calendar className="h-3.5 w-3.5" />
             <span>{formattedDate}</span>
           </div>
         </div>
-        <div className="flex items-center gap-4 text-xs text-muted-foreground">
+        <div className="text-muted-foreground flex items-center gap-4 text-xs">
           <div className="flex items-center gap-1">
             <Package className="h-3.5 w-3.5" />
             <span>{products} produk</span>

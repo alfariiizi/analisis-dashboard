@@ -29,12 +29,14 @@ export default async function Page() {
   return (
     <PageContainer className="space-y-6">
       <div className="flex items-center justify-between">
+        <ModuleTitle
+          className="mb-4 bg-[linear-gradient(307deg,_#0d63a5_0%,_#0d63a5_56%,_#d08700_92%,_#ca3500_100%)]"
+          title="Produk"
+          description="Semua produk yang telah kami dapatkan dari marketplace terbaik di Indonesia. Pantau produk marketplace di sini."
+          imageSrc={`/dashboard/eyeglass.jpg`}
+          imageBlendMode="hard-light"
+        />
         <div className="flex items-center gap-6 divide-x">
-          <ModuleTitle
-            className="mb-4"
-            title="Produk"
-            description="Semua produk yang telah kami dapatkan dari marketplace terbaik di Indonesia. Pantau produk marketplace di sini."
-          />
           {/* <Breadcrumb className="hidden ps-6 lg:block"> */}
           {/*   <BreadcrumbList> */}
           {/*     <BreadcrumbItem> */}
