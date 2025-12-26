@@ -20,7 +20,8 @@ const nextConfig: NextConfig = {
   },
   env: {
     NEXT_PUBLIC_BACKEND_URL: process.env.NEXT_PUBLIC_BACKEND_URL
-  }
+  },
+  crossOrigin: "anonymous"
 };
 
 export default nextConfig;
