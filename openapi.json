@@ -1,0 +1,6493 @@
+{
+  "components": {
+    "schemas": {
+      "AIModel": {
+        "additionalProperties": false,
+        "properties": {
+          "api_key_last_rotated": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "base_input_cost_per_million": {
+            "format": "double",
+            "type": "number"
+          },
+          "base_output_cost_per_million": {
+            "format": "double",
+            "type": "number"
+          },
+          "context_window": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/AIModelEdges"
+          },
+          "id": {
+            "type": "string"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "last_rotated_by": {
+            "type": "string"
+          },
+          "markup_percentage": {
+            "format": "double",
+            "type": "number"
+          },
+          "max_input_tokens": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "max_output_tokens": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "model_code": {
+            "type": "string"
+          },
+          "model_name": {
+            "type": "string"
+          },
+          "pricing_effective_date": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "provider": {
+            "type": "string"
+          },
+          "quality_rating": {
+            "format": "double",
+            "type": "number"
+          },
+          "recommended_use_case": {
+            "type": "string"
+          },
+          "selling_input_cost_per_million": {
+            "format": "double",
+            "type": "number"
+          },
+          "selling_output_cost_per_million": {
+            "format": "double",
+            "type": "number"
+          },
+          "speed_rating": {
+            "format": "double",
+            "type": "number"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "AIModelEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "chat_messages": {
+            "items": {
+              "$ref": "#/components/schemas/ChatMessage"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "rotated_by_admin": {
+            "$ref": "#/components/schemas/Admin"
+          },
+          "subscription_ai_models_rel": {
+            "items": {
+              "$ref": "#/components/schemas/SubscriptionAIModel"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "subscription_plan": {
+            "items": {
+              "$ref": "#/components/schemas/SubscriptionPlan"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "token_usage_logs": {
+            "items": {
+              "$ref": "#/components/schemas/TokenUsageLog"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "AbuseFlag": {
+        "additionalProperties": false,
+        "properties": {
+          "action_taken": {
+            "type": "string"
+          },
+          "action_taken_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "details": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "detection_method": {
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/AbuseFlagEdges"
+          },
+          "flag_type": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "resolution_notes": {
+            "type": "string"
+          },
+          "reviewed_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "reviewed_by": {
+            "type": "string"
+          },
+          "severity": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "AbuseFlagEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "reviewer": {
+            "$ref": "#/components/schemas/Admin"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "Admin": {
+        "additionalProperties": false,
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "created_by": {
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/AdminEdges"
+          },
+          "email": {
+            "type": "string"
+          },
+          "email_verified": {
+            "type": "boolean"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "last_login_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "last_login_ip": {
+            "type": "string"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "permissions": {
+            "items": {
+              "type": "string"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "role": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "AdminEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "created_admins": {
+            "items": {
+              "$ref": "#/components/schemas/Admin"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "creator": {
+            "$ref": "#/components/schemas/Admin"
+          },
+          "reviewed_abuse_flags": {
+            "items": {
+              "$ref": "#/components/schemas/AbuseFlag"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "rotated_ai_models": {
+            "items": {
+              "$ref": "#/components/schemas/AIModel"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "sessions": {
+            "items": {
+              "$ref": "#/components/schemas/Session"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "AnalysisArtifact": {
+        "additionalProperties": false,
+        "properties": {
+          "blocks": {
+            "items": {
+              "additionalProperties": {},
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "data_sources": {
+            "items": {
+              "type": "string"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "description": {
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/AnalysisArtifactEdges"
+          },
+          "generation_cost_usd": {
+            "format": "double",
+            "type": "number"
+          },
+          "id": {
+            "type": "string"
+          },
+          "parent_artifact_id": {
+            "type": "string"
+          },
+          "products_analyzed": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "session_id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "tokens_used": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "version": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "AnalysisArtifactEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "children": {
+            "items": {
+              "$ref": "#/components/schemas/AnalysisArtifact"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "parent": {
+            "$ref": "#/components/schemas/AnalysisArtifact"
+          },
+          "session": {
+            "$ref": "#/components/schemas/ChatSession"
+          },
+          "triggering_message": {
+            "$ref": "#/components/schemas/ChatMessage"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "AuthRegisterData": {
+        "additionalProperties": false,
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User",
+            "description": "registered user data"
+          }
+        },
+        "required": [
+          "user"
+        ],
+        "type": "object"
+      },
+      "BillingTransaction": {
+        "additionalProperties": false,
+        "properties": {
+          "admin_notes": {
+            "type": "string"
+          },
+          "amount": {
+            "format": "double",
+            "type": "number"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/BillingTransactionEdges"
+          },
+          "id": {
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "payment_gateway_url": {
+            "type": "string"
+          },
+          "payment_method": {
+            "type": "string"
+          },
+          "processed_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "queries_count": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "status": {
+            "type": "string"
+          },
+          "subscription_period": {
+            "type": "string"
+          },
+          "tokens_consumed": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "transaction_type": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "BillingTransactionEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "credit_purchases": {
+            "items": {
+              "$ref": "#/components/schemas/CreditPurchase"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "CacheDeleteData": {
+        "additionalProperties": false,
+        "properties": {
+          "deleted": {
+            "description": "Whether key existed and was deleted",
+            "examples": [
+              true
+            ],
+            "type": "boolean"
+          },
+          "key": {
+            "examples": [
+              "analysis:result:123"
+            ],
+            "type": "string"
+          },
+          "success": {
+            "examples": [
+              true
+            ],
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "success",
+          "key",
+          "deleted"
+        ],
+        "type": "object"
+      },
+      "CacheDeletePayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/CacheDeletePayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "key": {
+            "description": "Cache key to delete",
+            "examples": [
+              "analysis:result:123"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "key"
+        ],
+        "type": "object"
+      },
+      "CacheGetData": {
+        "additionalProperties": false,
+        "properties": {
+          "found": {
+            "description": "Whether key exists in cache",
+            "examples": [
+              true
+            ],
+            "type": "boolean"
+          },
+          "key": {
+            "examples": [
+              "analysis:result:123"
+            ],
+            "type": "string"
+          },
+          "value": {
+            "description": "Cached value (if found)"
+          }
+        },
+        "required": [
+          "found",
+          "key"
+        ],
+        "type": "object"
+      },
+      "CacheGetPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/CacheGetPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "key": {
+            "description": "Cache key to retrieve",
+            "examples": [
+              "analysis:result:123"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "key"
+        ],
+        "type": "object"
+      },
+      "CacheSetData": {
+        "additionalProperties": false,
+        "properties": {
+          "expires_at": {
+            "description": "When cache entry expires (if TTL set)",
+            "examples": [
+              "2025-10-24T13:00:00Z"
+            ],
+            "format": "date-time",
+            "type": "string"
+          },
+          "key": {
+            "examples": [
+              "analysis:result:123"
+            ],
+            "type": "string"
+          },
+          "success": {
+            "examples": [
+              true
+            ],
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "success",
+          "key"
+        ],
+        "type": "object"
+      },
+      "CacheSetPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/CacheSetPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "key": {
+            "description": "Cache key to set",
+            "examples": [
+              "analysis:result:123"
+            ],
+            "type": "string"
+          },
+          "ttl_seconds": {
+            "default": 3600,
+            "description": "Time-to-live in seconds (0 = no expiry)",
+            "examples": [
+              3600
+            ],
+            "format": "int64",
+            "type": "integer"
+          },
+          "value": {
+            "description": "Value to cache (JSON serializable)"
+          }
+        },
+        "required": [
+          "key",
+          "value"
+        ],
+        "type": "object"
+      },
+      "ChangeUserPasswordPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ChangeUserPasswordPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "confirm_password": {
+            "description": "Confirm new password of the user",
+            "examples": [
+              "newpassword123"
+            ],
+            "type": "string"
+          },
+          "current_password": {
+            "description": "Current password of the user",
+            "examples": [
+              "currentpassword123"
+            ],
+            "type": "string"
+          },
+          "new_password": {
+            "description": "New password of the user",
+            "examples": [
+              "newpassword123"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "current_password",
+          "new_password",
+          "confirm_password"
+        ],
+        "type": "object"
+      },
+      "ChartDataPoint": {
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "description": "Time period label",
+            "examples": [
+              "Jan"
+            ],
+            "type": "string"
+          },
+          "price": {
+            "description": "Average price in IDR",
+            "examples": [
+              120000
+            ],
+            "format": "double",
+            "type": "number"
+          },
+          "rating": {
+            "description": "Average rating (0-5 scale)",
+            "examples": [
+              4.6
+            ],
+            "format": "double",
+            "type": "number"
+          },
+          "sales": {
+            "description": "Total sales in period",
+            "examples": [
+              1500
+            ],
+            "format": "int64",
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "name",
+          "sales",
+          "rating",
+          "price"
+        ],
+        "type": "object"
+      },
+      "ChatMessage": {
+        "additionalProperties": false,
+        "properties": {
+          "ai_model_id": {
+            "type": "string"
+          },
+          "analysis_artifact_id": {
+            "type": "string"
+          },
+          "chat_session_id": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/ChatMessageEdges"
+          },
+          "id": {
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "role": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "ChatMessageEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "ai_model": {
+            "$ref": "#/components/schemas/AIModel"
+          },
+          "analysis_artifact": {
+            "$ref": "#/components/schemas/AnalysisArtifact"
+          },
+          "chat_session": {
+            "$ref": "#/components/schemas/ChatSession"
+          },
+          "token_usage_logs": {
+            "items": {
+              "$ref": "#/components/schemas/TokenUsageLog"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "ChatSession": {
+        "additionalProperties": false,
+        "properties": {
+          "context": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/ChatSessionEdges"
+          },
+          "id": {
+            "type": "string"
+          },
+          "session_expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "session_started_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "ChatSessionEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "analysis_artifacts": {
+            "items": {
+              "$ref": "#/components/schemas/AnalysisArtifact"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/ChatMessage"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "token_usage_logs": {
+            "items": {
+              "$ref": "#/components/schemas/TokenUsageLog"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "CreateProductPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/CreateProductPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "price_current": {
+            "description": "Current price in IDR",
+            "format": "int64",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "shop_name": {
+            "description": "Shop/store name",
+            "type": "string"
+          },
+          "source": {
+            "description": "Marketplace source",
+            "examples": [
+              "tokopedia"
+            ],
+            "type": "string"
+          },
+          "source_url": {
+            "description": "Product URL",
+            "type": "string"
+          },
+          "stock": {
+            "description": "Available stock",
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "title": {
+            "description": "Product title",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "CreateSessionOutput": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/CreateSessionOutput.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "context": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "session_expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "session_started_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "user_id",
+          "title",
+          "status",
+          "session_started_at",
+          "created_at",
+          "updated_at"
+        ],
+        "type": "object"
+      },
+      "CreateSessionPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/CreateSessionPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "title": {
+            "description": "Optional session title",
+            "maxLength": 500,
+            "type": "string"
+          }
+        },
+        "required": [
+          "title"
+        ],
+        "type": "object"
+      },
+      "CreditPurchase": {
+        "additionalProperties": false,
+        "properties": {
+          "billing_transaction_id": {
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/CreditPurchaseEdges"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "price": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "purchased_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "tokens_purchased": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "tokens_remaining": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "tokens_used": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "CreditPurchaseEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "billing_transaction": {
+            "$ref": "#/components/schemas/BillingTransaction"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "DeleteOneData": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "ErrorDetail": {
+        "additionalProperties": false,
+        "properties": {
+          "location": {
+            "description": "Where the error occurred, e.g. 'body.items[3].tags' or 'path.thing-id'",
+            "type": "string"
+          },
+          "message": {
+            "description": "Error message text",
+            "type": "string"
+          },
+          "value": {
+            "description": "The value at the given location"
+          }
+        },
+        "type": "object"
+      },
+      "ErrorModel": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ErrorModel.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "detail": {
+            "description": "A human-readable explanation specific to this occurrence of the problem.",
+            "examples": [
+              "Property foo is required but is missing."
+            ],
+            "type": "string"
+          },
+          "errors": {
+            "description": "Optional list of individual error details",
+            "items": {
+              "$ref": "#/components/schemas/ErrorDetail"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "instance": {
+            "description": "A URI reference that identifies the specific occurrence of the problem.",
+            "examples": [
+              "https://example.com/error-log/abc123"
+            ],
+            "format": "uri",
+            "type": "string"
+          },
+          "status": {
+            "description": "HTTP status code",
+            "examples": [
+              400
+            ],
+            "format": "int64",
+            "type": "integer"
+          },
+          "title": {
+            "description": "A short, human-readable summary of the problem type. This value should not change between occurrences of the error.",
+            "examples": [
+              "Bad Request"
+            ],
+            "type": "string"
+          },
+          "type": {
+            "default": "about:blank",
+            "description": "A URI reference to human-readable documentation for the error.",
+            "examples": [
+              "https://example.com/errors/example"
+            ],
+            "format": "uri",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "EventData": {
+        "additionalProperties": false,
+        "properties": {
+          "events": {
+            "description": "List of all possible Event enum values",
+            "items": {
+              "enum": [
+                "NotificationCreated",
+                "OpportunityCreated",
+                "OpportunityFailed",
+                "OpportunityUpdated"
+              ],
+              "type": "string"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          }
+        },
+        "required": [
+          "events"
+        ],
+        "type": "object"
+      },
+      "ExecuteQueryData": {
+        "additionalProperties": false,
+        "properties": {
+          "columns": {
+            "description": "Column names",
+            "examples": [
+              [
+                "id",
+                "name",
+                "price"
+              ]
+            ],
+            "items": {
+              "type": "string"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "execution_time_ms": {
+            "description": "Query execution time in milliseconds",
+            "examples": [
+              234
+            ],
+            "format": "int64",
+            "type": "integer"
+          },
+          "row_count": {
+            "description": "Number of rows returned",
+            "examples": [
+              150
+            ],
+            "format": "int64",
+            "type": "integer"
+          },
+          "rows": {
+            "description": "Query results",
+            "items": {
+              "additionalProperties": {},
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "truncated": {
+            "description": "Whether results were truncated due to max_rows",
+            "examples": [
+              false
+            ],
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "rows",
+          "row_count",
+          "columns",
+          "execution_time_ms",
+          "truncated"
+        ],
+        "type": "object"
+      },
+      "ExecuteQueryPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ExecuteQueryPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "max_rows": {
+            "default": 1000,
+            "description": "Maximum rows to return",
+            "examples": [
+              1000
+            ],
+            "format": "int64",
+            "type": "integer"
+          },
+          "parameters": {
+            "additionalProperties": {},
+            "description": "Query parameters for safety (not implemented yet)",
+            "type": "object"
+          },
+          "sql": {
+            "description": "SQL query to execute (SELECT only)",
+            "examples": [
+              "SELECT * FROM products LIMIT 10"
+            ],
+            "type": "string"
+          },
+          "timeout_ms": {
+            "default": 30000,
+            "description": "Query timeout in milliseconds",
+            "examples": [
+              30000
+            ],
+            "format": "int64",
+            "type": "integer"
+          },
+          "user_id": {
+            "description": "User ID for tracking",
+            "examples": [
+              "550e8400-e29b-41d4-a716-446655440000"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "sql",
+          "user_id",
+          "max_rows",
+          "timeout_ms"
+        ],
+        "type": "object"
+      },
+      "GetMessagesOutput": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/GetMessagesOutput.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/SendMessageOutput"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "total": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "messages",
+          "total"
+        ],
+        "type": "object"
+      },
+      "HealthData": {
+        "additionalProperties": false,
+        "properties": {
+          "checks": {
+            "additionalProperties": {
+              "type": "string"
+            },
+            "description": "Individual component health checks",
+            "type": "object"
+          },
+          "service": {
+            "description": "Service name",
+            "examples": [
+              "marketplace-analysis"
+            ],
+            "type": "string"
+          },
+          "status": {
+            "description": "Overall service status",
+            "examples": [
+              "ok"
+            ],
+            "type": "string"
+          },
+          "timestamp": {
+            "description": "Current server time",
+            "examples": [
+              "2025-10-23T10:00:00Z"
+            ],
+            "format": "date-time",
+            "type": "string"
+          },
+          "version": {
+            "description": "Service version",
+            "examples": [
+              "v0.9.0"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "service",
+          "version",
+          "timestamp",
+          "checks"
+        ],
+        "type": "object"
+      },
+      "JobHTTPHandlerData": {
+        "additionalProperties": false,
+        "properties": {
+          "task_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "task_id"
+        ],
+        "type": "object"
+      },
+      "ListSessionsOutput": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ListSessionsOutput.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "sessions": {
+            "items": {
+              "$ref": "#/components/schemas/CreateSessionOutput"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "total": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "sessions",
+          "total"
+        ],
+        "type": "object"
+      },
+      "LogSystemPayloadJob": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/LogSystemPayloadJob.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "LoginAdminOutput": {
+        "additionalProperties": false,
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "access_token_expires_at": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "refresh_token": {
+            "type": "string"
+          },
+          "refresh_token_expires_at": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "access_token",
+          "refresh_token",
+          "access_token_expires_at",
+          "refresh_token_expires_at"
+        ],
+        "type": "object"
+      },
+      "LoginAdminPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/LoginAdminPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "email": {
+            "description": "Email of the user",
+            "type": "string"
+          },
+          "password": {
+            "description": "Password of the user",
+            "examples": [
+              "password123"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object"
+      },
+      "LoginData": {
+        "additionalProperties": false,
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "access_token_expires_at": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "refresh_token": {
+            "type": "string"
+          },
+          "refresh_token_expires_at": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "access_token",
+          "refresh_token",
+          "access_token_expires_at",
+          "refresh_token_expires_at"
+        ],
+        "type": "object"
+      },
+      "LoginPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/LoginPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "email": {
+            "description": "Email of the user",
+            "type": "string"
+          },
+          "password": {
+            "description": "Password of the user",
+            "examples": [
+              "password123"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "password"
+        ],
+        "type": "object"
+      },
+      "MarkAsReadAllData": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "examples": [
+              "A great book"
+            ],
+            "type": "string"
+          },
+          "id": {
+            "examples": [
+              "123"
+            ],
+            "type": "string"
+          },
+          "name": {
+            "examples": [
+              "Book"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description"
+        ],
+        "type": "object"
+      },
+      "MarkAsReadAllPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/MarkAsReadAllPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the item",
+            "examples": [
+              "Book"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "description"
+        ],
+        "type": "object"
+      },
+      "MeData": {
+        "additionalProperties": false,
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/UserEdges"
+          },
+          "email": {
+            "type": "string"
+          },
+          "email_verified_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "phone_number": {
+            "type": "string"
+          },
+          "phone_verified_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "Meta": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "description": "Response status code",
+            "examples": [
+              200
+            ],
+            "format": "int64",
+            "type": "integer"
+          },
+          "signature": {
+            "description": "Response signature",
+            "type": "string"
+          },
+          "status": {
+            "description": "Response status",
+            "examples": [
+              "success"
+            ],
+            "type": "string"
+          },
+          "version": {
+            "description": "Application version",
+            "examples": [
+              "1.0.0"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "status",
+          "code",
+          "signature",
+          "version"
+        ],
+        "type": "object"
+      },
+      "MetaPagination": {
+        "additionalProperties": false,
+        "properties": {
+          "code": {
+            "description": "Response status code",
+            "examples": [
+              200
+            ],
+            "format": "int64",
+            "type": "integer"
+          },
+          "pagination": {
+            "$ref": "#/components/schemas/Pagination",
+            "description": "Pagination information"
+          },
+          "signature": {
+            "description": "Response signature",
+            "type": "string"
+          },
+          "status": {
+            "description": "Response status",
+            "examples": [
+              "success"
+            ],
+            "type": "string"
+          },
+          "version": {
+            "description": "Application version",
+            "examples": [
+              "1.0.0"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "pagination",
+          "status",
+          "code",
+          "signature",
+          "version"
+        ],
+        "type": "object"
+      },
+      "Notification": {
+        "additionalProperties": false,
+        "properties": {
+          "action": {
+            "type": "string"
+          },
+          "archived": {
+            "type": "boolean"
+          },
+          "channel": {
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "dedupe_key": {
+            "type": "string"
+          },
+          "delivered_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/NotificationEdges"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "group_key": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "link": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          },
+          "meta": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "priority": {
+            "type": "string"
+          },
+          "read": {
+            "type": "boolean"
+          },
+          "read_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "resource_id": {
+            "type": "string"
+          },
+          "resource_type": {
+            "type": "string"
+          },
+          "sticky": {
+            "type": "boolean"
+          },
+          "title": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "NotificationEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "Pagination": {
+        "additionalProperties": false,
+        "properties": {
+          "page": {
+            "description": "Current page number",
+            "examples": [
+              1
+            ],
+            "format": "int64",
+            "type": "integer"
+          },
+          "per_page": {
+            "description": "Number of items per page",
+            "examples": [
+              10
+            ],
+            "format": "int64",
+            "type": "integer"
+          },
+          "total_items": {
+            "description": "Total number of items",
+            "examples": [
+              42
+            ],
+            "format": "int64",
+            "type": "integer"
+          },
+          "total_pages": {
+            "description": "Total number of pages",
+            "examples": [
+              5
+            ],
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "page",
+          "per_page",
+          "total_pages",
+          "total_items"
+        ],
+        "type": "object"
+      },
+      "Product": {
+        "additionalProperties": false,
+        "properties": {
+          "category": {
+            "type": "string"
+          },
+          "create_time": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "currency": {
+            "type": "string"
+          },
+          "discount_percentage": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/ProductEdges"
+          },
+          "failure_count": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "id": {
+            "type": "string"
+          },
+          "images": {
+            "items": {
+              "type": "string"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "last_scraped_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "long_description": {
+            "type": "string"
+          },
+          "meta": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "next_scrape_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "package_height_mm": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "package_length_mm": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "package_width_mm": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "price_current": {
+            "format": "int64",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "price_original": {
+            "format": "int64",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "priority_score": {
+            "format": "double",
+            "type": "number"
+          },
+          "product_rating": {
+            "format": "double",
+            "type": "number"
+          },
+          "raw": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "review_count": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "scrape_status": {
+            "type": "string"
+          },
+          "scraped_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "shop_location": {
+            "type": "string"
+          },
+          "shop_name": {
+            "type": "string"
+          },
+          "shop_rating": {
+            "format": "double",
+            "type": "number"
+          },
+          "short_description": {
+            "type": "string"
+          },
+          "sold_count": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "source": {
+            "type": "string"
+          },
+          "source_id": {
+            "type": "string"
+          },
+          "source_url": {
+            "type": "string"
+          },
+          "stock": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          },
+          "update_time": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "url_hash": {
+            "type": "string"
+          },
+          "user_interest_count": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "variations": {
+            "items": {
+              "additionalProperties": {},
+              "type": "object"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "weight_grams": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "ProductCalculatePriorityData": {
+        "additionalProperties": false,
+        "properties": {
+          "next_scrape": {
+            "description": "Suggested next scrape time",
+            "examples": [
+              "2025-10-24T12:00:00Z"
+            ],
+            "type": "string"
+          },
+          "priority": {
+            "description": "Calculated priority score (0.1-10.0)",
+            "examples": [
+              7.5
+            ],
+            "format": "double",
+            "type": "number"
+          },
+          "product_id": {
+            "examples": [
+              "550e8400-e29b-41d4-a716-446655440000"
+            ],
+            "type": "string"
+          },
+          "reason": {
+            "description": "Human-readable reason for priority",
+            "examples": [
+              "High user interest with recent sales"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "product_id",
+          "priority",
+          "reason"
+        ],
+        "type": "object"
+      },
+      "ProductCalculatePriorityPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ProductCalculatePriorityPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "product_id": {
+            "description": "Product UUID to calculate priority for",
+            "examples": [
+              "550e8400-e29b-41d4-a716-446655440000"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "product_id"
+        ],
+        "type": "object"
+      },
+      "ProductDetailChartData": {
+        "additionalProperties": false,
+        "properties": {
+          "chart_data": {
+            "description": "Time-series chart data points",
+            "items": {
+              "$ref": "#/components/schemas/ChartDataPoint"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "period_count": {
+            "examples": [
+              12
+            ],
+            "format": "int64",
+            "type": "integer"
+          },
+          "product_title": {
+            "examples": [
+              "iPhone 15 Pro Max"
+            ],
+            "type": "string"
+          },
+          "product_url": {
+            "examples": [
+              "https://tokopedia.com/product/123"
+            ],
+            "type": "string"
+          },
+          "range": {
+            "examples": [
+              "month"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "chart_data",
+          "range",
+          "period_count",
+          "product_url",
+          "product_title"
+        ],
+        "type": "object"
+      },
+      "ProductEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "user_products": {
+            "items": {
+              "$ref": "#/components/schemas/UserProduct"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "watchers": {
+            "items": {
+              "$ref": "#/components/schemas/ProductWatchlist"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "ProductHashURLData": {
+        "additionalProperties": false,
+        "properties": {
+          "marketplace": {
+            "examples": [
+              "tokopedia"
+            ],
+            "type": "string"
+          },
+          "normalized_url": {
+            "description": "URL with tracking parameters removed",
+            "examples": [
+              "https://www.tokopedia.com/product/12345"
+            ],
+            "type": "string"
+          },
+          "product_slug": {
+            "description": "Extracted product identifier",
+            "examples": [
+              "12345"
+            ],
+            "type": "string"
+          },
+          "url_hash": {
+            "description": "SHA-256 hash of normalized URL",
+            "examples": [
+              "a3f5b2c1..."
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "url_hash",
+          "normalized_url",
+          "marketplace"
+        ],
+        "type": "object"
+      },
+      "ProductHashURLPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ProductHashURLPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "marketplace": {
+            "description": "Marketplace name",
+            "enum": [
+              "tokopedia",
+              "shopee",
+              "tiktokshop"
+            ],
+            "examples": [
+              "tokopedia"
+            ],
+            "type": "string"
+          },
+          "url": {
+            "description": "Product URL to hash and normalize",
+            "examples": [
+              "https://www.tokopedia.com/product/12345?utm_source=google"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "url",
+          "marketplace"
+        ],
+        "type": "object"
+      },
+      "ProductOverviewCardData": {
+        "additionalProperties": false,
+        "properties": {
+          "total_new_products": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "total_product_categories": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "total_products": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "total_products",
+          "total_new_products",
+          "total_product_categories"
+        ],
+        "type": "object"
+      },
+      "ProductWatchlist": {
+        "additionalProperties": false,
+        "properties": {
+          "added_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/ProductWatchlistEdges"
+          },
+          "id": {
+            "type": "string"
+          },
+          "notify_price_drop": {
+            "type": "boolean"
+          },
+          "notify_rating_change": {
+            "type": "boolean"
+          },
+          "notify_stock_available": {
+            "type": "boolean"
+          },
+          "product_id": {
+            "type": "string"
+          },
+          "target_price": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "ProductWatchlistEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "RefreshOutput": {
+        "additionalProperties": false,
+        "properties": {
+          "access_token": {
+            "type": "string"
+          },
+          "access_token_expires_at": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "access_token",
+          "access_token_expires_at"
+        ],
+        "type": "object"
+      },
+      "RefreshPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/RefreshPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "refresh_token": {
+            "description": "The refresh token to use for refreshing the session",
+            "examples": [
+              "your-refresh-token"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "refresh_token"
+        ],
+        "type": "object"
+      },
+      "RegisterPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/RegisterPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "email": {
+            "description": "email of user",
+            "examples": [
+              "john@gmail.com"
+            ],
+            "type": "string"
+          },
+          "first_name": {
+            "description": "first name of user",
+            "examples": [
+              "John"
+            ],
+            "type": "string"
+          },
+          "last_name": {
+            "description": "last name of user",
+            "examples": [
+              "Doe"
+            ],
+            "type": "string"
+          },
+          "password": {
+            "description": "password of user",
+            "examples": [
+              "password123"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "first_name",
+          "last_name",
+          "password"
+        ],
+        "type": "object"
+      },
+      "ResponseAuthRegisterData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseAuthRegisterData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/AuthRegisterData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseCacheDeleteData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseCacheDeleteData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CacheDeleteData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseCacheGetData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseCacheGetData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CacheGetData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseCacheSetData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseCacheSetData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/CacheSetData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseCreateProductData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseCreateProductData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Product",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseDeleteOneData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseDeleteOneData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/DeleteOneData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseDetailProductData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseDetailProductData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/Product",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseEventData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseEventData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/EventData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseExecuteQueryData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseExecuteQueryData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ExecuteQueryData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseHealthData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseHealthData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/HealthData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseJobHTTPHandlerData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseJobHTTPHandlerData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/JobHTTPHandlerData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseLoginAdminData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseLoginAdminData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/LoginAdminOutput",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseLoginData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseLoginData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/LoginData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseMarkAsReadAllData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseMarkAsReadAllData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/MarkAsReadAllData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseMeData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseMeData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/MeData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseMessage": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseMessage.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "message": {
+            "description": "Response message",
+            "type": "string"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "message",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseNotificationGetAllData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseNotificationGetAllData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "description": "Response data",
+            "items": {
+              "$ref": "#/components/schemas/Notification"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponsePaginationListProductData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponsePaginationListProductData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "description": "Response data",
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaPagination",
+            "description": "Response metadata with pagination"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseProductCalculatePriorityData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseProductCalculatePriorityData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ProductCalculatePriorityData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseProductDetailChartData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseProductDetailChartData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ProductDetailChartData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseProductHashURLData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseProductHashURLData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ProductHashURLData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseProductOverviewCardData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseProductOverviewCardData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ProductOverviewCardData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseRefreshData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseRefreshData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/RefreshOutput",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseShopeeAnalyzeData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseShopeeAnalyzeData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/ShopeeAnalyzeData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseTiktokshopAnalyzeData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseTiktokshopAnalyzeData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/TiktokshopAnalyzeData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseTokenpediaAnalyzeData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseTokenpediaAnalyzeData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/TokenpediaAnalyzeData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseTokopediaData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseTokopediaData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/TokopediaData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseUnreadCountData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseUnreadCountData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/UnreadCountData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseVerifyTokenData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseVerifyTokenData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/VerifyTokenData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ScrapingReward": {
+        "additionalProperties": false,
+        "properties": {
+          "awarded_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "batch_number": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/ScrapingRewardEdges"
+          },
+          "id": {
+            "type": "string"
+          },
+          "product_url_hash": {
+            "type": "string"
+          },
+          "reward_multiplier": {
+            "format": "double",
+            "type": "number"
+          },
+          "tier_multiplier": {
+            "format": "double",
+            "type": "number"
+          },
+          "tokens_awarded": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "week_number": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "year": {
+            "format": "int64",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "ScrapingRewardEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "SendMessageOutput": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/SendMessageOutput.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "ai_model_id": {
+            "type": "string"
+          },
+          "analysis_artifact_id": {
+            "type": "string"
+          },
+          "chat_session_id": {
+            "type": "string"
+          },
+          "content": {
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "role": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "chat_session_id",
+          "user_id",
+          "role",
+          "content",
+          "created_at"
+        ],
+        "type": "object"
+      },
+      "SendMessagePayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/SendMessagePayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "ai_model_id": {
+            "description": "AI model ID (for assistant messages)",
+            "format": "uuid",
+            "type": "string"
+          },
+          "content": {
+            "description": "Message content",
+            "minLength": 1,
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": {},
+            "description": "Additional metadata",
+            "type": "object"
+          },
+          "role": {
+            "default": "user",
+            "description": "Message role (user, assistant, system)",
+            "enum": [
+              "user",
+              "assistant",
+              "system"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "content",
+          "role"
+        ],
+        "type": "object"
+      },
+      "Session": {
+        "additionalProperties": false,
+        "properties": {
+          "admin_id": {
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "device_id": {
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/SessionEdges"
+          },
+          "expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "ip_address": {
+            "type": "string"
+          },
+          "last_used_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "number_of_uses": {
+            "format": "int64",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "refresh_token": {
+            "type": "string"
+          },
+          "revoked_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "session_type": {
+            "type": "string"
+          },
+          "user_agent": {
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "SessionEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "admin": {
+            "$ref": "#/components/schemas/Admin"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "ShopeeAnalyzeData": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "examples": [
+              "A great book"
+            ],
+            "type": "string"
+          },
+          "id": {
+            "examples": [
+              "123"
+            ],
+            "type": "string"
+          },
+          "name": {
+            "examples": [
+              "Book"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description"
+        ],
+        "type": "object"
+      },
+      "ShopeeAnalyzePayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ShopeeAnalyzePayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the item",
+            "examples": [
+              "Book"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "description"
+        ],
+        "type": "object"
+      },
+      "SubscriptionAIModel": {
+        "additionalProperties": false,
+        "properties": {
+          "ai_model_id": {
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/SubscriptionAIModelEdges"
+          },
+          "id": {
+            "type": "string"
+          },
+          "subscription_plan_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "SubscriptionAIModelEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "ai_model": {
+            "$ref": "#/components/schemas/AIModel"
+          },
+          "subscription_plan": {
+            "$ref": "#/components/schemas/SubscriptionPlan"
+          }
+        },
+        "type": "object"
+      },
+      "SubscriptionPlan": {
+        "additionalProperties": false,
+        "properties": {
+          "billing_period": {
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/SubscriptionPlanEdges"
+          },
+          "has_advanced_templates": {
+            "type": "boolean"
+          },
+          "has_api_access": {
+            "type": "boolean"
+          },
+          "has_bulk_import": {
+            "type": "boolean"
+          },
+          "has_custom_models": {
+            "type": "boolean"
+          },
+          "has_export_pdf": {
+            "type": "boolean"
+          },
+          "has_priority_support": {
+            "type": "boolean"
+          },
+          "has_sla_guarantee": {
+            "type": "boolean"
+          },
+          "has_team_collaboration": {
+            "type": "boolean"
+          },
+          "has_white_label": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "string"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "max_concurrent_sessions": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "max_new_sessions_per_day": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "monthly_token_quota": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "plan_code": {
+            "type": "string"
+          },
+          "plan_name": {
+            "type": "string"
+          },
+          "price_idr": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "price_usd": {
+            "format": "double",
+            "type": "number"
+          },
+          "rollover_expiry_months": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "rollover_percentage": {
+            "format": "double",
+            "type": "number"
+          },
+          "scraping_reward_multiplier": {
+            "format": "double",
+            "type": "number"
+          },
+          "session_reset_hours": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "session_token_quota": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "SubscriptionPlanEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "ai_models": {
+            "items": {
+              "$ref": "#/components/schemas/AIModel"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "subscription_ai_models_rel": {
+            "items": {
+              "$ref": "#/components/schemas/SubscriptionAIModel"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "user_subscription": {
+            "items": {
+              "$ref": "#/components/schemas/UserSubscription"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "TiktokshopAnalyzeData": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "examples": [
+              "A great book"
+            ],
+            "type": "string"
+          },
+          "id": {
+            "examples": [
+              "123"
+            ],
+            "type": "string"
+          },
+          "name": {
+            "examples": [
+              "Book"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description"
+        ],
+        "type": "object"
+      },
+      "TiktokshopAnalyzePayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/TiktokshopAnalyzePayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "name": {
+            "description": "Name of the item",
+            "examples": [
+              "Book"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "description"
+        ],
+        "type": "object"
+      },
+      "TokenUsageLog": {
+        "additionalProperties": false,
+        "properties": {
+          "ai_model_id": {
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/TokenUsageLogEdges"
+          },
+          "estimated_cost_usd": {
+            "format": "double",
+            "type": "number"
+          },
+          "estimated_tokens": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "estimation_accuracy": {
+            "format": "double",
+            "type": "number"
+          },
+          "id": {
+            "type": "string"
+          },
+          "input_cost_per_million": {
+            "format": "double",
+            "type": "number"
+          },
+          "input_tokens": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "message_id": {
+            "type": "string"
+          },
+          "output_cost_per_million": {
+            "format": "double",
+            "type": "number"
+          },
+          "output_tokens": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "request_type": {
+            "type": "string"
+          },
+          "session_id": {
+            "type": "string"
+          },
+          "total_cost_usd": {
+            "format": "double",
+            "type": "number"
+          },
+          "total_tokens": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "TokenUsageLogEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "ai_model": {
+            "$ref": "#/components/schemas/AIModel"
+          },
+          "message": {
+            "$ref": "#/components/schemas/ChatMessage"
+          },
+          "session": {
+            "$ref": "#/components/schemas/ChatSession"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "TokenpediaAnalyzeData": {
+        "additionalProperties": false,
+        "properties": {
+          "estimated_time": {
+            "examples": [
+              "2-3 minutes"
+            ],
+            "type": "string"
+          },
+          "job_id": {
+            "examples": [
+              "job-uuid"
+            ],
+            "type": "string"
+          },
+          "marketplace": {
+            "examples": [
+              "tokopedia"
+            ],
+            "type": "string"
+          },
+          "metadata": {
+            "additionalProperties": {},
+            "type": "object"
+          },
+          "priority": {
+            "examples": [
+              7.5
+            ],
+            "format": "double",
+            "type": "number"
+          },
+          "product_id": {
+            "examples": [
+              "uuid-123"
+            ],
+            "type": "string"
+          },
+          "product_url": {
+            "examples": [
+              "https://www.tokopedia.com/product/123"
+            ],
+            "type": "string"
+          },
+          "status": {
+            "examples": [
+              "processing"
+            ],
+            "type": "string"
+          },
+          "url_hash": {
+            "examples": [
+              "sha256-hash"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "product_id",
+          "product_url",
+          "url_hash",
+          "marketplace",
+          "status",
+          "priority"
+        ],
+        "type": "object"
+      },
+      "TokenpediaAnalyzePayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/TokenpediaAnalyzePayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "product_url": {
+            "description": "Tokopedia product URL",
+            "examples": [
+              "https://www.tokopedia.com/product/123"
+            ],
+            "type": "string"
+          },
+          "user_id": {
+            "description": "Optional user ID for tracking",
+            "examples": [
+              "user-uuid"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "product_url"
+        ],
+        "type": "object"
+      },
+      "TokopediaData": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "UnreadCountData": {
+        "additionalProperties": false,
+        "properties": {
+          "description": {
+            "examples": [
+              "A great book"
+            ],
+            "type": "string"
+          },
+          "id": {
+            "examples": [
+              "123"
+            ],
+            "type": "string"
+          },
+          "name": {
+            "examples": [
+              "Book"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description"
+        ],
+        "type": "object"
+      },
+      "UpdateProductPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/UpdateProductPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "price_current": {
+            "description": "Current price in IDR",
+            "format": "int64",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "shop_name": {
+            "description": "Shop/store name",
+            "type": "string"
+          },
+          "source": {
+            "description": "Marketplace source",
+            "examples": [
+              "tokopedia"
+            ],
+            "type": "string"
+          },
+          "source_url": {
+            "description": "Product URL",
+            "type": "string"
+          },
+          "stock": {
+            "description": "Available stock",
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "title": {
+            "description": "Product title",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "User": {
+        "additionalProperties": false,
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/UserEdges"
+          },
+          "email": {
+            "type": "string"
+          },
+          "email_verified_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "first_name": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "is_active": {
+            "type": "boolean"
+          },
+          "last_name": {
+            "type": "string"
+          },
+          "phone_number": {
+            "type": "string"
+          },
+          "phone_verified_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "UserEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "abuse_flags": {
+            "items": {
+              "$ref": "#/components/schemas/AbuseFlag"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "analysis_artifacts": {
+            "items": {
+              "$ref": "#/components/schemas/AnalysisArtifact"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "billing_transactions": {
+            "items": {
+              "$ref": "#/components/schemas/BillingTransaction"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "chat_messages": {
+            "items": {
+              "$ref": "#/components/schemas/ChatMessage"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "chat_sessions": {
+            "items": {
+              "$ref": "#/components/schemas/ChatSession"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "credit_purchases": {
+            "items": {
+              "$ref": "#/components/schemas/CreditPurchase"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "notifications": {
+            "items": {
+              "$ref": "#/components/schemas/Notification"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "product_watchlist": {
+            "items": {
+              "$ref": "#/components/schemas/ProductWatchlist"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "scraping_rewards": {
+            "items": {
+              "$ref": "#/components/schemas/ScrapingReward"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "security_profile": {
+            "$ref": "#/components/schemas/UserSecurityProfile"
+          },
+          "sessions": {
+            "items": {
+              "$ref": "#/components/schemas/Session"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "subscription": {
+            "$ref": "#/components/schemas/UserSubscription"
+          },
+          "token_account": {
+            "$ref": "#/components/schemas/UserTokenAccount"
+          },
+          "token_usage_logs": {
+            "items": {
+              "$ref": "#/components/schemas/TokenUsageLog"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "user_products": {
+            "items": {
+              "$ref": "#/components/schemas/UserProduct"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          }
+        },
+        "type": "object"
+      },
+      "UserInformationPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/UserInformationPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "first_name": {
+            "description": "First name of the user",
+            "examples": [
+              "John"
+            ],
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          },
+          "last_name": {
+            "description": "Last name of the user",
+            "examples": [
+              "Doe"
+            ],
+            "maxLength": 80,
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "required": [
+          "first_name",
+          "last_name"
+        ],
+        "type": "object"
+      },
+      "UserProduct": {
+        "additionalProperties": false,
+        "properties": {
+          "added_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/UserProductEdges"
+          },
+          "id": {
+            "type": "string"
+          },
+          "is_priority": {
+            "type": "boolean"
+          },
+          "last_viewed_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "product_id": {
+            "type": "string"
+          },
+          "source_context": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          },
+          "view_count": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "UserProductEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "UserSecurityProfile": {
+        "additionalProperties": false,
+        "properties": {
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/UserSecurityProfileEdges"
+          },
+          "failed_login_attempts": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "id": {
+            "type": "string"
+          },
+          "last_active_ip": {
+            "type": "string"
+          },
+          "last_login_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "locked_until": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "max_trial_devices": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "registered_devices": {
+            "items": {
+              "type": "string"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "signup_ip": {
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "UserSecurityProfileEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "UserSubscription": {
+        "additionalProperties": false,
+        "properties": {
+          "auto_renew": {
+            "type": "boolean"
+          },
+          "cancellation_reason": {
+            "type": "string"
+          },
+          "cancelled_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "current_period_end": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "current_period_start": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/UserSubscriptionEdges"
+          },
+          "id": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "subscription_plan_id": {
+            "type": "string"
+          },
+          "trial_ends_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "trial_started_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "UserSubscriptionEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "subscription_plan": {
+            "$ref": "#/components/schemas/SubscriptionPlan"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "UserTokenAccount": {
+        "additionalProperties": false,
+        "properties": {
+          "earned_tokens": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "edges": {
+            "$ref": "#/components/schemas/UserTokenAccountEdges"
+          },
+          "id": {
+            "type": "string"
+          },
+          "month_reset_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "purchased_credits": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "rollover_expires_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "rollover_tokens": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "tokens_used_this_month": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "updated_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "user_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "edges"
+        ],
+        "type": "object"
+      },
+      "UserTokenAccountEdges": {
+        "additionalProperties": false,
+        "properties": {
+          "user": {
+            "$ref": "#/components/schemas/User"
+          }
+        },
+        "type": "object"
+      },
+      "VerifyTokenData": {
+        "additionalProperties": false,
+        "properties": {
+          "error": {
+            "description": "Error message if invalid",
+            "examples": [
+              "token expired"
+            ],
+            "type": "string"
+          },
+          "tier": {
+            "description": "User tier (basic/pro/enterprise)",
+            "examples": [
+              "pro"
+            ],
+            "type": "string"
+          },
+          "user_id": {
+            "description": "User ID from token",
+            "examples": [
+              "550e8400-e29b-41d4-a716-446655440000"
+            ],
+            "type": "string"
+          },
+          "valid": {
+            "description": "Whether the token is valid",
+            "examples": [
+              true
+            ],
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "valid"
+        ],
+        "type": "object"
+      },
+      "VerifyTokenPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/VerifyTokenPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "token": {
+            "description": "JWT token to verify",
+            "examples": [
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "token"
+        ],
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "bearerFormat": "JWT",
+        "description": "Use the JWT token obtained from the login endpoint.",
+        "scheme": "bearer",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "title": "OmniTrend",
+    "version": "1.0.1"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/admin/login": {
+      "post": {
+        "description": "Login as an admin user",
+        "operationId": "post-/admin/login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginAdminPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseLoginAdminData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Login Admin",
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "description": "Login handler",
+        "operationId": "post-/auth/login",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseLoginData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Login",
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/auth/refresh": {
+      "post": {
+        "description": "Refresh handler",
+        "operationId": "post-/auth/refresh",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseRefreshData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Refresh",
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/auth/register": {
+      "post": {
+        "description": "Register a new user in the system",
+        "operationId": "post-/auth/register",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAuthRegisterData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Register User",
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/chat/sessions": {
+      "get": {
+        "description": "Retrieve list of chat sessions for the authenticated user",
+        "operationId": "get-/chat/sessions",
+        "parameters": [
+          {
+            "description": "Filter by status (active, expired, archived)",
+            "explode": false,
+            "in": "query",
+            "name": "status",
+            "schema": {
+              "description": "Filter by status (active, expired, archived)",
+              "items": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "type": [
+                "array",
+                "null"
+              ]
+            }
+          },
+          {
+            "description": "Number of sessions to return (1-100)",
+            "explode": false,
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "description": "Number of sessions to return (1-100)",
+              "items": {
+                "format": "int64",
+                "type": "integer"
+              },
+              "maximum": 100,
+              "minimum": 1,
+              "type": [
+                "array",
+                "null"
+              ]
+            }
+          },
+          {
+            "description": "Number of sessions to skip",
+            "explode": false,
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "description": "Number of sessions to skip",
+              "items": {
+                "format": "int64",
+                "type": "integer"
+              },
+              "minimum": 0,
+              "type": [
+                "array",
+                "null"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListSessionsOutput"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List Chat Sessions",
+        "tags": [
+          "Chat"
+        ]
+      },
+      "post": {
+        "description": "Create a new chat session for the authenticated user",
+        "operationId": "post-/chat/sessions",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateSessionPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateSessionOutput"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create Chat Session",
+        "tags": [
+          "Chat"
+        ]
+      }
+    },
+    "/api/chat/sessions/{id}": {
+      "delete": {
+        "description": "Archive a chat session (soft delete)",
+        "operationId": "delete-/chat/sessions/{id}",
+        "parameters": [
+          {
+            "description": "Session ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Session ID",
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Delete Chat Session",
+        "tags": [
+          "Chat"
+        ]
+      },
+      "get": {
+        "description": "Retrieve a specific chat session with details",
+        "operationId": "get-/chat/sessions/{id}",
+        "parameters": [
+          {
+            "description": "Session ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Session ID",
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreateSessionOutput"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Get Chat Session",
+        "tags": [
+          "Chat"
+        ]
+      }
+    },
+    "/api/chat/sessions/{session_id}/messages": {
+      "get": {
+        "description": "Retrieve messages from a chat session",
+        "operationId": "get-/chat/sessions/{session_id}/messages",
+        "parameters": [
+          {
+            "description": "Chat session ID",
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "description": "Chat session ID",
+              "format": "uuid",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Number of messages to return (1-100)",
+            "explode": false,
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "description": "Number of messages to return (1-100)",
+              "items": {
+                "format": "int64",
+                "type": "integer"
+              },
+              "maximum": 100,
+              "minimum": 1,
+              "type": [
+                "array",
+                "null"
+              ]
+            }
+          },
+          {
+            "description": "Number of messages to skip",
+            "explode": false,
+            "in": "query",
+            "name": "offset",
+            "schema": {
+              "description": "Number of messages to skip",
+              "items": {
+                "format": "int64",
+                "type": "integer"
+              },
+              "minimum": 0,
+              "type": [
+                "array",
+                "null"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GetMessagesOutput"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Get Messages",
+        "tags": [
+          "Chat"
+        ]
+      },
+      "post": {
+        "description": "Send a message in a chat session",
+        "operationId": "post-/chat/sessions/{session_id}/messages",
+        "parameters": [
+          {
+            "description": "Chat session ID",
+            "in": "path",
+            "name": "session_id",
+            "required": true,
+            "schema": {
+              "description": "Chat session ID",
+              "format": "uuid",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SendMessagePayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SendMessageOutput"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Send Message",
+        "tags": [
+          "Chat"
+        ]
+      }
+    },
+    "/api/deleteone": {
+      "delete": {
+        "description": "deleteOne handler",
+        "operationId": "delete-/deleteone",
+        "parameters": [
+          {
+            "description": "ID of the item to delete",
+            "example": "123",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "ID of the item to delete",
+              "examples": [
+                "123"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDeleteOneData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "deleteOne",
+        "tags": [
+          "Notification"
+        ]
+      }
+    },
+    "/api/enum/event": {
+      "get": {
+        "description": "Retrieve a list of all possible Event enum values.",
+        "operationId": "get-/enum/event",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseEventData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Get Event Enum",
+        "tags": [
+          "Enum"
+        ]
+      }
+    },
+    "/api/extension/tokopedia": {
+      "post": {
+        "description": "Handle Tokopedia extension requests",
+        "operationId": "post-/extension/tokopedia",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {}
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseTokopediaData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Tokopedia Handler",
+        "tags": [
+          "Extension"
+        ]
+      }
+    },
+    "/api/getall": {
+      "get": {
+        "description": "getAll handler",
+        "operationId": "get-/getall",
+        "parameters": [
+          {
+            "description": "ID of the item",
+            "example": "123",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "ID of the item",
+              "examples": [
+                "123"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Query parameter for filtering",
+            "example": "search term",
+            "explode": false,
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "description": "Query parameter for filtering",
+              "examples": [
+                "search term"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseNotificationGetAllData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "getAll",
+        "tags": [
+          "Notification"
+        ]
+      }
+    },
+    "/api/internal/auth/verify-token": {
+      "post": {
+        "description": "Internal endpoint for n8n to validate user JWT tokens. Returns user ID and tier if valid.",
+        "operationId": "post-/internal/auth/verify-token",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VerifyTokenPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseVerifyTokenData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Verify JWT Token",
+        "tags": [
+          "Internal - n8n"
+        ]
+      }
+    },
+    "/api/internal/cache/delete": {
+      "delete": {
+        "description": "Remove value from Redis cache by key. Returns deleted=true if key existed, false if key didn't exist.",
+        "operationId": "delete-/internal/cache/delete",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CacheDeletePayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseCacheDeleteData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Delete Cache Value",
+        "tags": [
+          "Internal - n8n"
+        ]
+      }
+    },
+    "/api/internal/cache/get": {
+      "post": {
+        "description": "Retrieve value from Redis cache by key. Returns found=false if key doesn't exist or has expired. Supports JSON deserialization.",
+        "operationId": "post-/internal/cache/get",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CacheGetPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseCacheGetData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Get Cache Value",
+        "tags": [
+          "Internal - n8n"
+        ]
+      }
+    },
+    "/api/internal/cache/set": {
+      "post": {
+        "description": "Store value in Redis cache with optional TTL. Value is JSON-serialized automatically. Default TTL is 1 hour (3600 seconds).",
+        "operationId": "post-/internal/cache/set",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CacheSetPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseCacheSetData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Set Cache Value",
+        "tags": [
+          "Internal - n8n"
+        ]
+      }
+    },
+    "/api/internal/health": {
+      "get": {
+        "description": "Internal endpoint for n8n to verify Go backend connectivity and check infrastructure status. Requires X-API-Key authentication.",
+        "operationId": "get-/internal/health",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseHealthData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "n8n Health Check",
+        "tags": [
+          "Internal - n8n"
+        ]
+      }
+    },
+    "/api/internal/product/calculate-priority": {
+      "post": {
+        "description": "Calculate dynamic scraping priority based on sales volume, user interest, recency, and reliability. Returns priority score (0.1-10.0) for n8n scheduling decisions.",
+        "operationId": "post-/internal/product/calculate-priority",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductCalculatePriorityPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseProductCalculatePriorityData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Calculate Product Scraping Priority",
+        "tags": [
+          "Internal - n8n"
+        ]
+      }
+    },
+    "/api/internal/product/hash-url": {
+      "post": {
+        "description": "Generate SHA-256 hash for product URL deduplication. Removes tracking parameters and normalizes URL format for consistent hashing across users.",
+        "operationId": "post-/internal/product/hash-url",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProductHashURLPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseProductHashURLData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Hash and Normalize Product URL",
+        "tags": [
+          "Internal - n8n"
+        ]
+      }
+    },
+    "/api/internal/query/execute-safe": {
+      "post": {
+        "description": "Execute AI-generated SQL queries with safety checks. Only SELECT queries allowed. Enforces row limits and timeouts.",
+        "operationId": "post-/internal/query/execute-safe",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExecuteQueryPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseExecuteQueryData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Execute Safe SQL Query",
+        "tags": [
+          "Internal - n8n"
+        ]
+      }
+    },
+    "/api/jobs/log_system": {
+      "post": {
+        "description": "Enqueue a job to log system messages",
+        "operationId": "post-/log_system",
+        "parameters": [
+          {
+            "in": "header",
+            "name": "X-Job-Secret",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LogSystemPayloadJob"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseJobHTTPHandlerData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "Log System Job",
+        "tags": [
+          "Job"
+        ]
+      }
+    },
+    "/api/markasreadall": {
+      "post": {
+        "description": "markAsReadAll handler",
+        "operationId": "post-/markasreadall",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MarkAsReadAllPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMarkAsReadAllData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "markAsReadAll",
+        "tags": [
+          "Notification"
+        ]
+      }
+    },
+    "/api/me": {
+      "get": {
+        "description": "Retrieve information about the authenticated user.",
+        "operationId": "get-/me",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMeData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Get Authenticated User",
+        "tags": [
+          "Auth"
+        ]
+      }
+    },
+    "/api/products": {
+      "get": {
+        "description": "Retrieve a list of products",
+        "operationId": "get-/products",
+        "parameters": [
+          {
+            "description": "Page number for pagination",
+            "example": 1,
+            "explode": false,
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "description": "Page number for pagination",
+              "examples": [
+                1
+              ],
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of items per page",
+            "example": 10,
+            "explode": false,
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "description": "Number of items per page",
+              "examples": [
+                10
+              ],
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Query parameter for filtering",
+            "example": "search term",
+            "explode": false,
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "description": "Query parameter for filtering",
+              "examples": [
+                "search term"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponsePaginationListProductData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List Products",
+        "tags": [
+          "Product"
+        ]
+      },
+      "post": {
+        "description": "Create a new product",
+        "operationId": "post-/products",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateProductPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseCreateProductData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Create Product",
+        "tags": [
+          "Product"
+        ]
+      },
+      "put": {
+        "description": "Update an existing product by ID",
+        "operationId": "put-/products",
+        "parameters": [
+          {
+            "description": "ID of the item to update",
+            "example": "123",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "ID of the item to update",
+              "examples": [
+                "123"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateProductPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Update product",
+        "tags": [
+          "Product"
+        ]
+      }
+    },
+    "/api/products/overview": {
+      "get": {
+        "description": "Product Overview Card handler",
+        "operationId": "get-/products/overview",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseProductOverviewCardData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Product Overview Card",
+        "tags": [
+          "Product"
+        ]
+      }
+    },
+    "/api/products/{id}": {
+      "delete": {
+        "description": "Delete a product by ID",
+        "operationId": "delete-/products/{id}",
+        "parameters": [
+          {
+            "description": "ID of the item to delete",
+            "example": "123",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "ID of the item to delete",
+              "examples": [
+                "123"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Delete Product",
+        "tags": [
+          "Product"
+        ]
+      },
+      "get": {
+        "description": "Retrieve details of a product by ID",
+        "operationId": "get-/products/{id}",
+        "parameters": [
+          {
+            "description": "ID of the item",
+            "example": "123",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "ID of the item",
+              "examples": [
+                "123"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseDetailProductData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Detail Product",
+        "tags": [
+          "Product"
+        ]
+      }
+    },
+    "/api/products/{id}/chart": {
+      "get": {
+        "description": "Retrieve time-series chart data for a product including sales, rating, and price trends over different time ranges (hour/day/week/month/year)",
+        "operationId": "get-/products/{id}/chart",
+        "parameters": [
+          {
+            "description": "Product ID",
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "Product ID",
+              "examples": [
+                "550e8400-e29b-41d4-a716-446655440000"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Month for chart data (0-11), defaults to current month",
+            "example": 5,
+            "explode": false,
+            "in": "query",
+            "name": "month",
+            "schema": {
+              "description": "Month for chart data (0-11), defaults to current month",
+              "examples": [
+                5
+              ],
+              "format": "int64",
+              "maximum": 11,
+              "minimum": 0,
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseProductDetailChartData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Get Product Chart Data",
+        "tags": [
+          "Product"
+        ]
+      }
+    },
+    "/api/shopeeanalyze": {
+      "post": {
+        "description": "ShopeeAnalyze handler",
+        "operationId": "post-/shopeeanalyze",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ShopeeAnalyzePayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseShopeeAnalyzeData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "ShopeeAnalyze",
+        "tags": [
+          "Extension"
+        ]
+      }
+    },
+    "/api/tiktokshopanalyze": {
+      "post": {
+        "description": "TiktokshopAnalyze handler",
+        "operationId": "post-/tiktokshopanalyze",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/TiktokshopAnalyzePayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseTiktokshopAnalyzeData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "TiktokshopAnalyze",
+        "tags": [
+          "Extension"
+        ]
+      }
+    },
+    "/api/unreadcount": {
+      "get": {
+        "description": "unreadCount handler",
+        "operationId": "get-/unreadcount",
+        "parameters": [
+          {
+            "description": "ID of the item",
+            "example": "123",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "description": "ID of the item",
+              "examples": [
+                "123"
+              ],
+              "type": "string"
+            }
+          },
+          {
+            "description": "Query parameter for filtering",
+            "example": "search term",
+            "explode": false,
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "description": "Query parameter for filtering",
+              "examples": [
+                "search term"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseUnreadCountData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {}
+        ],
+        "summary": "unreadCount",
+        "tags": [
+          "Notification"
+        ]
+      }
+    },
+    "/api/users/change-password": {
+      "post": {
+        "description": "Change the password of the authenticated user.",
+        "operationId": "post-/users/change-password",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserPasswordPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Change User Password",
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/api/users/information": {
+      "put": {
+        "description": "Update the first name and last name of the authenticated user.",
+        "operationId": "put-/users/information",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserInformationPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseMessage"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Update User Information",
+        "tags": [
+          "User"
+        ]
+      }
+    }
+  }
+}

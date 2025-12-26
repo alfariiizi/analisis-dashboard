@@ -16,6 +16,11 @@ import {
   FormMessage
 } from "@/components/ui/form";
 import { AuthFormWrapperRandom } from "../../_components/auth-form-wrapper-random";
+import { useMutation } from "@tanstack/react-query";
+import { api } from "@/api";
+import { setCookie } from "cookies-next";
+import { AUTH_SESSION_COOKIE_NAME, AUTH_TOKEN_COOKIE_NAME } from "@/constants/auth";
+import { toast } from "sonner";
 
 const formSchema = z.object({
   email: z.string().email({
@@ -29,6 +34,34 @@ const formSchema = z.object({
 type SigninFormValues = z.infer<typeof formSchema>;
 
 export const SigninForm = () => {
+  const loginMutation = useMutation({
+    ...api.rq.postAuthLoginMutation(),
+    retry: false,
+    onSuccess: async (data) => {
+      const { access_token, access_token_expires_at, refresh_token, refresh_token_expires_at } =
+        data.data;
+      await setCookie(AUTH_TOKEN_COOKIE_NAME, access_token, {
+        // expires: new Date(access_token_expires_at),
+        maxAge: access_token_expires_at - Math.floor(Date.now() / 1000) - 120, // subtract 120 seconds for safety
+        path: "/",
+        sameSite: "lax",
+        secure: true
+      });
+      await setCookie(AUTH_SESSION_COOKIE_NAME, refresh_token, {
+        // expires: new Date(refresh_token_expires_at),
+        maxAge: refresh_token_expires_at - Math.floor(Date.now() / 1000) - 120, // subtract 120 seconds for safety
+        path: "/",
+        sameSite: "lax",
+        secure: true
+      });
+      window.location.href = "/";
+    },
+    onError: (e) => {
+      console.debug("Login error", e);
+      toast.error("Email atau password salah. Silakan coba lagi.");
+    }
+  });
+
   const form = useForm<SigninFormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -37,10 +70,14 @@ export const SigninForm = () => {
     }
   });
 
-  const onSubmit = (values: SigninFormValues) => {
+  const onSubmit = async (values: SigninFormValues) => {
     console.log("Form submitted!", values);
-    alert("Login berhasil!");
-    // TODO: Implement actual login logic
+    await loginMutation.mutateAsync({
+      body: {
+        email: values.email,
+        password: values.password
+      }
+    });
   };
 
   return (
@@ -81,7 +118,7 @@ export const SigninForm = () => {
           />
 
           <div className="flex items-center justify-between">
-            <a href="/forgot-password" className="text-sm text-muted-foreground hover:underline">
+            <a href="/forgot-password" className="text-muted-foreground text-sm hover:underline">
               Lupa password?
             </a>
           </div>

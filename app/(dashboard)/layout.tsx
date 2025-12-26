@@ -4,6 +4,8 @@ import React from "react";
 import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/app-sidebar";
 import { SiteHeader } from "@/components/site-header";
+import { AUTH_SESSION_COOKIE_NAME } from "@/constants/auth";
+import { redirect } from "next/navigation";
 
 export default async function DashboardLayout({
   children
@@ -12,6 +14,10 @@ export default async function DashboardLayout({
 }>) {
   const cookieStore = await cookies();
   const defaultOpen = cookieStore.get("sidebar_state")?.value === "true";
+  const sessionCookie = cookieStore.get(AUTH_SESSION_COOKIE_NAME);
+  if (!sessionCookie) {
+    return redirect("/signin");
+  }
 
   return (
     <SidebarProvider
