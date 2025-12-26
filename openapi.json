@@ -206,6 +206,46 @@
         },
         "type": "object"
       },
+      "AddToProductWatchlistData": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "examples": [
+              "Product added to watchlist successfully"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "AddToProductWatchlistPayload": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/AddToProductWatchlistPayload.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "product_id": {
+            "description": "ID of the product to add to watchlist",
+            "examples": [
+              "550e8400-e29b-41d4-a716-446655440000"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "product_id"
+        ],
+        "type": "object"
+      },
       "Admin": {
         "additionalProperties": false,
         "properties": {
@@ -221,9 +261,6 @@
           },
           "email": {
             "type": "string"
-          },
-          "email_verified": {
-            "type": "boolean"
           },
           "first_name": {
             "type": "string"
@@ -1121,6 +1158,33 @@
         },
         "required": [
           "message"
+        ],
+        "type": "object"
+      },
+      "DetailProductData": {
+        "additionalProperties": false,
+        "properties": {
+          "analytics": {
+            "$ref": "#/components/schemas/ProductAnalytics"
+          },
+          "historical_snapshots": {
+            "items": {
+              "$ref": "#/components/schemas/ProductSnapshot"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "latest_snapshot": {
+            "$ref": "#/components/schemas/ProductSnapshot"
+          },
+          "product": {
+            "$ref": "#/components/schemas/Product"
+          }
+        },
+        "required": [
+          "product"
         ],
         "type": "object"
       },
@@ -2105,6 +2169,73 @@
         ],
         "type": "object"
       },
+      "ProductAnalytics": {
+        "additionalProperties": false,
+        "properties": {
+          "average_price": {
+            "format": "double",
+            "type": "number"
+          },
+          "average_stock_level": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "currently_in_stock": {
+            "type": "boolean"
+          },
+          "data_source_count": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "estimated_sales": {
+            "format": "int64",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "first_scraped_at": {
+            "type": "string"
+          },
+          "highest_price": {
+            "format": "double",
+            "type": "number"
+          },
+          "last_scraped_at": {
+            "type": "string"
+          },
+          "lowest_price": {
+            "format": "double",
+            "type": "number"
+          },
+          "price_change_percentage": {
+            "format": "double",
+            "type": "number"
+          },
+          "review_growth": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "stock_changes": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "total_snapshots": {
+            "format": "int64",
+            "type": "integer"
+          },
+          "went_out_of_stock": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "stock_changes",
+          "went_out_of_stock",
+          "currently_in_stock",
+          "review_growth",
+          "total_snapshots",
+          "data_source_count"
+        ],
+        "type": "object"
+      },
       "ProductCalculatePriorityData": {
         "additionalProperties": false,
         "properties": {
@@ -2340,6 +2471,203 @@
         ],
         "type": "object"
       },
+      "ProductSnapshot": {
+        "additionalProperties": false,
+        "properties": {
+          "category_id": {
+            "type": "string"
+          },
+          "category_l1": {
+            "type": "string"
+          },
+          "category_l2": {
+            "type": "string"
+          },
+          "category_l3": {
+            "type": "string"
+          },
+          "category_name": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "discount_percentage": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "images": {
+            "items": {
+              "type": "string"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "is_available": {
+            "type": "boolean"
+          },
+          "is_cashback": {
+            "type": "boolean"
+          },
+          "is_cod": {
+            "type": "boolean"
+          },
+          "is_free_shipping": {
+            "type": "boolean"
+          },
+          "is_wholesale": {
+            "type": "boolean"
+          },
+          "marketplace": {
+            "type": "string"
+          },
+          "original_price": {
+            "format": "double",
+            "type": "number"
+          },
+          "price": {
+            "format": "double",
+            "type": "number"
+          },
+          "product_id": {
+            "type": "string"
+          },
+          "product_url": {
+            "type": "string"
+          },
+          "rating": {
+            "format": "float",
+            "type": "number"
+          },
+          "raw_data": {
+            "type": "string"
+          },
+          "review_1_star": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "review_2_star": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "review_3_star": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "review_4_star": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "review_5_star": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "review_count": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "review_with_description": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "review_with_photos": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "scrape_version": {
+            "type": "string"
+          },
+          "scraped_at": {
+            "format": "date-time",
+            "type": "string"
+          },
+          "seller_id": {
+            "type": "string"
+          },
+          "seller_is_official": {
+            "type": "boolean"
+          },
+          "seller_location": {
+            "type": "string"
+          },
+          "seller_name": {
+            "type": "string"
+          },
+          "seller_url": {
+            "type": "string"
+          },
+          "sold_count": {
+            "format": "int64",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "specifications": {
+            "type": "string"
+          },
+          "stock": {
+            "format": "int32",
+            "minimum": 0,
+            "type": "integer"
+          },
+          "thumbnail": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "product_id",
+          "marketplace",
+          "scraped_at",
+          "scrape_version",
+          "title",
+          "product_url",
+          "thumbnail",
+          "description",
+          "price",
+          "seller_id",
+          "seller_name",
+          "seller_location",
+          "seller_is_official",
+          "seller_url",
+          "category_id",
+          "category_name",
+          "category_l1",
+          "category_l2",
+          "category_l3",
+          "review_count",
+          "sold_count",
+          "stock",
+          "is_available",
+          "review_5_star",
+          "review_4_star",
+          "review_3_star",
+          "review_2_star",
+          "review_1_star",
+          "review_with_photos",
+          "review_with_description",
+          "is_cod",
+          "is_free_shipping",
+          "is_wholesale",
+          "is_cashback",
+          "images",
+          "specifications",
+          "raw_data"
+        ],
+        "type": "object"
+      },
       "ProductWatchlist": {
         "additionalProperties": false,
         "properties": {
@@ -2478,6 +2806,63 @@
           "first_name",
           "last_name",
           "password"
+        ],
+        "type": "object"
+      },
+      "RemoveProductAsUserProductData": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "examples": [
+              "Product removed as user product successfully"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "RemoveProductWatchlistData": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "examples": [
+              "Product removed from watchlist successfully"
+            ],
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      },
+      "ResponseAddToProductWatchlistData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseAddToProductWatchlistData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/AddToProductWatchlistData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
         ],
         "type": "object"
       },
@@ -2656,7 +3041,7 @@
             "type": "string"
           },
           "data": {
-            "$ref": "#/components/schemas/Product",
+            "$ref": "#/components/schemas/DetailProductData",
             "description": "Response data"
           },
           "meta": {
@@ -2979,6 +3364,72 @@
         ],
         "type": "object"
       },
+      "ResponsePaginationListUserProductData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponsePaginationListUserProductData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "description": "Response data",
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaPagination",
+            "description": "Response metadata with pagination"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponsePaginationListWatchlistProductData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponsePaginationListWatchlistProductData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "description": "Response data",
+            "items": {
+              "$ref": "#/components/schemas/Product"
+            },
+            "type": [
+              "array",
+              "null"
+            ]
+          },
+          "meta": {
+            "$ref": "#/components/schemas/MetaPagination",
+            "description": "Response metadata with pagination"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
       "ResponseProductCalculatePriorityData": {
         "additionalProperties": false,
         "properties": {
@@ -3101,6 +3552,60 @@
           },
           "data": {
             "$ref": "#/components/schemas/RefreshOutput",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseRemoveProductAsUserProductData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseRemoveProductAsUserProductData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/RemoveProductAsUserProductData",
+            "description": "Response data"
+          },
+          "meta": {
+            "$ref": "#/components/schemas/Meta",
+            "description": "Response metadata"
+          }
+        },
+        "required": [
+          "data",
+          "meta"
+        ],
+        "type": "object"
+      },
+      "ResponseRemoveProductWatchlistData": {
+        "additionalProperties": false,
+        "properties": {
+          "$schema": {
+            "description": "A URL to the JSON Schema for this object.",
+            "examples": [
+              "https://example.com/schemas/ResponseRemoveProductWatchlistData.json"
+            ],
+            "format": "uri",
+            "readOnly": true,
+            "type": "string"
+          },
+          "data": {
+            "$ref": "#/components/schemas/RemoveProductWatchlistData",
             "description": "Response data"
           },
           "meta": {
@@ -6029,6 +6534,143 @@
         ]
       }
     },
+    "/api/products/me": {
+      "get": {
+        "description": "Retrieve a list of products for the authenticated user",
+        "operationId": "get-/products/me",
+        "parameters": [
+          {
+            "description": "Page number for pagination",
+            "example": 1,
+            "explode": false,
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "description": "Page number for pagination",
+              "examples": [
+                1
+              ],
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of items per page",
+            "example": 10,
+            "explode": false,
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "description": "Number of items per page",
+              "examples": [
+                10
+              ],
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Query parameter for filtering",
+            "example": "search term",
+            "explode": false,
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "description": "Query parameter for filtering",
+              "examples": [
+                "search term"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponsePaginationListUserProductData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List User Products",
+        "tags": [
+          "Product"
+        ]
+      }
+    },
+    "/api/products/me/{product_id}": {
+      "delete": {
+        "description": "Remove a product from the user's own products",
+        "operationId": "delete-/products/me/{product_id}",
+        "parameters": [
+          {
+            "description": "ID of the product to remove as user product",
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "explode": false,
+            "in": "query",
+            "name": "product_id",
+            "required": true,
+            "schema": {
+              "description": "ID of the product to remove as user product",
+              "examples": [
+                "550e8400-e29b-41d4-a716-446655440000"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseRemoveProductAsUserProductData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Remove Product as User Product",
+        "tags": [
+          "Product"
+        ]
+      }
+    },
     "/api/products/overview": {
       "get": {
         "description": "Product Overview Card handler",
@@ -6061,6 +6703,134 @@
           }
         ],
         "summary": "Product Overview Card",
+        "tags": [
+          "Product"
+        ]
+      }
+    },
+    "/api/products/watchlist": {
+      "get": {
+        "description": "Retrieve a list of products for the authenticated user",
+        "operationId": "get-/products/watchlist",
+        "parameters": [
+          {
+            "description": "Page number for pagination",
+            "example": 1,
+            "explode": false,
+            "in": "query",
+            "name": "page",
+            "schema": {
+              "description": "Page number for pagination",
+              "examples": [
+                1
+              ],
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of items per page",
+            "example": 10,
+            "explode": false,
+            "in": "query",
+            "name": "limit",
+            "schema": {
+              "description": "Number of items per page",
+              "examples": [
+                10
+              ],
+              "format": "int64",
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Query parameter for filtering",
+            "example": "search term",
+            "explode": false,
+            "in": "query",
+            "name": "q",
+            "schema": {
+              "description": "Query parameter for filtering",
+              "examples": [
+                "search term"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponsePaginationListWatchlistProductData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "List User Products",
+        "tags": [
+          "Product"
+        ]
+      },
+      "post": {
+        "description": "Add a product to the user's watchlist",
+        "operationId": "post-/products/watchlist",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddToProductWatchlistPayload"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseAddToProductWatchlistData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Add Product to Watchlist",
         "tags": [
           "Product"
         ]
@@ -6486,6 +7256,60 @@
         "summary": "Update User Information",
         "tags": [
           "User"
+        ]
+      }
+    },
+    "/apiproducts/watchlist/{product_id}": {
+      "delete": {
+        "description": "Remove a product from the user's watchlist",
+        "operationId": "delete-products/watchlist/{product_id}",
+        "parameters": [
+          {
+            "description": "ID of the product to remove from watchlist",
+            "example": "550e8400-e29b-41d4-a716-446655440000",
+            "explode": false,
+            "in": "query",
+            "name": "product_id",
+            "required": true,
+            "schema": {
+              "description": "ID of the product to remove from watchlist",
+              "examples": [
+                "550e8400-e29b-41d4-a716-446655440000"
+              ],
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseRemoveProductWatchlistData"
+                }
+              }
+            },
+            "description": "OK"
+          },
+          "default": {
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorModel"
+                }
+              }
+            },
+            "description": "Error"
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "summary": "Remove Product from Watchlist",
+        "tags": [
+          "Product"
         ]
       }
     }

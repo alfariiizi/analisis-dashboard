@@ -3,8 +3,8 @@
 import { type InfiniteData, infiniteQueryOptions, queryOptions, type UseMutationOptions } from '@tanstack/react-query';
 
 import { client } from '../client.gen';
-import { deleteChatSessionsId, deleteDeleteone, deleteInternalCacheDelete, deleteProductsId, getChatSessions, getChatSessionsId, getChatSessionsSessionIdMessages, getEnumEvent, getGetall, getInternalHealth, getMe, getProducts, getProductsId, getProductsIdChart, getProductsOverview, getUnreadcount, type Options, postAdminLogin, postAuthLogin, postAuthRefresh, postAuthRegister, postChatSessions, postChatSessionsSessionIdMessages, postExtensionTokopedia, postInternalAuthVerifyToken, postInternalCacheGet, postInternalCacheSet, postInternalProductCalculatePriority, postInternalProductHashUrl, postInternalQueryExecuteSafe, postLogSystem, postMarkasreadall, postProducts, postShopeeanalyze, postTiktokshopanalyze, postUsersChangePassword, putProducts, putUsersInformation } from '../sdk.gen';
-import type { DeleteChatSessionsIdData, DeleteChatSessionsIdError, DeleteChatSessionsIdResponse, DeleteDeleteoneData, DeleteDeleteoneError, DeleteDeleteoneResponse, DeleteInternalCacheDeleteData, DeleteInternalCacheDeleteError, DeleteInternalCacheDeleteResponse, DeleteProductsIdData, DeleteProductsIdError, DeleteProductsIdResponse, GetChatSessionsData, GetChatSessionsError, GetChatSessionsIdData, GetChatSessionsIdError, GetChatSessionsIdResponse, GetChatSessionsResponse, GetChatSessionsSessionIdMessagesData, GetChatSessionsSessionIdMessagesError, GetChatSessionsSessionIdMessagesResponse, GetEnumEventData, GetEnumEventError, GetEnumEventResponse, GetGetallData, GetGetallError, GetGetallResponse, GetInternalHealthData, GetInternalHealthError, GetInternalHealthResponse, GetMeData, GetMeError, GetMeResponse, GetProductsData, GetProductsError, GetProductsIdChartData, GetProductsIdChartError, GetProductsIdChartResponse, GetProductsIdData, GetProductsIdError, GetProductsIdResponse, GetProductsOverviewData, GetProductsOverviewError, GetProductsOverviewResponse, GetProductsResponse, GetUnreadcountData, GetUnreadcountError, GetUnreadcountResponse, PostAdminLoginData, PostAdminLoginError, PostAdminLoginResponse, PostAuthLoginData, PostAuthLoginError, PostAuthLoginResponse, PostAuthRefreshData, PostAuthRefreshError, PostAuthRefreshResponse, PostAuthRegisterData, PostAuthRegisterError, PostAuthRegisterResponse, PostChatSessionsData, PostChatSessionsError, PostChatSessionsResponse, PostChatSessionsSessionIdMessagesData, PostChatSessionsSessionIdMessagesError, PostChatSessionsSessionIdMessagesResponse, PostExtensionTokopediaData, PostExtensionTokopediaError, PostExtensionTokopediaResponse, PostInternalAuthVerifyTokenData, PostInternalAuthVerifyTokenError, PostInternalAuthVerifyTokenResponse, PostInternalCacheGetData, PostInternalCacheGetError, PostInternalCacheGetResponse, PostInternalCacheSetData, PostInternalCacheSetError, PostInternalCacheSetResponse, PostInternalProductCalculatePriorityData, PostInternalProductCalculatePriorityError, PostInternalProductCalculatePriorityResponse, PostInternalProductHashUrlData, PostInternalProductHashUrlError, PostInternalProductHashUrlResponse, PostInternalQueryExecuteSafeData, PostInternalQueryExecuteSafeError, PostInternalQueryExecuteSafeResponse, PostLogSystemData, PostLogSystemError, PostLogSystemResponse, PostMarkasreadallData, PostMarkasreadallError, PostMarkasreadallResponse, PostProductsData, PostProductsError, PostProductsResponse, PostShopeeanalyzeData, PostShopeeanalyzeError, PostShopeeanalyzeResponse, PostTiktokshopanalyzeData, PostTiktokshopanalyzeError, PostTiktokshopanalyzeResponse, PostUsersChangePasswordData, PostUsersChangePasswordError, PostUsersChangePasswordResponse, PutProductsData, PutProductsError, PutProductsResponse, PutUsersInformationData, PutUsersInformationError, PutUsersInformationResponse } from '../types.gen';
+import { deleteChatSessionsId, deleteDeleteone, deleteInternalCacheDelete, deleteProductsId, deleteProductsMeProductId, deleteProductsWatchlistProductId, getChatSessions, getChatSessionsId, getChatSessionsSessionIdMessages, getEnumEvent, getGetall, getInternalHealth, getMe, getProducts, getProductsId, getProductsIdChart, getProductsMe, getProductsOverview, getProductsWatchlist, getUnreadcount, type Options, postAdminLogin, postAuthLogin, postAuthRefresh, postAuthRegister, postChatSessions, postChatSessionsSessionIdMessages, postExtensionTokopedia, postInternalAuthVerifyToken, postInternalCacheGet, postInternalCacheSet, postInternalProductCalculatePriority, postInternalProductHashUrl, postInternalQueryExecuteSafe, postLogSystem, postMarkasreadall, postProducts, postProductsWatchlist, postShopeeanalyze, postTiktokshopanalyze, postUsersChangePassword, putProducts, putUsersInformation } from '../sdk.gen';
+import type { DeleteChatSessionsIdData, DeleteChatSessionsIdError, DeleteChatSessionsIdResponse, DeleteDeleteoneData, DeleteDeleteoneError, DeleteDeleteoneResponse, DeleteInternalCacheDeleteData, DeleteInternalCacheDeleteError, DeleteInternalCacheDeleteResponse, DeleteProductsIdData, DeleteProductsIdError, DeleteProductsIdResponse, DeleteProductsMeProductIdData, DeleteProductsMeProductIdError, DeleteProductsMeProductIdResponse, DeleteProductsWatchlistProductIdData, DeleteProductsWatchlistProductIdError, DeleteProductsWatchlistProductIdResponse, GetChatSessionsData, GetChatSessionsError, GetChatSessionsIdData, GetChatSessionsIdError, GetChatSessionsIdResponse, GetChatSessionsResponse, GetChatSessionsSessionIdMessagesData, GetChatSessionsSessionIdMessagesError, GetChatSessionsSessionIdMessagesResponse, GetEnumEventData, GetEnumEventError, GetEnumEventResponse, GetGetallData, GetGetallError, GetGetallResponse, GetInternalHealthData, GetInternalHealthError, GetInternalHealthResponse, GetMeData, GetMeError, GetMeResponse, GetProductsData, GetProductsError, GetProductsIdChartData, GetProductsIdChartError, GetProductsIdChartResponse, GetProductsIdData, GetProductsIdError, GetProductsIdResponse, GetProductsMeData, GetProductsMeError, GetProductsMeResponse, GetProductsOverviewData, GetProductsOverviewError, GetProductsOverviewResponse, GetProductsResponse, GetProductsWatchlistData, GetProductsWatchlistError, GetProductsWatchlistResponse, GetUnreadcountData, GetUnreadcountError, GetUnreadcountResponse, PostAdminLoginData, PostAdminLoginError, PostAdminLoginResponse, PostAuthLoginData, PostAuthLoginError, PostAuthLoginResponse, PostAuthRefreshData, PostAuthRefreshError, PostAuthRefreshResponse, PostAuthRegisterData, PostAuthRegisterError, PostAuthRegisterResponse, PostChatSessionsData, PostChatSessionsError, PostChatSessionsResponse, PostChatSessionsSessionIdMessagesData, PostChatSessionsSessionIdMessagesError, PostChatSessionsSessionIdMessagesResponse, PostExtensionTokopediaData, PostExtensionTokopediaError, PostExtensionTokopediaResponse, PostInternalAuthVerifyTokenData, PostInternalAuthVerifyTokenError, PostInternalAuthVerifyTokenResponse, PostInternalCacheGetData, PostInternalCacheGetError, PostInternalCacheGetResponse, PostInternalCacheSetData, PostInternalCacheSetError, PostInternalCacheSetResponse, PostInternalProductCalculatePriorityData, PostInternalProductCalculatePriorityError, PostInternalProductCalculatePriorityResponse, PostInternalProductHashUrlData, PostInternalProductHashUrlError, PostInternalProductHashUrlResponse, PostInternalQueryExecuteSafeData, PostInternalQueryExecuteSafeError, PostInternalQueryExecuteSafeResponse, PostLogSystemData, PostLogSystemError, PostLogSystemResponse, PostMarkasreadallData, PostMarkasreadallError, PostMarkasreadallResponse, PostProductsData, PostProductsError, PostProductsResponse, PostProductsWatchlistData, PostProductsWatchlistError, PostProductsWatchlistResponse, PostShopeeanalyzeData, PostShopeeanalyzeError, PostShopeeanalyzeResponse, PostTiktokshopanalyzeData, PostTiktokshopanalyzeError, PostTiktokshopanalyzeResponse, PostUsersChangePasswordData, PostUsersChangePasswordError, PostUsersChangePasswordResponse, PutProductsData, PutProductsError, PutProductsResponse, PutUsersInformationData, PutUsersInformationError, PutUsersInformationResponse } from '../types.gen';
 
 /**
  * Login Admin
@@ -695,6 +695,74 @@ export const putProductsMutation = (options?: Partial<Options<PutProductsData>>)
     return mutationOptions;
 };
 
+export const getProductsMeQueryKey = (options?: Options<GetProductsMeData>) => createQueryKey('getProductsMe', options, false, ['Product']);
+
+/**
+ * List User Products
+ *
+ * Retrieve a list of products for the authenticated user
+ */
+export const getProductsMeOptions = (options?: Options<GetProductsMeData>) => queryOptions<GetProductsMeResponse, GetProductsMeError, GetProductsMeResponse, ReturnType<typeof getProductsMeQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getProductsMe({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getProductsMeQueryKey(options)
+});
+
+export const getProductsMeInfiniteQueryKey = (options?: Options<GetProductsMeData>): QueryKey<Options<GetProductsMeData>> => createQueryKey('getProductsMe', options, true, ['Product']);
+
+/**
+ * List User Products
+ *
+ * Retrieve a list of products for the authenticated user
+ */
+export const getProductsMeInfiniteOptions = (options?: Options<GetProductsMeData>) => infiniteQueryOptions<GetProductsMeResponse, GetProductsMeError, InfiniteData<GetProductsMeResponse>, QueryKey<Options<GetProductsMeData>>, number | Pick<QueryKey<Options<GetProductsMeData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+// @ts-ignore
+{
+    queryFn: async ({ pageParam, queryKey, signal }) => {
+        // @ts-ignore
+        const page: Pick<QueryKey<Options<GetProductsMeData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+            query: {
+                page: pageParam
+            }
+        };
+        const params = createInfiniteParams(queryKey, page);
+        const { data } = await getProductsMe({
+            ...options,
+            ...params,
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getProductsMeInfiniteQueryKey(options)
+});
+
+/**
+ * Remove Product as User Product
+ *
+ * Remove a product from the user's own products
+ */
+export const deleteProductsMeProductIdMutation = (options?: Partial<Options<DeleteProductsMeProductIdData>>): UseMutationOptions<DeleteProductsMeProductIdResponse, DeleteProductsMeProductIdError, Options<DeleteProductsMeProductIdData>> => {
+    const mutationOptions: UseMutationOptions<DeleteProductsMeProductIdResponse, DeleteProductsMeProductIdError, Options<DeleteProductsMeProductIdData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteProductsMeProductId({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
 export const getProductsOverviewQueryKey = (options?: Options<GetProductsOverviewData>) => createQueryKey('getProductsOverview', options, false, ['Product']);
 
 /**
@@ -714,6 +782,74 @@ export const getProductsOverviewOptions = (options?: Options<GetProductsOverview
     },
     queryKey: getProductsOverviewQueryKey(options)
 });
+
+export const getProductsWatchlistQueryKey = (options?: Options<GetProductsWatchlistData>) => createQueryKey('getProductsWatchlist', options, false, ['Product']);
+
+/**
+ * List User Products
+ *
+ * Retrieve a list of products for the authenticated user
+ */
+export const getProductsWatchlistOptions = (options?: Options<GetProductsWatchlistData>) => queryOptions<GetProductsWatchlistResponse, GetProductsWatchlistError, GetProductsWatchlistResponse, ReturnType<typeof getProductsWatchlistQueryKey>>({
+    queryFn: async ({ queryKey, signal }) => {
+        const { data } = await getProductsWatchlist({
+            ...options,
+            ...queryKey[0],
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getProductsWatchlistQueryKey(options)
+});
+
+export const getProductsWatchlistInfiniteQueryKey = (options?: Options<GetProductsWatchlistData>): QueryKey<Options<GetProductsWatchlistData>> => createQueryKey('getProductsWatchlist', options, true, ['Product']);
+
+/**
+ * List User Products
+ *
+ * Retrieve a list of products for the authenticated user
+ */
+export const getProductsWatchlistInfiniteOptions = (options?: Options<GetProductsWatchlistData>) => infiniteQueryOptions<GetProductsWatchlistResponse, GetProductsWatchlistError, InfiniteData<GetProductsWatchlistResponse>, QueryKey<Options<GetProductsWatchlistData>>, number | Pick<QueryKey<Options<GetProductsWatchlistData>>[0], 'body' | 'headers' | 'path' | 'query'>>(
+// @ts-ignore
+{
+    queryFn: async ({ pageParam, queryKey, signal }) => {
+        // @ts-ignore
+        const page: Pick<QueryKey<Options<GetProductsWatchlistData>>[0], 'body' | 'headers' | 'path' | 'query'> = typeof pageParam === 'object' ? pageParam : {
+            query: {
+                page: pageParam
+            }
+        };
+        const params = createInfiniteParams(queryKey, page);
+        const { data } = await getProductsWatchlist({
+            ...options,
+            ...params,
+            signal,
+            throwOnError: true
+        });
+        return data;
+    },
+    queryKey: getProductsWatchlistInfiniteQueryKey(options)
+});
+
+/**
+ * Add Product to Watchlist
+ *
+ * Add a product to the user's watchlist
+ */
+export const postProductsWatchlistMutation = (options?: Partial<Options<PostProductsWatchlistData>>): UseMutationOptions<PostProductsWatchlistResponse, PostProductsWatchlistError, Options<PostProductsWatchlistData>> => {
+    const mutationOptions: UseMutationOptions<PostProductsWatchlistResponse, PostProductsWatchlistError, Options<PostProductsWatchlistData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await postProductsWatchlist({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
 
 /**
  * Delete Product
@@ -860,6 +996,25 @@ export const putUsersInformationMutation = (options?: Partial<Options<PutUsersIn
     const mutationOptions: UseMutationOptions<PutUsersInformationResponse, PutUsersInformationError, Options<PutUsersInformationData>> = {
         mutationFn: async (fnOptions) => {
             const { data } = await putUsersInformation({
+                ...options,
+                ...fnOptions,
+                throwOnError: true
+            });
+            return data;
+        }
+    };
+    return mutationOptions;
+};
+
+/**
+ * Remove Product from Watchlist
+ *
+ * Remove a product from the user's watchlist
+ */
+export const deleteProductsWatchlistProductIdMutation = (options?: Partial<Options<DeleteProductsWatchlistProductIdData>>): UseMutationOptions<DeleteProductsWatchlistProductIdResponse, DeleteProductsWatchlistProductIdError, Options<DeleteProductsWatchlistProductIdData>> => {
+    const mutationOptions: UseMutationOptions<DeleteProductsWatchlistProductIdResponse, DeleteProductsWatchlistProductIdError, Options<DeleteProductsWatchlistProductIdData>> = {
+        mutationFn: async (fnOptions) => {
+            const { data } = await deleteProductsWatchlistProductId({
                 ...options,
                 ...fnOptions,
                 throwOnError: true

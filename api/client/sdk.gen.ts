@@ -2,7 +2,7 @@
 
 import type { Client, Options as Options2, TDataShape } from './client';
 import { client } from './client.gen';
-import type { DeleteChatSessionsIdData, DeleteChatSessionsIdErrors, DeleteChatSessionsIdResponses, DeleteDeleteoneData, DeleteDeleteoneErrors, DeleteDeleteoneResponses, DeleteInternalCacheDeleteData, DeleteInternalCacheDeleteErrors, DeleteInternalCacheDeleteResponses, DeleteProductsIdData, DeleteProductsIdErrors, DeleteProductsIdResponses, GetChatSessionsData, GetChatSessionsErrors, GetChatSessionsIdData, GetChatSessionsIdErrors, GetChatSessionsIdResponses, GetChatSessionsResponses, GetChatSessionsSessionIdMessagesData, GetChatSessionsSessionIdMessagesErrors, GetChatSessionsSessionIdMessagesResponses, GetEnumEventData, GetEnumEventErrors, GetEnumEventResponses, GetGetallData, GetGetallErrors, GetGetallResponses, GetInternalHealthData, GetInternalHealthErrors, GetInternalHealthResponses, GetMeData, GetMeErrors, GetMeResponses, GetProductsData, GetProductsErrors, GetProductsIdChartData, GetProductsIdChartErrors, GetProductsIdChartResponses, GetProductsIdData, GetProductsIdErrors, GetProductsIdResponses, GetProductsOverviewData, GetProductsOverviewErrors, GetProductsOverviewResponses, GetProductsResponses, GetUnreadcountData, GetUnreadcountErrors, GetUnreadcountResponses, PostAdminLoginData, PostAdminLoginErrors, PostAdminLoginResponses, PostAuthLoginData, PostAuthLoginErrors, PostAuthLoginResponses, PostAuthRefreshData, PostAuthRefreshErrors, PostAuthRefreshResponses, PostAuthRegisterData, PostAuthRegisterErrors, PostAuthRegisterResponses, PostChatSessionsData, PostChatSessionsErrors, PostChatSessionsResponses, PostChatSessionsSessionIdMessagesData, PostChatSessionsSessionIdMessagesErrors, PostChatSessionsSessionIdMessagesResponses, PostExtensionTokopediaData, PostExtensionTokopediaErrors, PostExtensionTokopediaResponses, PostInternalAuthVerifyTokenData, PostInternalAuthVerifyTokenErrors, PostInternalAuthVerifyTokenResponses, PostInternalCacheGetData, PostInternalCacheGetErrors, PostInternalCacheGetResponses, PostInternalCacheSetData, PostInternalCacheSetErrors, PostInternalCacheSetResponses, PostInternalProductCalculatePriorityData, PostInternalProductCalculatePriorityErrors, PostInternalProductCalculatePriorityResponses, PostInternalProductHashUrlData, PostInternalProductHashUrlErrors, PostInternalProductHashUrlResponses, PostInternalQueryExecuteSafeData, PostInternalQueryExecuteSafeErrors, PostInternalQueryExecuteSafeResponses, PostLogSystemData, PostLogSystemErrors, PostLogSystemResponses, PostMarkasreadallData, PostMarkasreadallErrors, PostMarkasreadallResponses, PostProductsData, PostProductsErrors, PostProductsResponses, PostShopeeanalyzeData, PostShopeeanalyzeErrors, PostShopeeanalyzeResponses, PostTiktokshopanalyzeData, PostTiktokshopanalyzeErrors, PostTiktokshopanalyzeResponses, PostUsersChangePasswordData, PostUsersChangePasswordErrors, PostUsersChangePasswordResponses, PutProductsData, PutProductsErrors, PutProductsResponses, PutUsersInformationData, PutUsersInformationErrors, PutUsersInformationResponses } from './types.gen';
+import type { DeleteChatSessionsIdData, DeleteChatSessionsIdErrors, DeleteChatSessionsIdResponses, DeleteDeleteoneData, DeleteDeleteoneErrors, DeleteDeleteoneResponses, DeleteInternalCacheDeleteData, DeleteInternalCacheDeleteErrors, DeleteInternalCacheDeleteResponses, DeleteProductsIdData, DeleteProductsIdErrors, DeleteProductsIdResponses, DeleteProductsMeProductIdData, DeleteProductsMeProductIdErrors, DeleteProductsMeProductIdResponses, DeleteProductsWatchlistProductIdData, DeleteProductsWatchlistProductIdErrors, DeleteProductsWatchlistProductIdResponses, GetChatSessionsData, GetChatSessionsErrors, GetChatSessionsIdData, GetChatSessionsIdErrors, GetChatSessionsIdResponses, GetChatSessionsResponses, GetChatSessionsSessionIdMessagesData, GetChatSessionsSessionIdMessagesErrors, GetChatSessionsSessionIdMessagesResponses, GetEnumEventData, GetEnumEventErrors, GetEnumEventResponses, GetGetallData, GetGetallErrors, GetGetallResponses, GetInternalHealthData, GetInternalHealthErrors, GetInternalHealthResponses, GetMeData, GetMeErrors, GetMeResponses, GetProductsData, GetProductsErrors, GetProductsIdChartData, GetProductsIdChartErrors, GetProductsIdChartResponses, GetProductsIdData, GetProductsIdErrors, GetProductsIdResponses, GetProductsMeData, GetProductsMeErrors, GetProductsMeResponses, GetProductsOverviewData, GetProductsOverviewErrors, GetProductsOverviewResponses, GetProductsResponses, GetProductsWatchlistData, GetProductsWatchlistErrors, GetProductsWatchlistResponses, GetUnreadcountData, GetUnreadcountErrors, GetUnreadcountResponses, PostAdminLoginData, PostAdminLoginErrors, PostAdminLoginResponses, PostAuthLoginData, PostAuthLoginErrors, PostAuthLoginResponses, PostAuthRefreshData, PostAuthRefreshErrors, PostAuthRefreshResponses, PostAuthRegisterData, PostAuthRegisterErrors, PostAuthRegisterResponses, PostChatSessionsData, PostChatSessionsErrors, PostChatSessionsResponses, PostChatSessionsSessionIdMessagesData, PostChatSessionsSessionIdMessagesErrors, PostChatSessionsSessionIdMessagesResponses, PostExtensionTokopediaData, PostExtensionTokopediaErrors, PostExtensionTokopediaResponses, PostInternalAuthVerifyTokenData, PostInternalAuthVerifyTokenErrors, PostInternalAuthVerifyTokenResponses, PostInternalCacheGetData, PostInternalCacheGetErrors, PostInternalCacheGetResponses, PostInternalCacheSetData, PostInternalCacheSetErrors, PostInternalCacheSetResponses, PostInternalProductCalculatePriorityData, PostInternalProductCalculatePriorityErrors, PostInternalProductCalculatePriorityResponses, PostInternalProductHashUrlData, PostInternalProductHashUrlErrors, PostInternalProductHashUrlResponses, PostInternalQueryExecuteSafeData, PostInternalQueryExecuteSafeErrors, PostInternalQueryExecuteSafeResponses, PostLogSystemData, PostLogSystemErrors, PostLogSystemResponses, PostMarkasreadallData, PostMarkasreadallErrors, PostMarkasreadallResponses, PostProductsData, PostProductsErrors, PostProductsResponses, PostProductsWatchlistData, PostProductsWatchlistErrors, PostProductsWatchlistResponses, PostShopeeanalyzeData, PostShopeeanalyzeErrors, PostShopeeanalyzeResponses, PostTiktokshopanalyzeData, PostTiktokshopanalyzeErrors, PostTiktokshopanalyzeResponses, PostUsersChangePasswordData, PostUsersChangePasswordErrors, PostUsersChangePasswordResponses, PutProductsData, PutProductsErrors, PutProductsResponses, PutUsersInformationData, PutUsersInformationErrors, PutUsersInformationResponses } from './types.gen';
 
 export type Options<TData extends TDataShape = TDataShape, ThrowOnError extends boolean = boolean> = Options2<TData, ThrowOnError> & {
     /**
@@ -370,6 +370,28 @@ export const putProducts = <ThrowOnError extends boolean = false>(options: Optio
 });
 
 /**
+ * List User Products
+ *
+ * Retrieve a list of products for the authenticated user
+ */
+export const getProductsMe = <ThrowOnError extends boolean = false>(options?: Options<GetProductsMeData, ThrowOnError>) => (options?.client ?? client).get<GetProductsMeResponses, GetProductsMeErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/products/me',
+    ...options
+});
+
+/**
+ * Remove Product as User Product
+ *
+ * Remove a product from the user's own products
+ */
+export const deleteProductsMeProductId = <ThrowOnError extends boolean = false>(options: Options<DeleteProductsMeProductIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteProductsMeProductIdResponses, DeleteProductsMeProductIdErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/products/me/{product_id}',
+    ...options
+});
+
+/**
  * Product Overview Card
  *
  * Product Overview Card handler
@@ -378,6 +400,32 @@ export const getProductsOverview = <ThrowOnError extends boolean = false>(option
     security: [{ scheme: 'bearer', type: 'http' }],
     url: '/api/products/overview',
     ...options
+});
+
+/**
+ * List User Products
+ *
+ * Retrieve a list of products for the authenticated user
+ */
+export const getProductsWatchlist = <ThrowOnError extends boolean = false>(options?: Options<GetProductsWatchlistData, ThrowOnError>) => (options?.client ?? client).get<GetProductsWatchlistResponses, GetProductsWatchlistErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/products/watchlist',
+    ...options
+});
+
+/**
+ * Add Product to Watchlist
+ *
+ * Add a product to the user's watchlist
+ */
+export const postProductsWatchlist = <ThrowOnError extends boolean = false>(options: Options<PostProductsWatchlistData, ThrowOnError>) => (options.client ?? client).post<PostProductsWatchlistResponses, PostProductsWatchlistErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/api/products/watchlist',
+    ...options,
+    headers: {
+        'Content-Type': 'application/json',
+        ...options.headers
+    }
 });
 
 /**
@@ -476,4 +524,15 @@ export const putUsersInformation = <ThrowOnError extends boolean = false>(option
         'Content-Type': 'application/json',
         ...options.headers
     }
+});
+
+/**
+ * Remove Product from Watchlist
+ *
+ * Remove a product from the user's watchlist
+ */
+export const deleteProductsWatchlistProductId = <ThrowOnError extends boolean = false>(options: Options<DeleteProductsWatchlistProductIdData, ThrowOnError>) => (options.client ?? client).delete<DeleteProductsWatchlistProductIdResponses, DeleteProductsWatchlistProductIdErrors, ThrowOnError>({
+    security: [{ scheme: 'bearer', type: 'http' }],
+    url: '/apiproducts/watchlist/{product_id}',
+    ...options
 });

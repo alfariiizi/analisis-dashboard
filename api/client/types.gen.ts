@@ -62,12 +62,26 @@ export type AbuseFlagEdges = {
     user?: User;
 };
 
+export type AddToProductWatchlistData = {
+    message: string;
+};
+
+export type AddToProductWatchlistPayload = {
+    /**
+     * A URL to the JSON Schema for this object.
+     */
+    readonly $schema?: string;
+    /**
+     * ID of the product to add to watchlist
+     */
+    product_id: string;
+};
+
 export type Admin = {
     created_at?: string;
     created_by?: string;
     edges: AdminEdges;
     email?: string;
-    email_verified?: boolean;
     first_name?: string;
     id?: string;
     is_active?: boolean;
@@ -387,6 +401,13 @@ export type CreditPurchaseEdges = {
 
 export type DeleteOneData = {
     message: string;
+};
+
+export type DetailProductData = {
+    analytics?: ProductAnalytics;
+    historical_snapshots?: Array<ProductSnapshot> | null;
+    latest_snapshot?: ProductSnapshot;
+    product: Product;
 };
 
 export type ErrorDetail = {
@@ -768,6 +789,23 @@ export type Product = {
     weight_grams?: number;
 };
 
+export type ProductAnalytics = {
+    average_price?: number;
+    average_stock_level?: number;
+    currently_in_stock: boolean;
+    data_source_count: number;
+    estimated_sales?: number;
+    first_scraped_at?: string;
+    highest_price?: number;
+    last_scraped_at?: string;
+    lowest_price?: number;
+    price_change_percentage?: number;
+    review_growth: number;
+    stock_changes: number;
+    total_snapshots: number;
+    went_out_of_stock: boolean;
+};
+
 export type ProductCalculatePriorityData = {
     /**
      * Suggested next scrape time
@@ -848,6 +886,49 @@ export type ProductOverviewCardData = {
     total_products: number;
 };
 
+export type ProductSnapshot = {
+    category_id: string;
+    category_l1: string;
+    category_l2: string;
+    category_l3: string;
+    category_name: string;
+    description: string;
+    discount_percentage?: number;
+    images: Array<string> | null;
+    is_available: boolean;
+    is_cashback: boolean;
+    is_cod: boolean;
+    is_free_shipping: boolean;
+    is_wholesale: boolean;
+    marketplace: string;
+    original_price?: number;
+    price: number;
+    product_id: string;
+    product_url: string;
+    rating?: number;
+    raw_data: string;
+    review_1_star: number;
+    review_2_star: number;
+    review_3_star: number;
+    review_4_star: number;
+    review_5_star: number;
+    review_count: number;
+    review_with_description: number;
+    review_with_photos: number;
+    scrape_version: string;
+    scraped_at: string;
+    seller_id: string;
+    seller_is_official: boolean;
+    seller_location: string;
+    seller_name: string;
+    seller_url: string;
+    sold_count: number;
+    specifications: string;
+    stock: number;
+    thumbnail: string;
+    title: string;
+};
+
 export type ProductWatchlist = {
     added_at?: string;
     edges: ProductWatchlistEdges;
@@ -902,6 +983,29 @@ export type RegisterPayload = {
      * password of user
      */
     password: string;
+};
+
+export type RemoveProductAsUserProductData = {
+    message: string;
+};
+
+export type RemoveProductWatchlistData = {
+    message: string;
+};
+
+export type ResponseAddToProductWatchlistData = {
+    /**
+     * A URL to the JSON Schema for this object.
+     */
+    readonly $schema?: string;
+    /**
+     * Response data
+     */
+    data: AddToProductWatchlistData;
+    /**
+     * Response metadata
+     */
+    meta: Meta;
 };
 
 export type ResponseAuthRegisterData = {
@@ -1002,7 +1106,7 @@ export type ResponseDetailProductData = {
     /**
      * Response data
      */
-    data: Product;
+    data: DetailProductData;
     /**
      * Response metadata
      */
@@ -1174,6 +1278,36 @@ export type ResponsePaginationListProductData = {
     meta: MetaPagination;
 };
 
+export type ResponsePaginationListUserProductData = {
+    /**
+     * A URL to the JSON Schema for this object.
+     */
+    readonly $schema?: string;
+    /**
+     * Response data
+     */
+    data: Array<Product> | null;
+    /**
+     * Response metadata with pagination
+     */
+    meta: MetaPagination;
+};
+
+export type ResponsePaginationListWatchlistProductData = {
+    /**
+     * A URL to the JSON Schema for this object.
+     */
+    readonly $schema?: string;
+    /**
+     * Response data
+     */
+    data: Array<Product> | null;
+    /**
+     * Response metadata with pagination
+     */
+    meta: MetaPagination;
+};
+
 export type ResponseProductCalculatePriorityData = {
     /**
      * A URL to the JSON Schema for this object.
@@ -1243,6 +1377,36 @@ export type ResponseRefreshData = {
      * Response data
      */
     data: RefreshOutput;
+    /**
+     * Response metadata
+     */
+    meta: Meta;
+};
+
+export type ResponseRemoveProductAsUserProductData = {
+    /**
+     * A URL to the JSON Schema for this object.
+     */
+    readonly $schema?: string;
+    /**
+     * Response data
+     */
+    data: RemoveProductAsUserProductData;
+    /**
+     * Response metadata
+     */
+    meta: Meta;
+};
+
+export type ResponseRemoveProductWatchlistData = {
+    /**
+     * A URL to the JSON Schema for this object.
+     */
+    readonly $schema?: string;
+    /**
+     * Response data
+     */
+    data: RemoveProductWatchlistData;
     /**
      * Response metadata
      */
@@ -1758,6 +1922,13 @@ export type VerifyTokenPayload = {
     token: string;
 };
 
+export type AddToProductWatchlistPayloadWritable = {
+    /**
+     * ID of the product to add to watchlist
+     */
+    product_id: string;
+};
+
 export type CacheDeletePayloadWritable = {
     /**
      * Cache key to delete
@@ -1990,6 +2161,17 @@ export type RegisterPayloadWritable = {
     password: string;
 };
 
+export type ResponseAddToProductWatchlistDataWritable = {
+    /**
+     * Response data
+     */
+    data: AddToProductWatchlistData;
+    /**
+     * Response metadata
+     */
+    meta: Meta;
+};
+
 export type ResponseAuthRegisterDataWritable = {
     /**
      * Response data
@@ -2060,7 +2242,7 @@ export type ResponseDetailProductDataWritable = {
     /**
      * Response data
      */
-    data: Product;
+    data: DetailProductData;
     /**
      * Response metadata
      */
@@ -2188,6 +2370,28 @@ export type ResponsePaginationListProductDataWritable = {
     meta: MetaPagination;
 };
 
+export type ResponsePaginationListUserProductDataWritable = {
+    /**
+     * Response data
+     */
+    data: Array<Product> | null;
+    /**
+     * Response metadata with pagination
+     */
+    meta: MetaPagination;
+};
+
+export type ResponsePaginationListWatchlistProductDataWritable = {
+    /**
+     * Response data
+     */
+    data: Array<Product> | null;
+    /**
+     * Response metadata with pagination
+     */
+    meta: MetaPagination;
+};
+
 export type ResponseProductCalculatePriorityDataWritable = {
     /**
      * Response data
@@ -2237,6 +2441,28 @@ export type ResponseRefreshDataWritable = {
      * Response data
      */
     data: RefreshOutput;
+    /**
+     * Response metadata
+     */
+    meta: Meta;
+};
+
+export type ResponseRemoveProductAsUserProductDataWritable = {
+    /**
+     * Response data
+     */
+    data: RemoveProductAsUserProductData;
+    /**
+     * Response metadata
+     */
+    meta: Meta;
+};
+
+export type ResponseRemoveProductWatchlistDataWritable = {
+    /**
+     * Response data
+     */
+    data: RemoveProductWatchlistData;
     /**
      * Response metadata
      */
@@ -3194,6 +3420,74 @@ export type PutProductsResponses = {
 
 export type PutProductsResponse = PutProductsResponses[keyof PutProductsResponses];
 
+export type GetProductsMeData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Page number for pagination
+         */
+        page?: number;
+        /**
+         * Number of items per page
+         */
+        limit?: number;
+        /**
+         * Query parameter for filtering
+         */
+        q?: string;
+    };
+    url: '/api/products/me';
+};
+
+export type GetProductsMeErrors = {
+    /**
+     * Error
+     */
+    default: ErrorModel;
+};
+
+export type GetProductsMeError = GetProductsMeErrors[keyof GetProductsMeErrors];
+
+export type GetProductsMeResponses = {
+    /**
+     * OK
+     */
+    200: ResponsePaginationListUserProductData;
+};
+
+export type GetProductsMeResponse = GetProductsMeResponses[keyof GetProductsMeResponses];
+
+export type DeleteProductsMeProductIdData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * ID of the product to remove as user product
+         */
+        product_id: string;
+    };
+    url: '/api/products/me/{product_id}';
+};
+
+export type DeleteProductsMeProductIdErrors = {
+    /**
+     * Error
+     */
+    default: ErrorModel;
+};
+
+export type DeleteProductsMeProductIdError = DeleteProductsMeProductIdErrors[keyof DeleteProductsMeProductIdErrors];
+
+export type DeleteProductsMeProductIdResponses = {
+    /**
+     * OK
+     */
+    200: ResponseRemoveProductAsUserProductData;
+};
+
+export type DeleteProductsMeProductIdResponse = DeleteProductsMeProductIdResponses[keyof DeleteProductsMeProductIdResponses];
+
 export type GetProductsOverviewData = {
     body?: never;
     path?: never;
@@ -3218,6 +3512,69 @@ export type GetProductsOverviewResponses = {
 };
 
 export type GetProductsOverviewResponse = GetProductsOverviewResponses[keyof GetProductsOverviewResponses];
+
+export type GetProductsWatchlistData = {
+    body?: never;
+    path?: never;
+    query?: {
+        /**
+         * Page number for pagination
+         */
+        page?: number;
+        /**
+         * Number of items per page
+         */
+        limit?: number;
+        /**
+         * Query parameter for filtering
+         */
+        q?: string;
+    };
+    url: '/api/products/watchlist';
+};
+
+export type GetProductsWatchlistErrors = {
+    /**
+     * Error
+     */
+    default: ErrorModel;
+};
+
+export type GetProductsWatchlistError = GetProductsWatchlistErrors[keyof GetProductsWatchlistErrors];
+
+export type GetProductsWatchlistResponses = {
+    /**
+     * OK
+     */
+    200: ResponsePaginationListWatchlistProductData;
+};
+
+export type GetProductsWatchlistResponse = GetProductsWatchlistResponses[keyof GetProductsWatchlistResponses];
+
+export type PostProductsWatchlistData = {
+    body: AddToProductWatchlistPayloadWritable;
+    path?: never;
+    query?: never;
+    url: '/api/products/watchlist';
+};
+
+export type PostProductsWatchlistErrors = {
+    /**
+     * Error
+     */
+    default: ErrorModel;
+};
+
+export type PostProductsWatchlistError = PostProductsWatchlistErrors[keyof PostProductsWatchlistErrors];
+
+export type PostProductsWatchlistResponses = {
+    /**
+     * OK
+     */
+    200: ResponseAddToProductWatchlistData;
+};
+
+export type PostProductsWatchlistResponse = PostProductsWatchlistResponses[keyof PostProductsWatchlistResponses];
 
 export type DeleteProductsIdData = {
     body?: never;
@@ -3448,3 +3805,33 @@ export type PutUsersInformationResponses = {
 };
 
 export type PutUsersInformationResponse = PutUsersInformationResponses[keyof PutUsersInformationResponses];
+
+export type DeleteProductsWatchlistProductIdData = {
+    body?: never;
+    path?: never;
+    query: {
+        /**
+         * ID of the product to remove from watchlist
+         */
+        product_id: string;
+    };
+    url: '/apiproducts/watchlist/{product_id}';
+};
+
+export type DeleteProductsWatchlistProductIdErrors = {
+    /**
+     * Error
+     */
+    default: ErrorModel;
+};
+
+export type DeleteProductsWatchlistProductIdError = DeleteProductsWatchlistProductIdErrors[keyof DeleteProductsWatchlistProductIdErrors];
+
+export type DeleteProductsWatchlistProductIdResponses = {
+    /**
+     * OK
+     */
+    200: ResponseRemoveProductWatchlistData;
+};
+
+export type DeleteProductsWatchlistProductIdResponse = DeleteProductsWatchlistProductIdResponses[keyof DeleteProductsWatchlistProductIdResponses];

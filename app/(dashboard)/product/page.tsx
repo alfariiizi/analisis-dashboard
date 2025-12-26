@@ -1,9 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
 
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import { PlusCircleIcon } from "lucide-react";
 import ProductsDataTable from "./data-table";
 import { generateMeta } from "@/lib/generate-meta";
 import PageContainer from "@/components/page-container";
@@ -13,19 +10,18 @@ export async function generateMetadata() {
   return generateMeta({
     title: "Daftar Produk",
     description: "Kelola dan pantau daftar produk dengan mudah melalui halaman ini.",
-    canonical: "/product"
+    canonical: "/products"
   });
 }
 
-async function getProducts() {
-  const data = await fs.readFile(path.join(process.cwd(), "app/(dashboard)/product/data.json"));
-
-  return JSON.parse(data.toString());
-}
+// async function getProducts() {
+//   const data = await fs.readFile(path.join(process.cwd(), "app/(dashboard)/product/data.json"));
+//
+//   return JSON.parse(data.toString());
+// }
 
 export default async function Page() {
-  const products = await getProducts();
-
+  // const products = await getProducts();
   return (
     <PageContainer className="space-y-6">
       <div className="flex items-center justify-between">
@@ -36,34 +32,9 @@ export default async function Page() {
           imageSrc={`/dashboard/eyeglass.jpg`}
           imageBlendMode="hard-light"
         />
-        <div className="flex items-center gap-6 divide-x">
-          {/* <Breadcrumb className="hidden ps-6 lg:block"> */}
-          {/*   <BreadcrumbList> */}
-          {/*     <BreadcrumbItem> */}
-          {/*       <BreadcrumbLink href="/dashboard/default">Dashboard</BreadcrumbLink> */}
-          {/*     </BreadcrumbItem> */}
-          {/*     <BreadcrumbSeparator> */}
-          {/*       <ChevronRight /> */}
-          {/*     </BreadcrumbSeparator> */}
-          {/*     <BreadcrumbItem> */}
-          {/*       <BreadcrumbLink href="/dashboard/pages/orders">Pages</BreadcrumbLink> */}
-          {/*     </BreadcrumbItem> */}
-          {/*     <BreadcrumbSeparator> */}
-          {/*       <ChevronRight /> */}
-          {/*     </BreadcrumbSeparator> */}
-          {/*     <BreadcrumbItem> */}
-          {/*       <BreadcrumbPage>Orders</BreadcrumbPage> */}
-          {/*     </BreadcrumbItem> */}
-          {/*   </BreadcrumbList> */}
-          {/* </Breadcrumb> */}
-        </div>
-        {/* <Button asChild> */}
-        {/*   <Link href="#"> */}
-        {/*     <PlusCircleIcon className="me-2" /> Create Order */}
-        {/*   </Link> */}
-        {/* </Button> */}
+        <div className="flex items-center gap-6 divide-x"></div>
       </div>
-      <ProductsDataTable data={products} />
+      <ProductsDataTable />
     </PageContainer>
   );
 }

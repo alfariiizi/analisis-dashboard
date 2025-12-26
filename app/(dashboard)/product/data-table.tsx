@@ -56,6 +56,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import Image from "next/image";
 import Link from "next/link";
 import { ShopeeImage, TokopediaImage, BlibliImage, TikTokShopImage } from "@/assets/image";
+import { api } from "@/api";
+import { useQuery } from "@tanstack/react-query";
+import { useDebounceState } from "@/hooks/use-debounce-state";
 
 export type Product = {
   id: string;
@@ -69,10 +72,10 @@ export type Product = {
   sold: number;
   stock: number;
   category: string;
-  condition: string;
+  // condition: string;
   shop: Shop;
   discount: number;
-  shipping: string;
+  // shipping: string;
 };
 
 export type Shop = {
@@ -82,27 +85,27 @@ export type Shop = {
 };
 
 export const columns: ColumnDef<Product>[] = [
-  {
-    id: "select",
-    header: ({ table }) => (
-      <Checkbox
-        checked={
-          table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")
-        }
-        onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
-        aria-label="Select all"
-      />
-    ),
-    cell: ({ row }) => (
-      <Checkbox
-        checked={row.getIsSelected()}
-        onCheckedChange={(value) => row.toggleSelected(!!value)}
-        aria-label="Select row"
-      />
-    ),
-    enableSorting: false,
-    enableHiding: false
-  },
+  // {
+  //   id: "select",
+  //   header: ({ table }) => (
+  //     <Checkbox
+  //       checked={
+  //         table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && "indeterminate")
+  //       }
+  //       onCheckedChange={(value) => table.toggleAllPageRowsSelected(!!value)}
+  //       aria-label="Select all"
+  //     />
+  //   ),
+  //   cell: ({ row }) => (
+  //     <Checkbox
+  //       checked={row.getIsSelected()}
+  //       onCheckedChange={(value) => row.toggleSelected(!!value)}
+  //       aria-label="Select row"
+  //     />
+  //   ),
+  //   enableSorting: false,
+  //   enableHiding: false
+  // },
   {
     accessorKey: "product_name",
     header: "Nama Produk",
@@ -125,7 +128,12 @@ export const columns: ColumnDef<Product>[] = [
             unoptimized
           />
           <div className="space-y-1">
-            <div className="font-medium">{row.getValue("product_name")}</div>
+            <div
+              title={row.getValue("product_name")}
+              className="line-clamp-2 font-medium text-wrap"
+            >
+              {row.getValue("product_name")}
+            </div>
             <div className="text-muted-foreground flex items-center gap-2 text-xs">
               <div className="flex aspect-square items-center gap-2">
                 <Image
@@ -142,7 +150,7 @@ export const columns: ColumnDef<Product>[] = [
               </span>
               <span className="flex items-center gap-1">
                 <TrendingUp className="h-3 w-3" />
-                Terjual {row.original.sold.toLocaleString("id-ID")}
+                Terjual ~{row.original.sold.toLocaleString("id-ID")}
               </span>
             </div>
           </div>
@@ -155,12 +163,12 @@ export const columns: ColumnDef<Product>[] = [
     header: ({ column }) => {
       return (
         <Button
-          className="-ml-3"
+          className=""
           variant="ghost"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Harga
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          <ArrowUpDown className="h-4 w-4" />
         </Button>
       );
     },
@@ -199,10 +207,10 @@ export const columns: ColumnDef<Product>[] = [
             <MapPin className="h-3 w-3" />
             {shop.location}
           </div>
-          <div className="text-muted-foreground flex items-center gap-1 text-xs">
-            <Star className="h-3 w-3 fill-yellow-500 text-yellow-500" />
-            {shop.rating}
-          </div>
+          {/* <div className="text-muted-foreground flex items-center gap-1 text-xs"> */}
+          {/*   <Star className="h-3 w-3 fill-yellow-500 text-yellow-500" /> */}
+          {/*   {shop.rating} */}
+          {/* </div> */}
         </div>
       );
     }
@@ -235,15 +243,15 @@ export const columns: ColumnDef<Product>[] = [
       <div className="capitalize">{row.getValue("category")?.toString().replace(/-/g, " ")}</div>
     )
   },
-  {
-    accessorKey: "shipping",
-    header: "Pengiriman",
-    cell: ({ row }) => (
-      <Badge variant="success" className="whitespace-nowrap">
-        {row.getValue("shipping")}
-      </Badge>
-    )
-  },
+  // {
+  //   accessorKey: "shipping",
+  //   header: "Pengiriman",
+  //   cell: ({ row }) => (
+  //     <Badge variant="success" className="whitespace-nowrap">
+  //       {row.getValue("shipping")}
+  //     </Badge>
+  //   )
+  // },
   {
     id: "actions",
     enableHiding: false,
@@ -273,14 +281,53 @@ export const columns: ColumnDef<Product>[] = [
   }
 ];
 
-export default function ProductsDataTable({ data }: { data: Product[] }) {
+export default function ProductsDataTable() {
+  const [page, setPage] = React.useState(1);
+  const [perPage] = React.useState(10);
+  const [search, setSearch, debouncedSearch] = useDebounceState("", 500);
   const [sorting, setSorting] = React.useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = React.useState<VisibilityState>({});
-  const [rowSelection, setRowSelection] = React.useState({});
+  // const [rowSelection, setRowSelection] = React.useState({});
+
+  const { data } = useQuery({
+    ...api.rq.getProductsOptions({
+      query: {
+        page,
+        limit: perPage,
+        q: debouncedSearch
+      }
+    }),
+    select(res) {
+      const data = res.data?.map((item) => ({
+        id: item.id,
+        category: item.category ?? "",
+        discount: item.discount_percentage ?? 0,
+        image: item.thumbnail ?? "",
+        product_name: item.title ?? "",
+        marketplace: item.source as "tokopedia" | "shopee" | "tiktok" | "blibli",
+        marketplace_url: getShopURL(item.source ?? "", item.source_url ?? ""),
+        price: item.price_current ?? 0,
+        original_price: item.price_original ?? 0,
+        rating: item.product_rating ?? 0,
+        sold: item.sold_count ?? 0,
+        stock: item.stock ?? 0,
+        shop: {
+          name: item.shop_name ?? "",
+          location: item.shop_location ?? "",
+          rating: item.shop_rating ?? 0
+        }
+      })) as Product[];
+
+      return {
+        data,
+        pagination: res.meta.pagination
+      };
+    }
+  });
 
   const table = useReactTable({
-    data,
+    data: data?.data ?? [],
     columns,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
@@ -289,52 +336,58 @@ export default function ProductsDataTable({ data }: { data: Product[] }) {
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     onColumnVisibilityChange: setColumnVisibility,
-    onRowSelectionChange: setRowSelection,
+    // onRowSelectionChange: setRowSelection,
+    manualPagination: true,
+    pageCount: data?.pagination?.total_pages ?? 1,
     state: {
       sorting,
       columnFilters,
       columnVisibility,
-      rowSelection
+      // rowSelection,
+      pagination: {
+        pageIndex: page - 1,
+        pageSize: perPage
+      }
     }
   });
 
-  const stockStatuses = [
-    {
-      value: "high",
-      label: "Stok Banyak (>100)"
-    },
-    {
-      value: "medium",
-      label: "Stok Sedang (50-100)"
-    },
-    {
-      value: "low",
-      label: "Stok Sedikit (<50)"
-    }
-  ];
-
-  const categories = [
-    {
-      value: "fashion",
-      label: "Fashion"
-    },
-    {
-      value: "elektronik",
-      label: "Elektronik"
-    },
-    {
-      value: "kecantikan",
-      label: "Kecantikan"
-    },
-    {
-      value: "makanan-minuman",
-      label: "Makanan & Minuman"
-    },
-    {
-      value: "alat-tulis",
-      label: "Alat Tulis"
-    }
-  ];
+  // const stockStatuses = [
+  //   {
+  //     value: "high",
+  //     label: "Stok Banyak (>100)"
+  //   },
+  //   {
+  //     value: "medium",
+  //     label: "Stok Sedang (50-100)"
+  //   },
+  //   {
+  //     value: "low",
+  //     label: "Stok Sedikit (<50)"
+  //   }
+  // ];
+  //
+  // const categories = [
+  //   {
+  //     value: "fashion",
+  //     label: "Fashion"
+  //   },
+  //   {
+  //     value: "elektronik",
+  //     label: "Elektronik"
+  //   },
+  //   {
+  //     value: "kecantikan",
+  //     label: "Kecantikan"
+  //   },
+  //   {
+  //     value: "makanan-minuman",
+  //     label: "Makanan & Minuman"
+  //   },
+  //   {
+  //     value: "alat-tulis",
+  //     label: "Alat Tulis"
+  //   }
+  // ];
 
   return (
     <div className="w-full">
@@ -342,74 +395,76 @@ export default function ProductsDataTable({ data }: { data: Product[] }) {
         <div className="flex flex-col gap-2 lg:flex-row">
           <Input
             placeholder="Cari produk..."
-            value={(table.getColumn("product_name")?.getFilterValue() as string) ?? ""}
-            onChange={(event) =>
-              table.getColumn("product_name")?.setFilterValue(event.target.value)
-            }
+            value={search}
+            type="search"
+            onChange={(event) => {
+              setSearch(event.target.value);
+              setPage(1);
+            }}
             className="lg:max-w-sm"
           />
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline">
-                <PlusCircle className="me-2 h-4 w-4" />
-                Stok
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-52 p-0">
-              <Command>
-                <CommandInput placeholder="Filter stok" className="h-9" />
-                <CommandList>
-                  <CommandEmpty>Tidak ada stok ditemukan.</CommandEmpty>
-                  <CommandGroup>
-                    {stockStatuses.map((status) => (
-                      <CommandItem key={status.value} value={status.value}>
-                        <div className="flex items-center space-x-3 py-1">
-                          <Checkbox id={status.value} />
-                          <label
-                            htmlFor={status.value}
-                            className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                          >
-                            {status.label}
-                          </label>
-                        </div>
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button variant="outline">
-                <PlusCircle className="me-2 h-4 w-4" />
-                Kategori
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-52 p-0">
-              <Command>
-                <CommandInput placeholder="Cari kategori" className="h-9" />
-                <CommandList>
-                  <CommandEmpty>Tidak ada kategori ditemukan.</CommandEmpty>
-                  <CommandGroup>
-                    {categories.map((category) => (
-                      <CommandItem key={category.value} value={category.value}>
-                        <div className="flex items-center space-x-3 py-1">
-                          <Checkbox id={category.value} />
-                          <label
-                            htmlFor={category.value}
-                            className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                          >
-                            {category.label}
-                          </label>
-                        </div>
-                      </CommandItem>
-                    ))}
-                  </CommandGroup>
-                </CommandList>
-              </Command>
-            </PopoverContent>
-          </Popover>
+          {/* <Popover> */}
+          {/*   <PopoverTrigger asChild> */}
+          {/*     <Button variant="outline"> */}
+          {/*       <PlusCircle className="me-2 h-4 w-4" /> */}
+          {/*       Stok */}
+          {/*     </Button> */}
+          {/*   </PopoverTrigger> */}
+          {/*   <PopoverContent className="w-52 p-0"> */}
+          {/*     <Command> */}
+          {/*       <CommandInput placeholder="Filter stok" className="h-9" /> */}
+          {/*       <CommandList> */}
+          {/*         <CommandEmpty>Tidak ada stok ditemukan.</CommandEmpty> */}
+          {/*         <CommandGroup> */}
+          {/*           {stockStatuses.map((status) => ( */}
+          {/*             <CommandItem key={status.value} value={status.value}> */}
+          {/*               <div className="flex items-center space-x-3 py-1"> */}
+          {/*                 <Checkbox id={status.value} /> */}
+          {/*                 <label */}
+          {/*                   htmlFor={status.value} */}
+          {/*                   className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" */}
+          {/*                 > */}
+          {/*                   {status.label} */}
+          {/*                 </label> */}
+          {/*               </div> */}
+          {/*             </CommandItem> */}
+          {/*           ))} */}
+          {/*         </CommandGroup> */}
+          {/*       </CommandList> */}
+          {/*     </Command> */}
+          {/*   </PopoverContent> */}
+          {/* </Popover> */}
+          {/* <Popover> */}
+          {/*   <PopoverTrigger asChild> */}
+          {/*     <Button variant="outline"> */}
+          {/*       <PlusCircle className="me-2 h-4 w-4" /> */}
+          {/*       Kategori */}
+          {/*     </Button> */}
+          {/*   </PopoverTrigger> */}
+          {/*   <PopoverContent className="w-52 p-0"> */}
+          {/*     <Command> */}
+          {/*       <CommandInput placeholder="Cari kategori" className="h-9" /> */}
+          {/*       <CommandList> */}
+          {/*         <CommandEmpty>Tidak ada kategori ditemukan.</CommandEmpty> */}
+          {/*         <CommandGroup> */}
+          {/*           {categories.map((category) => ( */}
+          {/*             <CommandItem key={category.value} value={category.value}> */}
+          {/*               <div className="flex items-center space-x-3 py-1"> */}
+          {/*                 <Checkbox id={category.value} /> */}
+          {/*                 <label */}
+          {/*                   htmlFor={category.value} */}
+          {/*                   className="leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70" */}
+          {/*                 > */}
+          {/*                   {category.label} */}
+          {/*                 </label> */}
+          {/*               </div> */}
+          {/*             </CommandItem> */}
+          {/*           ))} */}
+          {/*         </CommandGroup> */}
+          {/*       </CommandList> */}
+          {/*     </Command> */}
+          {/*   </PopoverContent> */}
+          {/* </Popover> */}
         </div>
         <div className="hidden lg:block">
           <DropdownMenu>
@@ -476,30 +531,56 @@ export default function ProductsDataTable({ data }: { data: Product[] }) {
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 pt-4">
-        <div className="text-muted-foreground flex-1 text-sm">
-          {table.getFilteredSelectedRowModel().rows.length} dari{" "}
-          {table.getFilteredRowModel().rows.length} produk dipilih.
-        </div>
-        <div className="space-x-2">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.previousPage()}
-            disabled={!table.getCanPreviousPage()}
-          >
-            Sebelumnya
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => table.nextPage()}
-            disabled={!table.getCanNextPage()}
-          >
-            Selanjutnya
-          </Button>
+      <div className="mt-4 flex flex-wrap items-center justify-between space-x-2">
+        <div />
+        {/* <div className="text-muted-foreground flex-1 text-sm"> */}
+        {/*   {table.getFilteredSelectedRowModel().rows.length} dari{" "} */}
+        {/*   {data?.pagination?.total_items ?? 0} baris dipilih. */}
+        {/* </div> */}
+        <div className="flex items-center gap-2 self-end">
+          <div className="text-muted-foreground text-sm">
+            Halaman {page} dari {data?.pagination?.total_pages ?? 1}
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => setPage((prev) => Math.max(1, prev - 1))}
+              disabled={page === 1}
+            >
+              Sebelumnya
+            </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() =>
+                setPage((prev) => Math.min(data?.pagination?.total_pages ?? 1, prev + 1))
+              }
+              disabled={page >= (data?.pagination?.total_pages ?? 1)}
+            >
+              Selanjutnya
+            </Button>
+          </div>
         </div>
       </div>
     </div>
   );
+}
+
+function getShopURL(marketplace: string, productURL: string) {
+  switch (marketplace) {
+    case "tokopedia":
+      const url = new URL(productURL);
+      const pathname = url.pathname;
+      const segments = pathname.split("/").filter(Boolean);
+      return `https://www.tokopedia.com${segments[0]}`;
+    case "shopee":
+      return `https://shopee.co.id${productURL}`;
+    case "tiktok":
+      return `https://www.tiktok.com/shop${productURL}`;
+    case "blibli":
+      return `https://www.blibli.com${productURL}`;
+    default:
+      return productURL;
+  }
 }
